@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- report theme -->
+        <!-- standard, dark -->
+        <theme>standard</theme>
+    
+        <!-- document encoding -->
+        <!-- defaults to UTF-8 -->
+        <encoding>UTF-8</encoding>
+        
+        <!-- protocol for script and stylesheets -->
+        <!-- defaults to https -->
+        <protocol>https</protocol>
+        
+        <!-- title of the document -->
+        <documentTitle>ExtentReport</documentTitle>
+        
+        <!-- report name - displayed at top-nav -->
+        <reportName>PV Automation : Republic Finance : EXTENT REPORT
+		<!-- 
+             <![CDATA[
+                <img src='C:/Users/pvenkatarajan/GIT2/PVautomation01/PVautomation01/rf-logo.png'/>
+            ]]>
+        -->
+		</reportName>
+        
+        <!-- location of charts in the test view -->
+        <!-- top, bottom -->
+        <testViewChartLocation>top</testViewChartLocation>
+        
+        <!-- custom javascript -->
+        <scripts>
+            <![CDATA[
+                $(document).ready(function() {
+                    
+                });
+            ]]>
+        </scripts>
+        
+   
+<!-- custom styles -->
+<!--
+<styles>
+    <![CDATA[
+        .featherlight-image {   border: 1px solid #f6f7fa;   cursor: zoom-in;    width: 75px; }
+    ]]>
+</styles>
+-->
+
+<!-- custom styles -->
+        <styles>
+            <![CDATA[
+            .report-name { padding-left: 18px; } .report-name > img { float: 
+      left;height: 90%;margin-left: 30px;margin-top: 3px;width: auto; }
+        ]]>
+        </styles>
+
+
+
+
+    </configuration>
+</extentreports>
