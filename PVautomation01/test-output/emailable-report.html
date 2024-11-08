@@ -8,28 +8,56 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test1</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">170,902</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t1">Test2</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">18,279</td><td></td><td></td></tr>
-<tr><th>Total</th><th class="num">10</th><th class="num">0</th><th class="num">0</th><th class="num attn">1</th><th class="num">189,181</th><th colspan="2"></th></tr>
+<tr><th colspan="8">Default suite</th></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">10</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">193,011</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test1 &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.pv.project1.Automation01</td><td><a href="#m0">TheCase1Test</a></td><td rowspan="1">1731019662851</td><td rowspan="1">123504</td></tr><tr><th colspan="4">Test1 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">com.pv.project1.Automation01</td><td><a href="#m1">test1Method</a></td><td rowspan="1">1731019629419</td><td rowspan="1">537</td></tr><tr class="passedeven"><td><a href="#m2">test2Method</a></td><td rowspan="1">1731019629961</td><td rowspan="1">13931</td></tr><tr class="passedeven"><td><a href="#m3">test3Method</a></td><td rowspan="1">1731019643896</td><td rowspan="1">11881</td></tr><tr class="passedeven"><td><a href="#m4">test4Method</a></td><td rowspan="1">1731019655779</td><td rowspan="1">6445</td></tr><tr class="passedeven"><td><a href="#m5">test5Method</a></td><td rowspan="1">1731019662225</td><td rowspan="1">624</td></tr></tbody>
-<tbody id="t1"><tr><th colspan="4">Test2 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">com.pv.project1.RestAssuredAPItest01</td><td><a href="#m6">customerPortal_login_post</a></td><td rowspan="1">1731019802272</td><td rowspan="1">2035</td></tr><tr class="passedeven"><td><a href="#m7">customer_check</a></td><td rowspan="1">1731019791236</td><td rowspan="1">11035</td></tr><tr class="passedeven"><td><a href="#m8">forgot_password_post</a></td><td rowspan="1">1731019804309</td><td rowspan="1">723</td></tr><tr class="passedeven"><td><a href="#m9">onlineApp_login_post</a></td><td rowspan="1">1731019789469</td><td rowspan="1">1766</td></tr><tr class="passedeven"><td><a href="#m10">prequal_footprint_get</a></td><td rowspan="1">1731019786756</td><td rowspan="1">2712</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.pv.project1.Automation01</td><td><a href="#m0">TheCase1Test</a></td><td rowspan="1">1731027475455</td><td rowspan="1">123585</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">com.pv.project1.Automation01</td><td><a href="#m1">test1Method</a></td><td rowspan="1">1731027599062</td><td rowspan="1">1194</td></tr><tr class="passedeven"><td><a href="#m2">test2Method</a></td><td rowspan="1">1731027600258</td><td rowspan="1">11973</td></tr><tr class="passedeven"><td><a href="#m3">test3Method</a></td><td rowspan="1">1731027612233</td><td rowspan="1">11831</td></tr><tr class="passedeven"><td><a href="#m4">test4Method</a></td><td rowspan="1">1731027624067</td><td rowspan="1">6418</td></tr><tr class="passedeven"><td><a href="#m5">test5Method</a></td><td rowspan="1">1731027630487</td><td rowspan="1">1042</td></tr><tr class="passedodd"><td rowspan="5">com.pv.project1.RestAssuredAPItest01</td><td><a href="#m6">customerPortal_login_post</a></td><td rowspan="1">1731027647809</td><td rowspan="1">2496</td></tr><tr class="passedodd"><td><a href="#m7">customer_check</a></td><td rowspan="1">1731027639479</td><td rowspan="1">8328</td></tr><tr class="passedodd"><td><a href="#m8">forgot_password_post</a></td><td rowspan="1">1731027650308</td><td rowspan="1">849</td></tr><tr class="passedodd"><td><a href="#m9">onlineApp_login_post</a></td><td rowspan="1">1731027637053</td><td rowspan="1">2423</td></tr><tr class="passedodd"><td><a href="#m10">prequal_footprint_get</a></td><td rowspan="1">1731027631532</td><td rowspan="1">5518</td></tr></tbody>
 </table>
-<h2>Test1</h2><h3 id="m0">com.pv.project1.Automation01#TheCase1Test</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator &apos;By.xpath: /html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div/div/div/div/div[3]/div/div/div[1]/label/span&apos; (tried for 120 second(s) with 500 milliseconds interval)
+<h2>Default test</h2><h3 id="m0">com.pv.project1.Automation01#TheCase1Test</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator &apos;By.xpath: /html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div/div/div/div/div[3]/div/div/div[1]/label/span&apos; (tried for 120 second(s) with 500 milliseconds interval)
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
 	at com.pv.project1.Automation01.TheCase1Test(Automation01.java:588)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div/div/div/div/div[3]/div/div/div[1]/label/span&quot;}
   (Session info: chrome=130.0.6723.92)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.11&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [e2e9eeb47262c7cb305e38ce1684d2f3, findElement {using=xpath, value=/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div/div/div/div/div[3]/div/div/div[1]/label/span}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 130.0.6723.92, chrome: {chromedriverVersion: 130.0.6723.91 (53ac07678369..., userDataDir: C:\Users\PVENKA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52380}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52380/devtoo..., se:cdpVersion: 130.0.6723.92, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: e2e9eeb47262c7cb305e38ce1684d2f3
+Command: [486dcc98be2f12a335e138b904ada173, findElement {using=xpath, value=/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div/div/div/div/div[3]/div/div/div[1]/label/span}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 130.0.6723.92, chrome: {chromedriverVersion: 130.0.6723.91 (53ac07678369..., userDataDir: C:\Users\PVENKA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61785}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61785/devtoo..., se:cdpVersion: 130.0.6723.92, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 486dcc98be2f12a335e138b904ada173
+	at jdk.internal.reflect.GeneratedConstructorAccessor22.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
@@ -51,13 +79,13 @@ Session ID: e2e9eeb47262c7cb305e38ce1684d2f3
 	at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:652)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:204)
 	... 29 more
-... Removed 31 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m1">com.pv.project1.Automation01#test1Method</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m2">com.pv.project1.Automation01#test2Method</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m3">com.pv.project1.Automation01#test3Method</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m4">com.pv.project1.Automation01#test4Method</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m5">com.pv.project1.Automation01#test5Method</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Test2</h2><h3 id="m6">com.pv.project1.RestAssuredAPItest01#customerPortal_login_post</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">com.pv.project1.RestAssuredAPItest01#customerPortal_login_post</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m7">com.pv.project1.RestAssuredAPItest01#customer_check</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m8">com.pv.project1.RestAssuredAPItest01#forgot_password_post</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m9">com.pv.project1.RestAssuredAPItest01#onlineApp_login_post</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
