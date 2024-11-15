@@ -9,3 +9,19 @@ Session ID: 42d6ca407f0c36ac4d9f6feaae2e8871
 
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test/java</testSourceDirectory>
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.JavascriptExecutor;
+
+        waitForPageToLoad(driver);
+        System.out.println("Page has fully loaded.");
+       driver.quit();
+    }
+
+      public static void waitForPageToLoad(WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(driver1 -> js.executeScript("return document.readyState").equals("complete"));
+    }
+}
