@@ -1,4 +1,38 @@
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+================================
+List<String> xPaths = Arrays.asList(
+            "//a[contains(@data-recordid, '001Ek00000qsRWsIAM') and contains(@class, 'outputLookupLink')]",
+            "//a[@title='MARTHA YYCPXHA' and contains(@class, 'outputLookupLink')]",
+            "//a[contains(@data-ownerid, '17288:0') and contains(@class, 'outputLookupLink')]",
+            "//a[contains(@class, 'outputLookupLink') and contains(@data-recordid, '001Ek00000qsRWsIAM')]",
+            "//div[contains(@class, 'some-class')]//a[contains(@class, 'outputLookupLink') and contains(@data-recordid, '001Ek00000qsRWsIAM')]"
+        );
+
+        boolean found = false;
+
+        // Try each XPath until one works
+        for (String xpath : xPaths) {
+            try {
+                WebElement element = driver.findElement(By.xpath(xpath));
+                 element.click();
+                System.out.println("Element found and clicked using XPath: " + xpath);
+                found = true;
+                break; 
+            } catch (NoSuchElementException e) {
+                System.out.println("Element not found using XPath: " + xpath);
+            }
+        }
+
+        if (!found) {
+            System.out.println("ArrayList - No element found with any of the provided list of XPaths.");
+        }
+
+
+
+
+
+
+===========================
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement textBox = wait.until(ExpectedConditions.elementToBeClickable(element)));
    
         JavascriptExecutor js = (JavascriptExecutor) driver;
