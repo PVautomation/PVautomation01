@@ -25,3 +25,16 @@ import org.openqa.selenium.JavascriptExecutor;
         wait.until(driver1 -> js.executeScript("return document.readyState").equals("complete"));
     }
 }
+
+        List<WebElement> elements = driver.findElements(By.cssSelector("your-element-selector"))
+        if (!elements.isEmpty()) {
+        
+            WebElement lastElement = elements.get(elements.size() - 1);
+            lastElement.click();
+        }
+
+
+
+
+
+
