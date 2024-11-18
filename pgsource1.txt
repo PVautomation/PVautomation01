@@ -1,3 +1,72 @@
+
+
+===================
+
+
+
+<span omnistudio-flexaction_flexaction_slds="" title="Start">Start</span>
+-----------
+
+
+
+<div omnistudio-block_block_slds="" class="block-container">
+	<div omnistudio-block_block_slds="" class="slds-grid slds-wrap data-interpolatedLabel" aria-label="OuterButtonBlock">
+		<div omnistudio-block_block_slds="" class="slds-col slds-size_1-of-1">
+			<slot omnistudio-block_block_slds="">
+				<div class="slds-grid slds-wrap">
+					<div class="slds-col slds-text-align_left slds-p-left_small slds-p-top_small slds-m-bottom_x-large slds-m-left_large slds-size_12-of-12" data-style-id="state0element0block_element0" data-rindex="0" style="color: rgb(15, 61, 89); font-size: 16px; font-weight: bold;">
+						<omnistudio-output-field data-style-id="state0element0block_element0_child" omnistudio-outputfield_outputfield-host="">
+							<div omnistudio-outputfield_outputfield="" class="vloc-min-height">
+								<lightning-formatted-rich-text omnistudio-outputfield_outputfield="" tabindex="0" class="slds-rich-text-editor__output" lwc-4nfn2rc40ch-host="">
+									<span lwc-4nfn2rc40ch="" part="formatted-rich-text">
+										<div lwc-4nfn2rc40ch="">
+											<span style="font-size: 14pt;" lwc-4nfn2rc40ch="">Active Applications</span>
+										</div>
+									</span>
+								</lightning-formatted-rich-text>
+							</div>
+						</omnistudio-output-field>
+					</div>
+					<div class="slds-col slds-text-align_left slds-p-top_x-small slds-p-left_small slds-m-bottom_large slds-m-left_large slds-size_6-of-12" data-style-id="state0element0block_element1" data-rindex="0" style="color: rgb(35, 113, 165); font-size: 14px; font-weight: bold;">
+						<omnistudio-output-field data-style-id="state0element0block_element1_child" omnistudio-outputfield_outputfield-host="">
+							<div omnistudio-outputfield_outputfield="" class="vloc-min-height">
+								<lightning-formatted-rich-text omnistudio-outputfield_outputfield="" tabindex="0" class="slds-rich-text-editor__output" lwc-4nfn2rc40ch-host="">
+									<span lwc-4nfn2rc40ch="" part="formatted-rich-text">
+										<div lwc-4nfn2rc40ch="">
+											<span style="font-size: 12pt;" lwc-4nfn2rc40ch="">New Application</span>
+										</div>
+									</span>
+								</lightning-formatted-rich-text>
+							</div>
+						</omnistudio-output-field>
+					</div>
+					<div class="slds-col condition-element slds-theme_default slds-text-align_center slds-p-around_xx-small slds-m-bottom_large slds-m-left_xx-large slds-size_2-of-12" data-style-id="state0element0block_element2" data-rindex="0" data-conditions="{&quot;group&quot;:[],&quot;id&quot;:&quot;state-condition-object&quot;,&quot;isParent&quot;:true}" style="background-color: rgb(60, 153, 212); background-repeat: round; border-radius: 5px; line-height: 25px;">
+						<omnistudio-flex-action class="state0element0block_element2_child flexActionElement" data-style-id="state0element0block_element2_child" data-action-element-class="state0element0block_element2_child" data-action-key="state0element0block_element2" data-show-spinner="false" data-element-label="actionnewapplicationbutton" data-conditions="{&quot;group&quot;:[],&quot;id&quot;:&quot;state-condition-object&quot;,&quot;isParent&quot;:true}" data-preload-conditional-element="false" omnistudio-flexaction_flexaction_slds-host="">
+							<div omnistudio-flexaction_flexaction_slds="" class="slds-text-align--center action-template action-container-truncate">
+								<a omnistudio-flexaction_flexaction_slds="" class="slds-action_item" href="javascript:void(0)" data-action-focus="" aria-label="Start">
+									<span omnistudio-flexaction_flexaction_slds="" class="slds-action_text" style="color:#FFFFFF;font-size:16px;">
+										<span omnistudio-flexaction_flexaction_slds="" title="Start">Start</span>
+									</span>
+								</a>
+							</div>
+						</omnistudio-flex-action>
+					</div>
+				</div>
+			</slot>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 ================================
 List<String> xPaths = Arrays.asList(
             "//a[contains(@data-recordid, '001Ek00000qsRWsIAM') and contains(@class, 'outputLookupLink')]",
