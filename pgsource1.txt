@@ -1,0 +1,281 @@
+<header id="oneHeader" class="slds-global-header_container branding-header slds-no-print oneHeader" data-aura-rendered-by="124:0;p" data-aura-class="oneHeader">
+	<a class="slds-assistive-text slds-assistive-text_focus forceSkipLink" data-aura-rendered-by="113:0;p" href="javascript:void(0);" data-aura-class="forceSkipLink">Skip to Navigation</a>
+	<a class="slds-assistive-text slds-assistive-text_focus forceSkipLink" data-aura-rendered-by="118:0;p" href="javascript:void(0);" data-aura-class="forceSkipLink">Skip to Main Content</a>
+	<div class="slds-color__background_gray-1 slds-text-align_center slds-size_full slds-text-body_regular oneSystemMessage" data-aura-rendered-by="131:0;p" data-aura-class="oneSystemMessage">
+		<div aria-live="polite" data-index="0" aria-atomic="true" class="slds-notify_alert system-message level-info slds-theme_info" data-message-id="loginAsSystemMessage" data-aura-rendered-by="1:153;a">
+			<!--render facet: 2:153;a-->
+			<span data-aura-rendered-by="3:153;a"> Sandbox: QA | </span>
+			<a href="/secur/logout.jsp" class="action-link" target="_self" data-aura-rendered-by="8:153;a">Log out</a>
+			<!--render facet: 10:153;a-->
+		</div>
+	</div>
+	<div class="slds-global-header slds-grid slds-grid_align-spread" data-aura-rendered-by="139:0;p">
+		<div class="slds-global-header__item" data-aura-rendered-by="140:0;p">
+			<!--render facet: 141:0;p-->
+			<div style="" class="slds-global-header__logo" data-aura-rendered-by="143:0;p">
+				<span class="slds-assistive-text" data-aura-rendered-by="145:0;p">Branch Operations</span>
+			</div>
+		</div>
+		<div data-target-selection-name="9e184609916746a1a90a8e111d9e001e" class="slds-global-header__item slds-global-header__item_search" data-aura-rendered-by="148:0;p">
+			<div class="slds-grid slds-size_1-of-1 slds-grid--align-center forceSearchAssistant" data-aura-rendered-by="362:0" data-aura-class="forceSearchAssistant">
+				<div data-aura-rendered-by="363:0">
+					<button type="button" class="slds-button slds-button_neutral search-button slds-truncate" aria-label="Search" data-aura-rendered-by="366:0" data-proxy-id="aura-pos-lib-1" id="366:0">
+						<lightning-primitive-icon variant="bare" data-data-rendering-service-uid="212" data-aura-rendered-by="368:0" lwc-45bd2ao4vb7-host="">
+							<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-45bd2ao4vb7="" data-key="search" class="slds-button__icon slds-button__icon_left">
+								<g lwc-45bd2ao4vb7="">
+									<path d="M496 453L362 320a189 189 0 10-340-92 190 190 0 00298 135l133 133a14 14 0 0021 0l21-21a17 17 0 001-22zM210 338a129 129 0 11130-130 129 129 0 01-130 130z" lwc-45bd2ao4vb7=""/>
+								</g>
+							</svg>
+						</lightning-primitive-icon>Search...<!--render facet: 371:0-->
+					</button>
+				</div>
+				<!--render facet: 406:0-->
+				<!--render facet: 411:0-->
+			</div>
+			<!--render facet: 373:0-->
+		</div>
+		<span role="navigation" class="button-container-a11y" aria-label="Global Header" data-aura-rendered-by="151:0;p">
+			<!--unrender facet: 152:0;p-->
+			<div style="" class="slds-global-header__logo" data-aura-rendered-by="158:0;p">
+				<span class="slds-assistive-text" data-aura-rendered-by="160:0;p">Branch Operations</span>
+			</div>
+			<div class="slds-global-header__item" data-aura-rendered-by="162:0;p">
+				<ul style="" class="slds-global-actions" data-aura-rendered-by="163:0;p">
+					<!--render facet: 164:0;p-->
+					<!--render facet: 178:0;p-->
+					<li class="slds-global-actions__item slds-grid" data-aura-rendered-by="180:0;p">
+						<!--render facet: 183:0;p-->
+						<div role="group" data-target-selection-name="d4708219c81e48eea991502028c8c793" class="slds-button-group slds-global-actions__favorites oneFavorites" data-aura-rendered-by="1:208;a" data-aura-class="oneFavorites">
+							<div data-aura-rendered-by="4:208;a" class="forceHeaderButton" data-aura-class="forceHeaderButton" aria-label="Favorite this item" aria-pressed="false">
+								<button aria-expanded="false" type="button" class="slds-button branding-favorites-star-button slds-button slds-button_icon slds-global-actions__favorites-action slds-button_icon slds-button_icon-border slds-button_icon-small" data-aura-rendered-by="19:208;a">
+									<!--render facet: 20:208;a-->
+									<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-6:208;a" class="tooltipTrigger tooltip-trigger uiTooltip" data-aura-rendered-by="14:208;a" data-aura-class="uiTooltip" data-proxy-id="aura-pos-lib-6" id="14:208;a">
+										<lightning-icon icon-name="utility:favorite" class="slds-icon-utility-favorite branding-favorites-star-icon slds-global-header__icon slds-button__icon slds-icon_container forceIcon" data-data-rendering-service-uid="201" data-aura-rendered-by="11:208;a" lwc-4897l11qtae-host="" data-aura-class="forceIcon">
+											<span lwc-4897l11qtae="" style="--sds-c-icon-color-background: var(--slds-c-icon-color-background, transparent)" part="boundary">
+												<lightning-primitive-icon lwc-4897l11qtae="" exportparts="icon" size="xx-small" variant="inverse" lwc-7207uoj8eul-host="">
+													<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-7207uoj8eul="" data-key="favorite" class="slds-icon slds-icon_xx-small">
+														<g lwc-7207uoj8eul="">
+															<path d="M274 31l46 150c2 6 8 9 14 9h150c15 0 21 20 9 29l-122 90c-5 4-7 11-5 17l58 154c4 14-11 26-23 17l-131-98c-5-4-12-4-18 0l-132 98c-12 9-28-3-23-17l56-154c2-6 0-13-5-17L26 219c-12-9-5-29 9-29h150c7 0 12-2 14-9l47-151c4-14 24-13 28 1z" lwc-7207uoj8eul=""/>
+														</g>
+													</svg>
+												</lightning-primitive-icon>
+											</span>
+										</lightning-icon>
+										<span role="tooltip" aria-hidden="false" id="tt-for-6:208;a" class="tooltip-invisible" data-aura-rendered-by="16:208;a">Add favorite</span>
+									</div>
+									<!--render facet: 23:208;a-->
+								</button>
+							</div>
+							<span class="favoritesCount slds-hide" data-aura-rendered-by="24:208;a">0</span>
+							<div data-aura-rendered-by="28:208;a" class="forceHeaderButton" data-aura-class="forceHeaderButton">
+								<button aria-expanded="false" aria-haspopup="true" type="button" class="slds-button branding-favorites-list-button slds-button slds-button_icon slds-global-actions__favorites-more slds-button_icon slds-button_icon-border slds-button_icon-small" data-aura-rendered-by="43:208;a">
+									<!--render facet: 44:208;a-->
+									<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-30:208;a" class="tooltipTrigger tooltip-trigger uiTooltip" data-aura-rendered-by="38:208;a" data-aura-class="uiTooltip" data-proxy-id="aura-pos-lib-3" id="38:208;a">
+										<lightning-icon icon-name="utility:down" class="slds-icon-utility-down dropdown slds-button__icon slds-icon_container forceIcon" data-data-rendering-service-uid="202" data-aura-rendered-by="35:208;a" lwc-4897l11qtae-host="" data-aura-class="forceIcon">
+											<span lwc-4897l11qtae="" style="--sds-c-icon-color-background: var(--slds-c-icon-color-background, transparent)" part="boundary">
+												<lightning-primitive-icon lwc-4897l11qtae="" exportparts="icon" size="xx-small" variant="inverse" lwc-6qul4k2dv7m-host="">
+													<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-6qul4k2dv7m="" data-key="down" class="slds-icon slds-icon_xx-small">
+														<g lwc-6qul4k2dv7m="">
+															<path d="M83 140h354c10 0 17 13 9 22L273 374c-6 8-19 8-25 0L73 162c-7-9-1-22 10-22z" lwc-6qul4k2dv7m=""/>
+														</g>
+													</svg>
+												</lightning-primitive-icon>
+											</span>
+										</lightning-icon>
+										<span role="tooltip" aria-hidden="false" id="tt-for-30:208;a" class="tooltip-invisible" data-aura-rendered-by="40:208;a">Favorites list</span>
+									</div>
+									<!--render facet: 47:208;a-->
+								</button>
+							</div>
+						</div>
+					</li>
+					<li class="slds-global-actions__item slds-dropdown-trigger slds-dropdown-trigger_click" data-aura-rendered-by="187:0;p">
+						<div data-target-selection-name="afcc385bfe434ec8872f4a3aade6eb1e" class="globalCreateContainer branding-global-create oneGlobalCreate" data-aura-rendered-by="190:0;p" data-aura-class="oneGlobalCreate">
+							<div data-aura-rendered-by="72:10823;a" class="uiMenu" data-aura-class="uiMenu">
+								<div id="2:10823;a" data-aura-rendered-by="23:10823;a" class="uiPopupTrigger forceHeaderMenuTrigger" data-aura-class="uiPopupTrigger forceHeaderMenuTrigger" data-interactive-uid="4">
+									<div data-aura-rendered-by="25:10823;a">
+										<div data-aura-rendered-by="18:10823;a">
+											<a aria-disabled="false" role="button" aria-describedby="" tabindex="0" aria-expanded="false" aria-haspopup="true" title="" class="globalCreateTrigger slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-actions__task slds-global-actions__item-action" data-aura-rendered-by="19:10823;a" href="javascript:void(0);">
+												<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-7:10823;a" class="headerTrigger  tooltip-trigger uiTooltip" data-aura-rendered-by="13:10823;a" data-aura-class="uiTooltip">
+													<lightning-icon icon-name="utility:add" class="slds-icon-utility-add slds-grid slds-button slds-button--icon slds-button--icon-container slds-button--icon-x-small slds-global-header__button--icon-actions globalCreateButton slds-icon_container" data-data-rendering-service-uid="852" data-aura-rendered-by="5:10823;a" lwc-4897l11qtae-host="">
+														<span lwc-4897l11qtae="" style="--sds-c-icon-color-background: var(--slds-c-icon-color-background, transparent)" part="boundary">
+															<lightning-primitive-icon lwc-4897l11qtae="" exportparts="icon" size="x-small" variant="inverse" lwc-3220386utb1-host="">
+																<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-3220386utb1="" data-key="add" class="slds-icon slds-icon_x-small">
+																	<g lwc-3220386utb1="">
+																		<path d="M300 290h165c8 0 15-7 15-15v-30c0-8-7-15-15-15H300c-6 0-10-4-10-10V55c0-8-7-15-15-15h-30c-8 0-15 7-15 15v165c0 6-4 10-10 10H55c-8 0-15 7-15 15v30c0 8 7 15 15 15h165c6 0 10 4 10 10v165c0 8 7 15 15 15h30c8 0 15-7 15-15V300c0-6 4-10 10-10z" lwc-3220386utb1=""/>
+																	</g>
+																</svg>
+															</lightning-primitive-icon>
+														</span>
+													</lightning-icon>
+													<!--render facet: 10:10823;a-->
+													<span role="tooltip" aria-hidden="false" id="tt-for-7:10823;a" class="tooltip-invisible" data-aura-rendered-by="15:10823;a">Global Actions</span>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="globalCreateMenuList popupTargetContainer  menu--nubbin-top uiPopupTarget uiMenuList uiMenuList--right uiMenuList--default" data-aura-rendered-by="67:10823;a" data-aura-class="uiPopupTarget uiMenuList uiMenuList--right uiMenuList--default" aria-labelledby="2:10823;a">
+									<div role="menu" class="globalCreateMenuList" data-aura-rendered-by="58:10823;a">
+										<div class="menu__header" data-aura-rendered-by="60:10823;a">
+											<span class="text-heading--label" data-aura-rendered-by="61:10823;a">Global Actions</span>
+										</div>
+										<ul role="presentation" class="scrollable" data-aura-rendered-by="63:10823;a">
+											<!--render facet: 64:10823;a-->
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li data-target-selection-name="a5605961655b4e0cafe7def4b4b4ba7e" class="slds-global-actions__item slds-dropdown-trigger slds-dropdown-trigger_click trailheadTrigger" data-aura-rendered-by="197:0;p">
+						<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-198:0;p" class="tooltip-trigger uiTooltip" data-aura-rendered-by="202:0;p" data-aura-class="uiTooltip">
+							<lightning-button-icon-stateful data-data-rendering-service-uid="149" data-aura-rendered-by="199:0;p" lwc-2s44vctlls4-host="" variant="border" size="small">
+								<span lwc-2s44vctlls4="" part="button-icon-stateful">
+									<button lwc-2s44vctlls4="" class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-border" type="button" role="button" aria-pressed="false" aria-label="Guidance Center" part="button button-icon">
+										<lightning-primitive-icon lwc-2s44vctlls4="" aria-hidden="true" variant="bare" lwc-5vichrvsscr-host="">
+											<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-5vichrvsscr="" data-key="trailhead_alt" class="slds-button__icon">
+												<g lwc-5vichrvsscr="">
+													<path d="M222 362a27 27 0 01-1 3 69 69 0 0024 78c16 13 20 18 18 30a76 76 0 01-11 27 449 449 0 01-232-74v-36l1-27h201zm277 0l1 28v37a450 450 0 01-203 72 100 100 0 005-20c6-37-18-55-32-66a28 28 0 01-11-33 82 82 0 019-17h231zM225 196l44 65-42 60h-87zm35-176a393 393 0 01235 302h-59l-88-130a20 20 0 00-33 0l-22 33-51-76a20 20 0 00-34 0L91 322H25A393 393 0 01260 20zm72 220l55 82H277z" lwc-5vichrvsscr=""/>
+												</g>
+											</svg>
+										</lightning-primitive-icon>
+									</button>
+								</span>
+							</lightning-button-icon-stateful>
+							<span role="tooltip" aria-hidden="false" id="tt-for-198:0;p" class="tooltip-invisible" data-aura-rendered-by="204:0;p">Guidance Center</span>
+						</div>
+					</li>
+					<li class="slds-global-actions__item slds-global-actions__item_help slds-dropdown-trigger slds-dropdown-trigger_click" data-aura-rendered-by="102:208;a">
+						<div data-target-selection-name="d4a1b62f54b34cc3b19f2d31493eecb7" data-aura-rendered-by="107:208;a" class="oneHelpAndTrainingExperience" data-aura-class="oneHelpAndTrainingExperience">
+							<div data-aura-rendered-by="110:208;a" class="forceHeaderButton" data-aura-class="forceHeaderButton">
+								<button aria-expanded="false" aria-haspopup="true" type="button" class="slds-button slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-actions__help slds-global-actions__item-action" data-aura-rendered-by="125:208;a" title="">
+									<!--render facet: 126:208;a-->
+									<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-112:208;a" class="tooltipTrigger tooltip-trigger uiTooltip" data-aura-rendered-by="120:208;a" data-aura-class="uiTooltip">
+										<lightning-icon icon-name="utility:question" class="slds-icon-utility-question slds-global-header__icon slds-button__icon slds-icon_container forceIcon" data-data-rendering-service-uid="204" data-aura-rendered-by="117:208;a" lwc-4897l11qtae-host="" data-aura-class="forceIcon">
+											<span lwc-4897l11qtae="" style="--sds-c-icon-color-background: var(--slds-c-icon-color-background, transparent)" part="boundary">
+												<lightning-primitive-icon lwc-4897l11qtae="" exportparts="icon" size="xx-small" variant="inverse" lwc-5stq1vtch0h-host="">
+													<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-5stq1vtch0h="" data-key="question" class="slds-icon slds-icon_xx-small">
+														<g lwc-5stq1vtch0h="">
+															<path d="M284 380h-50c-8 0-14-6-14-14v-15c0-42 27-80 67-94a80 80 0 00-24-155c-22-1-43 7-59 22a70.4 70.4 0 00-23 44c-1 6-7 11-15 11h-50c-9 0-16-7-15-16 4-38 21-72 48-99 32-30 73-46 117-45 83 3 151 71 154 154 3 70-40 133-105 157-9 4-15 11-15 20v15c0 9-8 15-16 15zm16 105c0 8-7 15-15 15h-50c-8 0-15-7-15-15v-50c0-8 7-15 15-15h50c8 0 15 7 15 15z" lwc-5stq1vtch0h=""/>
+														</g>
+													</svg>
+												</lightning-primitive-icon>
+											</span>
+										</lightning-icon>
+										<span role="tooltip" aria-hidden="false" id="tt-for-112:208;a" class="tooltip-invisible" data-aura-rendered-by="122:208;a">Salesforce Help</span>
+									</div>
+									<!--render facet: 129:208;a-->
+								</button>
+							</div>
+						</div>
+					</li>
+					<li class="slds-global-actions__item slds-dropdown-trigger slds-dropdown-trigger_click" data-aura-rendered-by="131:208;a">
+						<lightning-message-context-consumer data-data-rendering-service-uid="205" data-aura-rendered-by="139:208;a" lwc-6tin2a9jbuf-host="" class="setupGear" data-aura-class="setupGear"/>
+						<!--render facet: 141:208;a-->
+						<div data-target-selection-name="373d68853825455b9166869792148e21" data-aura-rendered-by="144:208;a" class="setupGear" data-aura-class="setupGear">
+							<div data-aura-rendered-by="186:208;a" class="uiMenu" data-aura-class="uiMenu">
+								<div id="146:208;a" data-aura-rendered-by="165:208;a" class="uiPopupTrigger forceHeaderMenuTrigger" data-aura-class="uiPopupTrigger forceHeaderMenuTrigger" data-interactive-uid="3">
+									<div data-aura-rendered-by="167:208;a">
+										<div data-aura-rendered-by="160:208;a">
+											<a aria-disabled="false" role="button" aria-describedby="" tabindex="0" aria-expanded="false" aria-haspopup="true" title="" class="menuTriggerLink slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-actions__setup slds-global-actions__item-action" data-aura-rendered-by="161:208;a" href="javascript:void(0);">
+												<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-149:208;a" class="headerTrigger  tooltip-trigger uiTooltip" data-aura-rendered-by="155:208;a" data-aura-class="uiTooltip">
+													<lightning-icon icon-name="utility:setup" class="slds-icon-utility-setup slds-button__icon slds-global-header__icon forceIcon slds-icon_container" data-data-rendering-service-uid="206" data-aura-rendered-by="147:208;a" lwc-4897l11qtae-host="">
+														<span lwc-4897l11qtae="" style="--sds-c-icon-color-background: var(--slds-c-icon-color-background, transparent)" part="boundary">
+															<lightning-primitive-icon lwc-4897l11qtae="" exportparts="icon" size="medium" variant="inverse" lwc-5kqi3m7pso2-host="">
+																<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-5kqi3m7pso2="" data-key="setup" class="slds-icon">
+																	<g lwc-5kqi3m7pso2="">
+																		<path d="M468 324l-37-31a195 195 0 000-68l37-31c12-10 16-28 8-42l-16-29a34 34 0 00-40-14l-45 17a173 173 0 00-58-34l-8-47c-3-16-17-25-33-25h-32c-16 0-30 9-33 25l-8 46c-22 7-41 19-59 34l-44-17-11-2c-12 0-23 6-29 16l-16 28c-8 14-5 32 8 42l37 31a195 195 0 000 68l-37 31a34 34 0 00-8 42l16 30a34 34 0 0040 14l45-17c18 16 38 27 58 34l8 48a33 33 0 0033 27h32c16 0 30-12 33-28l8-48c23-8 43-20 61-37l42 17 12 2c12 0 23-6 29-16l15-26c8-12 4-30-8-40zm-207 47a110 110 0 01-109-110 109 109 0 11218 0 110 110 0 01-109 110zm29-191h-46c-7 0-13 4-15 10l-28 72c-2 5 2 11 8 11h47l-17 60c-2 6 5 9 9 5l71-83c5-5 1-13-6-13h-35l31-49c3-5-1-12-7-12h-12z" lwc-5kqi3m7pso2=""/>
+																	</g>
+																</svg>
+															</lightning-primitive-icon>
+														</span>
+													</lightning-icon>
+													<!--render facet: 152:208;a-->
+													<span role="tooltip" aria-hidden="false" id="tt-for-149:208;a" class="tooltip-invisible" data-aura-rendered-by="157:208;a">Setup</span>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="popupTargetContainer  menu--nubbin-top uiPopupTarget uiMenuList uiMenuList--right uiMenuList--default" data-aura-rendered-by="181:208;a" data-aura-class="uiPopupTarget uiMenuList uiMenuList--right uiMenuList--default" aria-labelledby="146:208;a">
+									<div role="menu" data-aura-rendered-by="175:208;a">
+										<!--render facet: 176:208;a-->
+										<ul role="presentation" class="scrollable" data-aura-rendered-by="177:208;a">
+											<!--render facet: 178:208;a-->
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="slds-global-actions__item slds-global-actions__item_notification slds-dropdown-trigger slds-dropdown-trigger_click" data-aura-rendered-by="210:0;p">
+						<!--render facet: 215:0;p-->
+						<div data-target-selection-name="89957d541b0841849e6a3633bcff5869" data-aura-rendered-by="51:208;a" class="unsNotificationsCounter" data-aura-class="unsNotificationsCounter">
+							<div data-aura-rendered-by="62:208;a" class="forceHeaderButton" data-aura-class="forceHeaderButton">
+								<button aria-expanded="false" aria-haspopup="dialog" type="button" class="slds-button slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-actions__notifications slds-global-actions__item-action" data-aura-rendered-by="74:208;a">
+									<!--render facet: 75:208;a-->
+									<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-64:208;a" class="tooltipTrigger tooltip-trigger uiTooltip" data-aura-rendered-by="69:208;a" data-aura-class="uiTooltip" data-proxy-id="aura-pos-lib-9" id="69:208;a">
+										<div class="headerButtonBody" data-aura-rendered-by="53:208;a">
+											<lightning-icon icon-name="utility:notification" class="slds-icon-utility-notification slds-button__icon slds-global-header__icon slds-icon_container forceIcon" data-data-rendering-service-uid="203" data-aura-rendered-by="57:208;a" lwc-4897l11qtae-host="" data-aura-class="forceIcon">
+												<span lwc-4897l11qtae="" style="--sds-c-icon-color-background: var(--slds-c-icon-color-background, transparent)" part="boundary">
+													<lightning-primitive-icon lwc-4897l11qtae="" exportparts="icon" size="x-small" variant="inverse" lwc-6acnr0aecm4-host="">
+														<svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-6acnr0aecm4="" data-key="notification" class="slds-icon slds-icon_x-small">
+															<g lwc-6acnr0aecm4="">
+																<path d="M460 330h-5a35 35 0 01-35-35V180A160 160 0 00252 20c-86 4-152 78-152 165v111c0 19-16 34-35 34h-5c-22 0-40 19-40 41v15c0 7 7 14 15 14h450c8 0 15-7 15-15v-15a40 40 0 00-40-40zM309 440h-98a10 10 0 00-10 12c5 28 30 48 59 48s54-21 59-48a10 10 0 00-10-12z" lwc-6acnr0aecm4=""/>
+															</g>
+														</svg>
+													</lightning-primitive-icon>
+												</span>
+											</lightning-icon>
+											<span class="countDot slds-hidden" data-aura-rendered-by="58:208;a">
+												<span class="counterLabel" data-aura-rendered-by="59:208;a">0</span>
+											</span>
+										</div>
+										<span role="tooltip" aria-hidden="false" id="tt-for-64:208;a" class="tooltip-invisible" data-aura-rendered-by="71:208;a">Notifications</span>
+									</div>
+									<!--render facet: 78:208;a-->
+								</button>
+							</div>
+						</div>
+						<!--render facet: 79:208;a-->
+						<div aria-live="assertive" aria-atomic="true" class="slds-assistive-text" data-aura-rendered-by="80:208;a"/>
+					</li>
+					<!--render facet: 218:0;p-->
+					<li class="slds-global-actions__item slds-dropdown-trigger slds-dropdown-trigger_click" data-aura-rendered-by="219:0;p">
+						<!--render facet: 224:0;p-->
+						<!--render facet: 225:0;p-->
+						<span data-target-selection-name="6332093bf0f54b1a82a9d31e88ac87bb" class="userProfileCardTriggerRoot oneUserProfileCardTrigger" data-aura-rendered-by="227:0;p" data-aura-class="oneUserProfileCardTrigger">
+							<div data-aura-rendered-by="85:208;a" class="forceHeaderButton" data-aura-class="forceHeaderButton">
+								<button aria-expanded="false" aria-haspopup="true" type="button" class="slds-button branding-userProfile-button slds-button slds-global-actions__avatar slds-global-actions__item-action" data-aura-rendered-by="97:208;a">
+									<!--render facet: 98:208;a-->
+									<div role="" tabindex="-1" aria-expanded="" aria-describedby="tt-for-87:208;a" class="tooltipTrigger tooltip-trigger uiTooltip" data-aura-rendered-by="92:208;a" data-aura-class="uiTooltip">
+										<span class="photoContainer forceSocialPhoto" data-aura-rendered-by="473:0" data-aura-class="forceSocialPhoto">
+											<div style="background-color: #1B96FF" class="profileTrigger branding-user-profile bgimg slds-avatar slds-avatar_profile-image-small circular forceEntityIcon" data-aura-rendered-by="3:571;a" data-aura-class="forceEntityIcon">
+												<span data-aura-rendered-by="6:571;a" class="uiImage" data-aura-class="uiImage">
+													<img data-aura-rendered-by="4:571;a" class="icon noicon" alt="User"/>
+												</div>
+											</span>
+											<span role="tooltip" aria-hidden="false" id="tt-for-87:208;a" class="tooltip-invisible" data-aura-rendered-by="94:208;a">View profile</span>
+										</div>
+										<!--render facet: 101:208;a-->
+									</button>
+								</div>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</span>
+			<!--render facet: 229:0;p-->
+		</div>
+		<div class="bBottom" data-aura-rendered-by="231:0;p">
+			<!--render facet: 232:0;p-->
+		</div>
+		<!--render facet: 233:0;p-->
+	</header>
+	
+	===============
+	
+	
+	
+	<button type="button" class="slds-button slds-button_neutral search-button slds-truncate" aria-label="Search" data-aura-rendered-by="366:0" data-proxy-id="aura-pos-lib-1" id="366:0"><lightning-primitive-icon variant="bare" data-data-rendering-service-uid="212" data-aura-rendered-by="368:0" lwc-45bd2ao4vb7-host=""><svg focusable="false" aria-hidden="true" viewBox="0 0 520 520" part="icon" lwc-45bd2ao4vb7="" data-key="search" class="slds-button__icon slds-button__icon_left"><g lwc-45bd2ao4vb7=""><path d="M496 453L362 320a189 189 0 10-340-92 190 190 0 00298 135l133 133a14 14 0 0021 0l21-21a17 17 0 001-22zM210 338a129 129 0 11130-130 129 129 0 01-130 130z" lwc-45bd2ao4vb7=""></path></g></svg></lightning-primitive-icon>Search...<!--render facet: 371:0--></button>
