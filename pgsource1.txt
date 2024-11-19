@@ -1,5 +1,9 @@
 =======
-<input c-rfcustomdatepicker_rfcustomdatepicker="" class="slds-input OSDatePickerClass" type="Month" max="2024-11" id="my-date-input-1366" required="">
+//label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[@id='my-date-input-1366' and @type='Month']
+//label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[starts-with(@id, 'my-date-input-') and @type='Month']
+//label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[@type='Month' and contains(@class, 'slds-input') and contains(@class, 'OSDatePickerClass') and @max='2024-11']
+//label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[@type='Month'][3]
+//label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[@id='my-date-input-1366' and @type='Month' and @max='2024-11' and contains(@class, 'slds-input') and contains(@class, 'OSDatePickerClass')]
 =======
 
 //label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[@type='Month' and contains(@class, 'slds-input') and contains(@class, 'OSDatePickerClass')]
