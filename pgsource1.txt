@@ -1,3 +1,10 @@
+=======
+<input c-rfcustomdatepicker_rfcustomdatepicker="" class="slds-input OSDatePickerClass" type="Month" max="2024-11" id="my-date-input-1366" required="">
+=======
+
+<omnistudio-flex-card-state class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12" data-recordid="REC0" data-statue="true" data-index="0" data-rindex="0"><div><slot><div class="slds-grid slds-wrap"><div class="slds-col slds-size_12-of-12" data-style-id="state0element0" data-rindex="0"><omnistudio-custom-lwc-wrapper data-rindex="0"><slot><c-rf-custom-date-picker c-rfcustomdatepicker_rfcustomdatepicker-host=""><div c-rfcustomdatepicker_rfcustomdatepicker="" class="slds-form-element datePickerSpaceOS"><label class="slds-form-element__label" c-rfcustomdatepicker_rfcustomdatepicker="" for="date-input-id-required-1366"><abbr class="slds-required" title="required" c-rfcustomdatepicker_rfcustomdatepicker="">*</abbr>Move-In Date/Purchase Date</label><br c-rfcustomdatepicker_rfcustomdatepicker=""><input c-rfcustomdatepicker_rfcustomdatepicker="" class="slds-input OSDatePickerClass" type="Month" max="2024-11" id="my-date-input-1366" required=""></div></c-rf-custom-date-picker></slot></omnistudio-custom-lwc-wrapper></div></div></slot></div></omnistudio-flex-card-state>
+
+=========
 //div[@class='slds-col condition-element']//span[@title='Start']
 //div[contains(@class, 'slds-col') and contains(@class, 'condition-element')]//a[@aria-label='Start']//span[@title='Start']
 //div[contains(@class, 'block-container')]//span[@title='Start']
