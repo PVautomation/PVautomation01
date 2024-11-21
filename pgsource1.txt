@@ -1,5 +1,16 @@
 ==========
 
+----------
+//button[span[@role='tooltip' and text()='Next']]
+//omnistudio-button[contains(@class, 'omniscript-btn-next')]//button[span[@role='tooltip' and text()='Next']]
+------
+//omnistudio-button[contains(@class, 'omniscript-btn-next')]//button[span[@role='tooltip' and text()='Next']]
+//button[@aria-label='Next' and span[@role='tooltip' and text()='Next']]
+------
+//omnistudio-omniscript-checkbox//label[span[@class='slds-checkbox_faux']]//span[@class='slds-checkbox_faux']
+//omnistudio-omniscript-checkbox//label[span[@class='slds-checkbox_faux'] and contains(text(), 'By submitting the information')]//span[@class='slds-checkbox_faux']
+-----
+
 =============
 
 <span class="slds-checkbox_faux" omnistudio-input_input_slds=""></span>
