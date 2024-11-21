@@ -1,3 +1,25 @@
+==========
+
+=============
+
+<span class="slds-checkbox_faux" omnistudio-input_input_slds=""></span>
+-----
+<omnistudio-omniscript-checkbox lwc-5hb60gepvho="" data-omni-key="ApplicantCheckboxConfirmation" class="slds-p-right_small slds-m-bottom_xx-small slds-show_inline-block slds-size_12-of-12 slds-medium-size_11-of-12"><slot><div class="slds-grid slds-m-vertical_medium"><c-input data-omni-input="" omnistudio-input_input_slds-host=""><div omnistudio-input_input_slds="" class="slds-form-element slds-form-container slds-relative-tooltip slds-wrap"><div omnistudio-input_input_slds="" class="slds-grid" data-label="true"></div><div omnistudio-input_input_slds="" class="slds-form-element__control"><div omnistudio-input_input_slds="" class="slds-checkbox"><input omnistudio-input_input_slds="" class="vlocity-input" aria-invalid="false" type="checkbox" id="input57-929" value=""><label omnistudio-input_input_slds="" class="slds-checkbox__label" for="input57-929" data-label="true"><span class="slds-checkbox_faux" omnistudio-input_input_slds=""></span><span class="slds-form-element__label slds-show--inline slds-p-top_none" omnistudio-input_input_slds="">By submitting the information in this application for credit, you assert that the information provided is correct to the best of your knowledge. You further authorize Republic Finance to obtain your consumer reports from any consumer reporting agency for Republic Finance’s use in connection with your credit application.</span></label><slot omnistudio-input_input_slds="" name="label"></slot></div></div><div omnistudio-input_input_slds="" class="slds-form-element__control"></div><div omnistudio-input_input_slds="" class="slds-grid"></div></div></c-input></div></slot></omnistudio-omniscript-checkbox>
+
+=============
+
+<button class="vlocity-btn slds-button slds-button_brand slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center" type="button" role="button" aria-label="Next" aria-disabled="false"><span class="btnLabel" role="tooltip">Next</span></button>
+-----
+<div lwc-5hb60gepvho="" class="slds-col slds-order_1 slds-medium-order_2 slds-size_12-of-12 slds-medium-size_6-of-12"><div lwc-5hb60gepvho="" class="slds-grid slds-wrap slds-grid_align-end omniscript-button-position"><omnistudio-button lwc-5hb60gepvho="" class="omniscript-btn-previous slds-size_12-of-12 slds-m-bottom_x-small slds-medium-size_3-of-12 slds-size_0-of-1"><button class="vlocity-btn slds-button slds-button_neutral slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center" type="button" role="button" aria-label="Previous" aria-disabled="false"><span class="btnLabel" role="tooltip">Previous</span></button></omnistudio-button><omnistudio-button lwc-5hb60gepvho="" class="omniscript-btn-next slds-size_12-of-12 slds-m-bottom_x-small slds-medium-size_3-of-12"><button class="vlocity-btn slds-button slds-button_brand slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center" type="button" role="button" aria-label="Next" aria-disabled="false"><span class="btnLabel" role="tooltip">Next</span></button></omnistudio-button></div></div>
+=================
+
+<button class="vlocity-btn slds-button slds-button_brand slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center" type="button" role="button" aria-label="Next" aria-disabled="false"><span class="btnLabel" role="tooltip">Next</span></button>
+------
+<div lwc-6ah9f4o2d0c="" class="slds-col slds-order_1 slds-medium-order_2 slds-size_12-of-12 slds-medium-size_6-of-12"><div lwc-6ah9f4o2d0c="" class="slds-grid slds-wrap slds-grid_align-end omniscript-button-position"><omnistudio-button lwc-6ah9f4o2d0c="" class="omniscript-btn-next slds-size_12-of-12 slds-m-bottom_x-small slds-medium-size_3-of-12"><button class="vlocity-btn slds-button slds-button_brand slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center" type="button" role="button" aria-label="Next" aria-disabled="false"><span class="btnLabel" role="tooltip">Next</span></button></omnistudio-button></div></div>
+===================
+
+
+
 =======
 //label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[@id='my-date-input-1366' and @type='Month']
 //label[contains(text(), 'Move-In Date/Purchase Date')]/parent::div//input[starts-with(@id, 'my-date-input-') and @type='Month']
