@@ -1,3 +1,33 @@
+=======================
+
+Current Status of CRM Automation
+******************
+
+The Nature of the CRM Application – The status of automation is directly dependent on the nature of the application.
+
+CRM has a very complex DOM Structure - Deeply nested DOM structure.
+Complex UI Interactions - Unlike our other customer-facing applications at Republic Finance, the CRM has very complex UI interactions that changes based on user actions & real-time data.
+Dynamic Content and Load Times - The CRM loads a lot of content dynamically using AJAX.
+Server-Side Processing Delays - The CRM triggers multiple backend processes for every user action - such as fetching data or generating reports.
+Element Identification Issues - Elements are generated dynamically with random IDs or classes - So the usual XPath and typical locators for finding elements won’t work.
+
+How I am Handling These Challenges in My Automation
+
+Synchronization
+Constructing dynamic XPath using XPath axes logic --> (NOTE : standard XPath and locators do not work for the CRM).
+Error handling mechanisms
+Incorporating new libraries and dependencies
+Using collections
+
+Important - Prerequisites for Automation
+
+Need service account (svc acct) that bypasses MFA, with all branch and UW privileges in the QA environment --> Currently, the service account is set up successfully. But the branch and UW privileges have not yet been provided to my svc account.
+Need DocuSign app assignment to my Okta account for me to begin automating the DocuSign process.
+Three elements are non-interactive. I have requested frontend developers to set up unique IDs for these three elements.
+
+
+
+===============================
 2024-11-08T01:35:41.3536583Z ##[section]Starting: Maven PVautomation01/pom.xml
 2024-11-08T01:35:41.3546117Z ==============================================================================
 2024-11-08T01:35:41.3546552Z Task         : Maven
