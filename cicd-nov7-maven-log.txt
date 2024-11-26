@@ -3,3 +3,9 @@
 
 //label[text()='Option 1']/preceding-sibling::input[@type='radio']
 //div[label[text()='Option 1']]/input[@type='radio']
+
+WebUI.scrollToElement(findTestObject('Object Repository/YourElement'), 30)
+WebUI.executeJavaScript('window.scrollTo(0, document.body.scrollHeight)', [])
+WebUI.executeJavaScript('window.scrollTo(0, 0)', [])
+WebUI.executeJavaScript('window.scrollBy(0, 500)', [])
+WebUI.sendKeys(findTestObject('Object Repository/YourElement'), Keys.chord(Keys.PAGE_DOWN))
