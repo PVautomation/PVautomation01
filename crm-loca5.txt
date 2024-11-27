@@ -1,0 +1,55 @@
+
+//button[text()='PresentOffers']
+30 sec
+(//input[@type='checkbox'])[6]
+//button[text()='Next']
+//button[text()='Save']
+(//button[text()='Begin Booking'])[5]
+---
+30 sec
+(//*[@data-key='close'])[48]
+----
+1 sec
+//button[text()='Move to Closing Prep']
+-----
+30
+//*[text()='ACH']
+5
+//*[text()='In Office-Personal Device']
+5
+---- (loop3)
+//*[text()='Add Reference']
+5
+tab a
+tab a
+tab enter - down enter
+tab 5125011234
+tab tab enter
+-----(loop3)
+(//*[text()='Next'])[1]
+20
+(//button[@aria-label='Next: Generate Docs'])[1]
+30
+//*[text()='View Documents']
+30
+(//*[text()='Done'])[1]
+60
+//*[text()='Regenerate Loan Packet']
+40
+(//*[text()='View Documents'])[1]
+30
+(//*[text()='Done'])[1]
+60
+(Documents have been sent out for signature! - switch to docusign n sign docs)
+
+
+========================
+//button[contains(@aria-label, 'Next: Generate Docs')] 
+WebUI.scrollToElement(findTestObject('Object Repository/YourElement'), 30)
+WebUI.executeJavaScript('window.scrollTo(0, document.body.scrollHeight)', [])
+WebUI.executeJavaScript('window.scrollTo(0, 0)', [])
+WebUI.executeJavaScript('window.scrollBy(0, 500)', [])
+WebUI.sendKeys(findTestObject('Object Repository/YourElement'), Keys.chord(Keys.PAGE_DOWN))
+//input[@type='checkbox']/ancestor::
+
+
