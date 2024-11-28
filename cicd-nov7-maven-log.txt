@@ -1,11 +1,125 @@
-//label[text()='Accept Terms']/preceding-sibling::input[@type='checkbox']
-//div[label[text()='Accept Terms']]/input[@type='checkbox']
+throws InterruptedException
+{
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-//label[text()='Option 1']/preceding-sibling::input[@type='radio']
-//div[label[text()='Option 1']]/input[@type='radio']
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
-WebUI.scrollToElement(findTestObject('Object Repository/YourElement'), 30)
-WebUI.executeJavaScript('window.scrollTo(0, document.body.scrollHeight)', [])
-WebUI.executeJavaScript('window.scrollTo(0, 0)', [])
-WebUI.executeJavaScript('window.scrollBy(0, 500)', [])
-WebUI.sendKeys(findTestObject('Object Repository/YourElement'), Keys.chord(Keys.PAGE_DOWN))
+    try {
+        driver.get(url);
+
+        WebElement presentOffersButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='PresentOffers']")));
+        scrollToElement(driver, presentOffersButton);
+        presentOffersButton.click();
+
+        Thread.sleep(30000);
+
+        WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='checkbox'])[6]")));
+        scrollToElement(driver, checkbox);
+        checkbox.click();
+
+        WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Next']")));
+        scrollToElement(driver, nextButton);
+        nextButton.click();
+
+        WebElement saveButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Save']")));
+        scrollToElement(driver, saveButton);
+        saveButton.click();
+
+        WebElement beginBookingButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[text()='Begin Booking'])[5]")));
+        scrollToElement(driver, beginBookingButton);
+        beginBookingButton.click();
+
+        Thread.sleep(30000);
+
+        WebElement closeButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@data-key='close'])[48]")));
+        scrollToElement(driver, closeButton);
+        closeButton.click();
+
+        Thread.sleep(1000);
+
+        WebElement closingPrepButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Move to Closing Prep']")));
+        scrollToElement(driver, closingPrepButton);
+        closingPrepButton.click();
+
+        Thread.sleep(30000);
+
+        WebElement achButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[text()='ACH']")));
+        scrollToElement(driver, achButton);
+        achButton.click();
+
+        Thread.sleep(5000);
+
+        WebElement inOfficeButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[text()='In Office-Personal Device']")));
+        scrollToElement(driver, inOfficeButton);
+        inOfficeButton.click();
+
+        Thread.sleep(5000);
+
+        for (int i = 0; i < 3; i++) {
+            WebElement addReferenceButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[text()='Add Reference']")));
+            scrollToElement(driver, addReferenceButton);
+            addReferenceButton.click();
+
+            Thread.sleep(5000);
+
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.TAB).sendKeys("a").sendKeys(Keys.TAB).sendKeys("a")
+                    .sendKeys(Keys.TAB).sendKeys(Keys.ENTER).sendKeys(Keys.DOWN).sendKeys(Keys.ENTER)
+                    .sendKeys(Keys.TAB).sendKeys("5125011234").sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.ENTER).perform();
+
+            Thread.sleep(1000);
+        }
+
+        WebElement nextButton1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[text()='Next'])[1]")));
+        scrollToElement(driver, nextButton1);
+        nextButton1.click();
+
+        Thread.sleep(20000);
+
+        WebElement generateDocsButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@aria-label='Next: Generate Docs'])[1]")));
+        scrollToElement(driver, generateDocsButton);
+        generateDocsButton.click();
+
+        Thread.sleep(30000);
+
+        WebElement viewDocumentsButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[text()='View Documents']")));
+        scrollToElement(driver, viewDocumentsButton);
+        viewDocumentsButton.click();
+
+        Thread.sleep(30000);
+
+        WebElement doneButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[text()='Done'])[1]")));
+        scrollToElement(driver, doneButton);
+        doneButton.click();
+
+        Thread.sleep(60000);
+
+        WebElement regenerateButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[text()='Regenerate Loan Packet']")));
+        scrollToElement(driver, regenerateButton);
+        regenerateButton.click();
+
+        Thread.sleep(40000);
+
+        WebElement viewDocumentsAgainButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[text()='View Documents'])[1]")));
+        scrollToElement(driver, viewDocumentsAgainButton);
+        viewDocumentsAgainButton.click();
+
+        Thread.sleep(30000);
+
+        doneButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[text()='Done'])[1]")));
+        scrollToElement(driver, doneButton);
+        doneButton.click();
+
+        Thread.sleep(60000);
+
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    } finally {
+        driver.quit();
+    }
+}
+
+private static void scrollToElement(WebDriver driver, WebElement element) {
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("arguments[0].scrollIntoView(true);", element);
+}
