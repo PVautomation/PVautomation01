@@ -1,6 +1,9 @@
 =============
 <omnistudio-flex-action class="state0element0block_element1_child flexActionElement" data-style-id="state0element0block_element1_child" data-action-element-class="state0element0block_element1_child" data-action-key="state0element0block_element1" data-show-spinner="false" data-element-label="viewbuttonaction" data-conditions="{&quot;id&quot;:&quot;state-condition-object&quot;,&quot;isParent&quot;:true,&quot;group&quot;:[]}" omnistudio-flexaction_flexaction_slds-host=""><div omnistudio-flexaction_flexaction_slds="" class="slds-text-align--center action-template action-container-truncate"><a omnistudio-flexaction_flexaction_slds="" class="slds-action_item" href="javascript:void(0)" data-action-focus="" aria-label="View"><span omnistudio-flexaction_flexaction_slds="" class="slds-action_text" style="color:#fff;font-size:16px;"><span omnistudio-flexaction_flexaction_slds="" title="View">View</span></span></a></div></omnistudio-flex-action>
 
+//omnistudio-flex-action[@data-element-label='viewbuttonaction']//a[@aria-label='View']
+
+//omnistudio-flex-action[contains(@class, 'flexActionElement')]//a[contains(@class, 'slds-action_item')]
 ===================
 WebElement textbox = driver.findElement(By.xpath("//label[text()='Username']/@for"));
 WebElement textbox = driver.findElement(By.xpath("//label[text()='Username']/following-sibling::input"));
