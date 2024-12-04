@@ -1,3 +1,17 @@
+======
+
+2024-12-04T15:48:41.1715716Z ##[section]Starting: Copy Files to: D:\a\1\a
+2024-12-04T15:48:41.1723439Z ==============================================================================
+2024-12-04T15:48:41.1724416Z Task         : Copy files
+2024-12-04T15:48:41.1724934Z Description  : Copy files from a source folder to a target folder using patterns matching file paths (not folder paths)
+2024-12-04T15:48:41.1725345Z Version      : 2.246.0
+2024-12-04T15:48:41.1725617Z Author       : Microsoft Corporation
+2024-12-04T15:48:41.1725886Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/copy-files
+2024-12-04T15:48:41.1726216Z ==============================================================================
+2024-12-04T15:48:45.3621568Z found 1 files
+2024-12-04T15:48:45.3625680Z Copying D:\a\1\s\JavaMavenTestNG\target\JavaMavenTestNG-0.0.1-SNAPSHOT.jar to D:\a\1\a\JavaMavenTestNG\target\JavaMavenTestNG-0.0.1-SNAPSHOT.jar
+2024-12-04T15:48:45.3733001Z ##[section]Finishing: Copy Files to: D:\a\1\a
+
 =============
 <omnistudio-flex-action class="state0element0block_element1_child flexActionElement" data-style-id="state0element0block_element1_child" data-action-element-class="state0element0block_element1_child" data-action-key="state0element0block_element1" data-show-spinner="false" data-element-label="viewbuttonaction" data-conditions="{&quot;id&quot;:&quot;state-condition-object&quot;,&quot;isParent&quot;:true,&quot;group&quot;:[]}" omnistudio-flexaction_flexaction_slds-host=""><div omnistudio-flexaction_flexaction_slds="" class="slds-text-align--center action-template action-container-truncate"><a omnistudio-flexaction_flexaction_slds="" class="slds-action_item" href="javascript:void(0)" data-action-focus="" aria-label="View"><span omnistudio-flexaction_flexaction_slds="" class="slds-action_text" style="color:#fff;font-size:16px;"><span omnistudio-flexaction_flexaction_slds="" title="View">View</span></span></a></div></omnistudio-flex-action>
 
