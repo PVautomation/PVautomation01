@@ -1,4 +1,11 @@
 ======
+
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--headless"); // Run in headless mode
+options.addArguments("--disable-gpu"); // Disable GPU acceleration for headless mode
+options.addArguments("--no-sandbox"); // Important for headless mode in CI/CD environments
+WebDriver driver = new ChromeDriver(options);
+
 -Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\test\resources\chromedriver.exe
 
 Source Folder: $(Build.SourcesDirectory)\JavaMavenTestNG\target\surefire-reports
