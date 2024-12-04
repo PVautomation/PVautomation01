@@ -1,4 +1,18 @@
 ======
+Source Folder: $(Build.SourcesDirectory)\JavaMavenTestNG\target\surefire-reports
+Contents: **/index.html (or *.* to include all files in the surefire-reports folder)
+Target Folder: $(Build.ArtifactStagingDirectory)\test-reports
+
+Artifact Name: test-reports (any)
+Publish Location: Container
+Artifact Staging Directory: $(Build.ArtifactStagingDirectory)\test-reports
+
+To: recipient's email address
+Subject: Test Results for Build $(Build.BuildId))
+Body: Check them in the build artifacts for results
+Attachments: $(Build.ArtifactStagingDirectory)\test-reports\index.html 
+
+===========
 
 2024-12-04T15:48:41.1715716Z ##[section]Starting: Copy Files to: D:\a\1\a
 2024-12-04T15:48:41.1723439Z ==============================================================================
