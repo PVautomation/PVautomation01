@@ -1,4 +1,6 @@
 ======
+-Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\test\resources\chromedriver.exe
+
 Source Folder: $(Build.SourcesDirectory)\JavaMavenTestNG\target\surefire-reports
 Contents: **/index.html (or *.* to include all files in the surefire-reports folder)
 Target Folder: $(Build.ArtifactStagingDirectory)\test-reports
