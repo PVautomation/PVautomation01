@@ -103,9 +103,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <!-- Include all tests ending in Test -->
+                    <!-- Include all test classes with 'Test' or 'test' in their name -->
                     <includes>
-                        <include>**/*Test.java</include>
+                        <include>**/*[Tt]est*.java</include>
                     </includes>
                     <argLine>-Xmx1024m</argLine> <!-- Increase JVM memory -->
                     <!-- Suite XML file for TestNG -->
