@@ -1,5 +1,19 @@
 ======
+2024-12-04T23:51:18.0329980Z [INFO] 
+2024-12-04T23:51:18.0330264Z [INFO] -------------------------------------------------------
+2024-12-04T23:51:18.0330562Z [INFO]  T E S T S
+2024-12-04T23:51:18.0330854Z [INFO] -------------------------------------------------------
+2024-12-04T23:51:19.2540501Z [INFO] Running TestSuite
+2024-12-04T23:51:23.3925578Z [main] ERROR io.github.bonigarcia.wdm.online.HttpClient - Error HTTP 404 executing https://chromedriver.storage.googleapis.com/LATEST_RELEASE_131
+2024-12-04T23:51:23.3927105Z [main] WARN io.github.bonigarcia.wdm.versions.VersionDetector - Exception reading https://chromedriver.storage.googleapis.com/LATEST_RELEASE_131 to get latest version of chromedriver (Error HTTP 404 executing https://chromedriver.storage.googleapis.com/LATEST_RELEASE_131)
+2024-12-04T23:51:23.4439520Z [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Reading https://chromedriver.storage.googleapis.com/ to seek chromedriver
+2024-12-04T23:51:25.4026344Z [main] INFO io.github.bonigarcia.wdm.online.Downloader - Downloading https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_win32.zip
+2024-12-04T23:51:25.5917615Z [main] INFO io.github.bonigarcia.wdm.online.Downloader - Extracting driver from compressed file chromedriver_win32.zip
+2024-12-04T23:51:25.7255765Z [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\VssAdministrator\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
+2024-12-04T23:51:52.7918759Z Dec 04, 2024 11:51:52 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+2024-12-04T23:51:52.7921785Z WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 129; Please update to a Selenium version that supports CDP version 131
 
+====
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
