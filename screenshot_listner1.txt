@@ -1,3 +1,44 @@
+====
+Starting: Maven JavaMavenTestNG/pom.xml
+==============================================================================
+Task         : Maven
+Description  : Build, test, and deploy with Apache Maven
+Version      : 3.247.1
+Author       : Microsoft Corporation
+Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/build/maven
+==============================================================================
+C:\Windows\system32\cmd.exe /D /S /C "C:\ProgramData\chocolatey\lib\maven\apache-maven-3.8.7\bin\mvn.cmd -version"
+Apache Maven 3.8.7 (b89d5959fcde851dcb1c8946a785a163f14e1e29)
+Maven home: C:\ProgramData\chocolatey\lib\maven\apache-maven-3.8.7
+Java version: 11.0.25, vendor: Eclipse Adoptium, runtime: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\11.0.25-9\x64
+Default locale: en_US, platform encoding: Cp1252
+OS name: "windows server 2022", version: "10.0", arch: "amd64", family: "windows"
+
+C:\Windows\system32\cmd.exe /D /S /C "C:\ProgramData\chocolatey\lib\maven\apache-maven-3.8.7\bin\mvn.cmd -f D:\a\1\s\JavaMavenTestNG\pom.xml "-Dwebdriver.chrome.driver=D:\a\1\s\src\chromedriver.exe" clean install -DskipTests"
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.0/junit-bom-5.11.0.pom
+Progress (1): 2.8/5.6 kB
+Progress (1): 5.5/5.6 kB
+Progress (1): 5.6 kB    
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.0/junit-bom-5.11.0.pom (5.6 kB at 1.4 kB/s)
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for JavaMavenTestNG:JavaMavenTestNG:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-compiler-plugin @ line 121, column 21
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-surefire-plugin @ line 130, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< JavaMavenTestNG:JavaMavenTestNG >-------------------
+[INFO] Building JavaMavenTestNG 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.pom
+Progress (1): 2.8/3.9 kB
+Progress (1): 3.9 kB   
+
 ===
 //omnistudio-block[contains(@data-style-id, 'state0element0block_element0block_element2')]//div[contains(@class, 'slds-col') and contains(@class, 'slds-text-align_center')]//omnistudio-flex-icon[contains(@data-element-label, 'iconuparrow')]//svg
 ====
