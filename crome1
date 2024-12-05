@@ -12,6 +12,8 @@
 </dependency>
 
 WebDriverManager.chromedriver().setup();
+WebDriverManager.chromedriver().clearResolutionCache().setup();
+
 ---------
 
 ChromeOptions options = new ChromeOptions();
