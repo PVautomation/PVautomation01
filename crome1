@@ -1,5 +1,19 @@
 ======
 
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.x.x</version> <!-- Replace with the latest version -->
+</dependency>
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.x.x</version> <!-- Use the latest version -->
+</dependency>
+
+WebDriverManager.chromedriver().setup();
+---------
+
 ChromeOptions options = new ChromeOptions();
 options.addArguments("--headless"); // Run in headless mode
 options.addArguments("--disable-gpu"); // Disable GPU acceleration for headless mode
