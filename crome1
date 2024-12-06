@@ -1,5 +1,21 @@
 ====
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <version>3.0.0-M4</version>
+  <configuration>
+    <reportsDirectory>test-output</reportsDirectory> 
+  </configuration>
+</plugin>
 
+
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '$(Build.SourcesDirectory)/test-output/testng-*.xml'
+    testRunTitle: 'Selenium Test Results'
+
+9999999999999999999
 [main] ERROR io.github.bonigarcia.wdm.online.HttpClient - Error HTTP 404 executing https://chromedriver.storage.googleapis.com/LATEST_RELEASE_131
 [main] WARN io.github.bonigarcia.wdm.versions.VersionDetector - Exception reading https://chromedriver.storage.googleapis.com/LATEST_RELEASE_131 to get latest version of chromedriver (Error HTTP 404 executing https://chromedriver.storage.googleapis.com/LATEST_RELEASE_131)
 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\VssAdministrator\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
