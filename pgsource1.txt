@@ -1,3 +1,14 @@
+=====
+driver.get("url");
+WebElement username=driver.findElement(By.id("user_email_Login"));
+WebElement password=driver.findElement(By.id("user_password"));
+WebElement login=driver.findElement(By.name("commit"));
+username.sendKeys("abc@gmail.com");
+password.sendKeys("your_password");
+login.click();
+String expected ="url";
+String actual= driver.getCurrentUrl();
+Assert.assertEquals(expected,actual);
 888888888888
 
 <?xml version="1.0" encoding="UTF-8"?>
