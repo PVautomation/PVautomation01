@@ -1,3 +1,30 @@
+Starting: Command Line Script - install/update ChromeDriver
+==============================================================================
+Task         : Command line
+Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+Version      : 2.246.1
+Author       : Microsoft Corporation
+Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+==============================================================================
+Generating script.
+Script contents: shell
+choco install chromedriver --version latest
+========================== Starting Command Output ===========================
+"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\5518ddb9-ed3d-4e84-ae20-9ba1f20379af.cmd""
+Chocolatey v2.4.0
+Installing the following packages:
+chromedriver
+By installing, you accept licenses for the packages.
+
+Chocolatey installed 0/0 packages. 
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+'latest' is not a valid version string.
+Parameter name: value
+##[error]Cmd.exe exited with code '1'.
+Finishing: Command Line Script - install/update ChromeDriver
+
+
+0000000000000000000
 Starting: Command Line Script - heck Chrome version
 ==============================================================================
 Task         : Command line
