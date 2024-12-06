@@ -1,3 +1,102 @@
+------------
+pool:
+  name: Azure Pipelines
+  demands: maven
+
+steps:
+- task: JavaToolInstaller@1
+  displayName: 'Use Java 11'
+  inputs:
+    versionSpec: 11
+    jdkArchitectureOption: x64
+    jdkSourceOption: PreInstalled
+
+- task: Maven@3
+  displayName: 'Maven JavaMavenTestNG/pom.xml'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'clean install -DskipTests'
+    options: '-Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\chromedriver.exe'
+    testResultsFiles: '**/test-output/*.xml'
+    jdkVersionOption: 1.11
+
+- task: Maven@4
+  displayName: 'Run TestNG Tests'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'test -DsuiteXmlFile=testng.xml'
+    testResultsFiles: '**/test-output/*.xml'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/test-output/*.xml'
+  inputs:
+    testResultsFiles: '**/test-output/*.xml'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '*.*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: JavaMavenTestNG
+  condition: succeededOrFailed()
+------------
+steps:
+- task: JavaToolInstaller@1
+  displayName: 'Use Java 11'
+  inputs:
+    versionSpec: 11
+    jdkArchitectureOption: x64
+    jdkSourceOption: PreInstalled
+-----------
+steps:
+- task: Maven@3
+  displayName: 'Maven JavaMavenTestNG/pom.xml'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'clean install -DskipTests'
+    options: '-Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\chromedriver.exe'
+    testResultsFiles: '**/test-output/*.xml'
+    jdkVersionOption: 1.11
+-----------
+steps:
+- task: Maven@4
+  displayName: 'Run TestNG Tests'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'test -DsuiteXmlFile=testng.xml'
+    testResultsFiles: '**/test-output/*.xml'
+---------
+steps:
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/test-output/*.xml'
+  inputs:
+    testResultsFiles: '**/test-output/*.xml'
+---------
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '*.*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  condition: succeededOrFailed()
+-------
+steps:
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: JavaMavenTestNG
+  condition: succeededOrFailed()
+-----
+
+
+
 =====
 ----------------
         <!-- Maven Surefire Plugin -->
