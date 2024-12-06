@@ -1,3 +1,45 @@
+-----
+options.addArguments("--disable-dev-shm-usage");
+---
+File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//String path = System.getProperty("user.dir") + "/screenshot.png"; // Save relative to the project root
+String path = System.getenv("Build.ArtifactStagingDirectory") + "/screenshot.png";
+FileUtils.copyFile(screenshot, new File(path));
+----
+//driver.manage().window().setSize(new Dimension(1920, 1080));
+----
+order 
+-----
+PowerShell Task: Set JAVA_HOME and update PATH.
+Command Line Task: google-chrome --version (check Chrome version).
+Command Line Task: chromedriver --version (check ChromeDriver version).
+Command Line Task: choco install chromedriver --version latest (install/update ChromeDriver).
+Java Tool Installer: Ensure the correct version of Java is installed.
+---------
+task = PowerShell 
+# Set JAVA_HOME
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-11"
+Write-Host "JAVA_HOME set to $env:JAVA_HOME"
+
+# Add JAVA_HOME to PATH
+$env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
+Write-Host "PATH updated to include JAVA_HOME\bin"
+--------
+google-chrome --version
+-----
+chromedriver --version
+-----
+choco install chromedriver --version latest
+----
+Task: JavaToolInstaller
+------
+
+
+
+
+
+
+888888888888888888888888888888888888888888
 ------------
 pool:
   name: Azure Pipelines
