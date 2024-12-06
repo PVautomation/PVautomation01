@@ -1,4 +1,10 @@
 ====
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--headless", "--disable-gpu", "--window-size=1920x1080");
+WebDriver driver = new ChromeDriver(options);
+---
+driver.manage().window().setSize(new Dimension(1920, 1080));
+
 =============
 ----------------
         <!-- Maven Surefire Plugin -->
