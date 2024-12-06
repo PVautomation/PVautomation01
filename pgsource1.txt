@@ -1,3 +1,21 @@
+Starting: Command Line Script - heck Chrome version
+==============================================================================
+Task         : Command line
+Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+Version      : 2.246.1
+Author       : Microsoft Corporation
+Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+==============================================================================
+Generating script.
+Script contents: shell
+google-chrome --version
+========================== Starting Command Output ===========================
+"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\aeb14271-1fe1-433b-a849-5f594a9527ac.cmd""
+'google-chrome' is not recognized as an internal or external command,
+operable program or batch file.
+##[error]Cmd.exe exited with code '1'.
+Finishing: Command Line Script - heck Chrome version
+
 -----
 options.addArguments("--disable-dev-shm-usage");
 ---
