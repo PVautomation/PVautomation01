@@ -1,3 +1,50 @@
+============
+// Locate the shadow host element
+WebElement shadowHost = driver.findElement(By.cssSelector("c-rf-custom-date-picker"));
+
+// Access the shadow-root
+JavascriptExecutor js = (JavascriptExecutor) driver;
+WebElement shadowRoot = (WebElement) js.executeScript("return arguments[0].shadowRoot", shadowHost);
+
+// Find the calendar icon inside the shadow-root
+WebElement calendarIcon = shadowRoot.findElement(By.cssSelector("css_of_calendar_icon")); // Replace with actual CSS
+calendarIcon.click(); // Interact with the calendar icon
+===========
+//input[@id='my-date-input-6243']/following-sibling::div[contains(@class, 'calendar-icon-class')]
+============
+WebElement inputBox = driver.findElement(By.id("my-date-input-6243"));
+inputBox.click(); // This should trigger the calendar popup
+========
+//div[@class='slds-form-element datePickerSpaceFC']//button[contains(@class, 'calendar-icon-class')]
+===========
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript("document.getElementById('my-date-input-6243').value = '2024-12';");
+===========
++++++++++++++++++++++
+
+//div[contains(@class, 'slds-text-align_center') and contains(@data-style-id, 'state0element0block_element0block_element3block_element0')]
+========
+//div[contains(@class, 'slds-text-align_center') and contains(@data-style-id, 'state0element0block_element0block_element3block_element0')]//svg[contains(@class, 'slds-icon')]
+======
+//use[contains(@xlink:href, 'sldsiconsutilityspritesvgsymbolssvg_check')]
+=====
+//div[@class='slds-col slds-text-align_center slds-border_top slds-border_right slds-border_bottom slds-border_left slds-p-around_xxx-small slds-size_4-of-12' and contains(@data-style-id, 'state0element0block_element0block_element3block_element0')]/omnistudio-flex-icon/svg
+=====
+// Locate the SVG element (tick icon)
+WebElement tickIcon = driver.findElement(By.xpath("//svg[contains(@class, 'slds-icon') and contains(@aria-hidden, 'true')]"));
+
+// Verify if the icon is displayed
+if (tickIcon.isDisplayed()) {
+    System.out.println("Tick icon is visible.");
+}
+=======
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement checkbox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'slds-text-align_center') and contains(@data-style-id, 'state0element0block_element0block_element3block_element0')]")));
+++++++++++++++++++
+
+
+
+0000000000000000000000
 <div c-cfrf_addnewemploymentincome_cfrf_addnewemploymentincome="" class="slds-col condition-element slds-size_3-of-12" data-style-id="state0element1block_element0block_element18" data-rindex="0" data-conditions="{&quot;group&quot;:[{&quot;field&quot;:&quot;IncomeSource&quot;,&quot;hasMergeField&quot;:false,&quot;id&quot;:&quot;state-new-condition-0&quot;,&quot;operator&quot;:&quot;!=&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;value&quot;:&quot;Fixed Income&quot;}],&quot;id&quot;:&quot;state-condition-object&quot;,&quot;isParent&quot;:true}" style=""><omnistudio-custom-lwc-wrapper c-cfrf_addnewemploymentincome_cfrf_addnewemploymentincome="" class="condition-element" data-rindex="0"><slot><c-rf-custom-date-picker c-cfrf_addnewemploymentincome_cfrf_addnewemploymentincome="" data-conditions="{&quot;group&quot;:[{&quot;field&quot;:&quot;IncomeSource&quot;,&quot;hasMergeField&quot;:false,&quot;id&quot;:&quot;state-new-condition-0&quot;,&quot;operator&quot;:&quot;!=&quot;,&quot;type&quot;:&quot;custom&quot;,&quot;value&quot;:&quot;Fixed Income&quot;}],&quot;id&quot;:&quot;state-condition-object&quot;,&quot;isParent&quot;:true}" data-preload-conditional-element="false" c-rfcustomdatepicker_rfcustomdatepicker-host=""><div c-rfcustomdatepicker_rfcustomdatepicker="" class="slds-form-element datePickerSpaceFC"><label class="slds-form-element__label" c-rfcustomdatepicker_rfcustomdatepicker="" for="date-input-id-required-6243"><abbr class="slds-required" title="required" c-rfcustomdatepicker_rfcustomdatepicker="">*</abbr>Start Date</label><br c-rfcustomdatepicker_rfcustomdatepicker=""><input c-rfcustomdatepicker_rfcustomdatepicker="" class="slds-input FCDatePickerClass" type="Month" max="2024-12" id="my-date-input-6243" required=""></div></c-rf-custom-date-picker></slot></omnistudio-custom-lwc-wrapper></div>
 =======
 <div c-cfrf_childcardemployerdetailsfrompersonacc_cfrf_childcardemployerdetailsfrompersonacc="" class="slds-col slds-text-align_center slds-border_top slds-border_right slds-border_bottom slds-border_left slds-p-around_xxx-small slds-size_4-of-12" data-style-id="state0element0block_element0block_element3block_element0" data-rindex="0" style="border-width: 1px; border-style: solid; border-color: rgb(15, 61, 89); border-radius: 6px; width: auto;"><omnistudio-flex-icon c-cfrf_childcardemployerdetailsfrompersonacc_cfrf_childcardemployerdetailsfrompersonacc="" data-style-id="state0element0block_element0block_element3block_element0_child" data-element-label="iconuparrow" data-action-key="state0element0block_element0block_element3block_element0"><svg class="slds-icon slds-icon_container slds-icon__svg--default slds-text-link_reset slds-icon-text-default slds-icon_medium" aria-hidden="true" style="fill: rgb(15, 61, 89);"><use xlink:href="#httpsrepublicfinanceqasandboxlightningforcecomsldsiconsutilityspritesvgsymbolssvg_check"></use></svg><span class="slds-assistive-text"></span></omnistudio-flex-icon></div>
