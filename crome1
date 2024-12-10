@@ -1,3 +1,6 @@
+====
+Can't connect to any repository: https://github.com/PVautomation/pv-loan-calculator-test.git (https://github.com/PVautomation/pv-loan-calculator-test.git: git-receive-pack not permitted on 'https://github.com/PVautomation/pv-loan-calculator-test.git/')
+=====
 Can't connect to any URI: https://github.com/PVautomation/PVautomation03.git (https://github.com/PVautomation/PVautomation03.git: git-receive-pack not permitted 
 ============
 // Locate the shadow host element
