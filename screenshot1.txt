@@ -1,0 +1,107 @@
+import org.testng.ITestResult;
+import org.testng.reporters.JUnitXMLReporter;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.apache.commons.io.FileUtils;
+import java.io.File;
+import java.nio.file.Paths;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.util.List;
+
+public class CustomJUnitReporter extends JUnitXMLReporter {
+    
+    private static final String AZURE_ARTIFACT_URL = "https://dev.azure.com/{organization}/{project}/_apis/test/runs/{runId}/attachments";
+
+    @Override
+    public void onTestStart(ITestResult tr) {
+        super.onTestStart(tr);
+        captureScreenshot(tr);  // Capture screenshot on test start
+    }
+
+    @Override
+    public void onTestFailure(ITestResult tr) {
+        super.onTestFailure(tr);
+        attachScreenshot(tr);  // Attach screenshot on failure
+    }
+
+    @Override
+    public void onTestSuccess(ITestResult tr) {
+        super.onTestSuccess(tr);
+        attachScreenshot(tr);  // Attach screenshot on success
+    }
+
+    private void captureScreenshot(ITestResult tr) {
+        // Retrieve WebDriver from the test context
+        WebDriver driver = (WebDriver) tr.getTestContext().getAttribute("driver");
+        if (driver != null) {
+            try {
+                // Get the dynamic screenshot directory
+                String screenshotDirectory = getscreenshotDirectory();
+
+                // Construct the screenshot file path
+                String screenshotPath = Paths.get(screenshotDirectory, tr.getName() + ".png").toString();
+                File screenshotFile = new File(screenshotPath);
+
+                // Capture screenshot and save it if it doesn't exist
+                if (!screenshotFile.exists()) {
+                    File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                    FileUtils.copyFile(screenshot, screenshotFile);
+                }
+
+                // Attach the screenshot file path to the test result
+                tr.setAttribute("screenshot", screenshotFile.getAbsolutePath());
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Failed to capture screenshot for test: " + tr.getName());
+            }
+        } else {
+            System.out.println("WebDriver not found for test: " + tr.getName());
+        }
+    }
+
+    private String getscreenshotDirectory() {
+        String workingDir = System.getProperty("user.dir");
+        String screenshotDirectory = Paths.get(workingDir, "screenshots").toString();
+
+        // Create the screenshots directory if it doesn't exist
+        File screenshotDir = new File(screenshotDirectory);
+        if (!screenshotDir.exists()) {
+            screenshotDir.mkdirs();
+        }
+
+        return screenshotDirectory;
+    }
+
+    private void attachScreenshot(ITestResult tr) {
+        Object screenshot = tr.getAttribute("screenshot");
+        if (screenshot != null) {
+            String screenshotUrl = screenshot.toString();
+            String message = "<a href=\"" + screenshotUrl + "\">Click here to view screenshot</a>";
+
+            String resultMessage = tr.getThrowable() != null ? tr.getThrowable().getMessage() : "";
+            resultMessage += "\n" + message;
+
+            tr.setThrowable(new Exception(resultMessage));
+        }
+    }
+
+    @Override
+    protected void generateReport(List<ITestResult> results, String outputDirectory) {
+        super.generateReport(results, outputDirectory);
+
+        // Create the XML report and add links to screenshots
+        for (ITestResult result : results) {
+            if (result.getStatus() == ITestResult.FAILURE || result.getStatus() == ITestResult.SUCCESS) {
+                Object screenshot = result.getAttribute("screenshot");
+                if (screenshot != null) {
+                    Document document = getDocument();
+                    Element failureElement = (Element) document.getElementsByTagName("failure").item(0);
+                    String screenshotUrl = screenshot.toString(); // URL where screenshot is stored
+                    failureElement.setTextContent(failureElement.getTextContent() + "\n<a href=\"" + screenshotUrl + "\">Click here to view screenshot</a>");
+                }
+            }
+        }
+    }
+}
