@@ -1,3 +1,8 @@
+===
+wget https://downloads.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.zip
+unzip apache-maven-3.9.4-bin.zip -d /tmp/
+export PATH=/tmp/apache-maven-3.9.4/bin:$PATH
+
 ====
 Can't connect to any repository: https://github.com/PVautomation/pv-loan-calculator-test.git (https://github.com/PVautomation/pv-loan-calculator-test.git: git-receive-pack not permitted on 'https://github.com/PVautomation/pv-loan-calculator-test.git/')
 =====
