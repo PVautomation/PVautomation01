@@ -1,3 +1,26 @@
+Starting: Command Line Script - install latest version of maven
+==============================================================================
+Task         : Command line
+Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+Version      : 2.246.1
+Author       : Microsoft Corporation
+Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+==============================================================================
+Generating script.
+========================== Starting Command Output ===========================
+"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\bc78ca18-bbc7-4c76-94a1-c0ae7388c7dc.cmd""
+'wget' is not recognized as an internal or external command,
+operable program or batch file.
+unzip:  cannot find or open apache-maven-3.9.4-bin.zip, apache-maven-3.9.4-bin.zip.zip or apache-maven-3.9.4-bin.zip.ZIP.
+'export' is not recognized as an internal or external command,
+operable program or batch file.
+##[error]Cmd.exe exited with code '1'.
+Finishing: Command Line Script - install latest version of maven
+
++++++++++
+
+
+
 Starting: Command Line Script - install/update ChromeDriver
 ==============================================================================
 Task         : Command line
