@@ -1,3 +1,28 @@
+=============
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite1">
+
+  <!-- Register your custom listener for the JUnit reporting -->
+  <listeners>
+    <listener class-name="loanCalculatorPackage.CustomJUnitReporter" />
+  </listeners>
+
+  <test name="Test1">
+    <classes>
+      <class name="loanCalculatorPackage.LoanCalculatorTestClass1">
+        <methods>
+          <include name="testLc1" />  
+          <include name="OfferTest" />
+        </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+
+</suite> <!-- Suite -->
+
+==============
+ Assert.assertEquals(actual, expected, "Assertion failed: Expected value did not match actual value.");
 ===
 wget https://downloads.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.zip
 unzip apache-maven-3.9.4-bin.zip -d /tmp/
