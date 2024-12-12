@@ -1,73 +1,41 @@
-[INFO] Scanning for projects...
-[WARNING] 
-[WARNING] Some problems were encountered while building the effective model for JavaMavenTestNG:JavaMavenTestNG:jar:0.0.1-SNAPSHOT
-[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.poi:poi-ooxml:jar -> version 5.1.0 vs 5.2.3 @ line 94, column 13
-[WARNING] 
-[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
-[WARNING] 
-[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
-[WARNING] 
-[INFO] 
-[INFO] ------------------< JavaMavenTestNG:JavaMavenTestNG >-------------------
-[INFO] Building JavaMavenTestNG 0.0.1-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ JavaMavenTestNG ---
-[INFO] Deleting C:\Users\pvenkatarajan\GIT2\Destination-Dir\PVautomation-offers\pv-loan-calculator-test\target
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ JavaMavenTestNG ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ JavaMavenTestNG ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ JavaMavenTestNG ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ JavaMavenTestNG ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 3 source files to C:\Users\pvenkatarajan\GIT2\Destination-Dir\PVautomation-offers\pv-loan-calculator-test\target\test-classes
-[INFO] 
-[INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ JavaMavenTestNG ---
-[INFO] 
-[INFO] -------------------------------------------------------
-[INFO]  T E S T S
-[INFO] -------------------------------------------------------
-[INFO] Running TestSuite
-Dec 12, 2024 5:41:31 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 129; Please update to a Selenium version that supports CDP version 131
-ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
-Owner property added to JUnit XML report: pvenkatarajan@republicfinance.com
-[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 5.283 s <<< FAILURE! - in TestSuite
-[ERROR] loanCalculatorPackage.LoanCalculatorTestClass1.OfferTest  Time elapsed: 4.372 s  <<< FAILURE!
-java.lang.Exception: 
-java.lang.ClassCastException: class org.apache.poi.xssf.usermodel.XSSFSheet cannot be cast to class org.apache.poi.sl.usermodel.Sheet (org.apache.poi.xssf.usermodel.XSSFSheet and org.apache.poi.sl.usermodel.Sheet are in unnamed module of loader 'app')
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>5.2.3</version>
+</dependency>
 
+===========
 
-[INFO] 
-[INFO] Results:
-[INFO] 
-[ERROR] Failures: 
-[ERROR]   LoanCalculatorTestClass1.OfferTest »  java.lang.ClassCastException: class org....
-[INFO] 
-[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.052 s
-[INFO] Finished at: 2024-12-12T17:41:34-06:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.0.0-M4:test (default-test) on project JavaMavenTestNG: There are test failures.
-[ERROR] 
-[ERROR] Please refer to C:\Users\pvenkatarajan\GIT2\Destination-Dir\PVautomation-offers\pv-loan-calculator-test\test-output for the individual test results.
-[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
-[ERROR] -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+@DataProvider(name = "excelData")
+public Object[][] getExcelData() throws IOException {
+    List<Object[]> data = new ArrayList<>();
+    FileInputStream fis = null;
+    Workbook workbook = null;
+
+    try {
+        // Load the Excel file
+        fis = new FileInputStream(new File("Data1.xlsx"));
+        workbook = new XSSFWorkbook(fis); // Use XSSFWorkbook for .xlsx files
+
+        // Access the first sheet
+        Sheet sheet = workbook.getSheetAt(0);
+
+        // Iterate over rows and collect data
+        for (int i = 1; i <= sheet.getLastRowNum(); i++) { // Start from row 1 (row 0 is header)
+            Row row = sheet.getRow(i);
+            if (row != null) {
+                String[] rowData = new String[row.getLastCellNum()];
+                for (int j = 0; j < row.getLastCellNum(); j++) {
+                    Cell cell = row.getCell(j);
+                    rowData[j] = cell != null ? cell.toString().trim() : ""; // Handle null cells
+                }
+                data.add(rowData);
+            }
+        }
+    } finally {
+        if (fis != null) fis.close();
+        if (workbook != null) workbook.close();
+    }
+
+    return data.toArray(new Object[0][]); // Convert list to 2D array
+}
