@@ -1,3 +1,157 @@
+//////////////////////////////////////////////
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestCase1 {
+
+    private WebDriver driver;
+    private String baseURL;
+    private boolean offerPresent;
+
+    @BeforeMethod
+    public void setup() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-cookies");
+        driver = new ChromeDriver(options);
+        baseURL = "https://www-test.republicfinance.com/apps/prequal";
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    }
+
+    @AfterMethod
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    @DataProvider(name = "excelData")
+    public Object[][] getExcelData() throws IOException {
+        List<Object[]> data = new ArrayList<>();
+        FileInputStream fis = new FileInputStream(new File("Data1.xlsx"));
+        // Assuming the use of Apache POI for Excel reading
+        // Add code to read the data from the Excel file and populate the list
+        // Example:
+        // data.add(new Object[] {"value1", "value2", ...});
+        fis.close();
+        return data.toArray(new Object[0][]);
+    }
+
+    @Test(dataProvider = "excelData")
+    public void theCase1Test(String data1, String data2, String data3, String data4, String data5, String data6, String data7, String data8, String data9, String data10, String data11, String data12, String data13, String data14, String data15) {
+        driver.get(baseURL);
+        driver.manage().window().maximize();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebElement welcomeZipcode = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div[2]/div/div/form/div/input")));
+        welcomeZipcode.click();
+        welcomeZipcode.sendKeys(data1);
+
+        WebElement welcomeNextButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("next-button")));
+        welcomeNextButton.click();
+
+        WebElement purposeHowMuch = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[1]/div/select")));
+        new Select(purposeHowMuch).selectByVisibleText(data2);
+
+        WebElement purposeFundUse = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[3]/div/select"));
+        new Select(purposeFundUse).selectByVisibleText(data3);
+
+        WebElement purposeHowHear = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[4]/div/select"));
+        new Select(purposeHowHear).selectByVisibleText("Email");
+
+        WebElement needNextButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("next-button")));
+        needNextButton.click();
+
+        WebElement aboutFirstName = driver.findElement(By.id("firstName"));
+        aboutFirstName.clear();
+        aboutFirstName.sendKeys(data4);
+
+        WebElement aboutLastName = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[1]/div[2]/div/input"));
+        aboutLastName.clear();
+        aboutLastName.sendKeys(data5);
+
+        WebElement aboutEmail = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[2]/div/input"));
+        aboutEmail.clear();
+        aboutEmail.sendKeys(data9);
+
+        WebElement aboutPhone = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[3]/div/input"));
+        aboutPhone.clear();
+        aboutPhone.sendKeys(data10);
+
+        WebElement aboutDob = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[4]/div/input"));
+        aboutDob.clear();
+        aboutDob.sendKeys(data8);
+
+        WebElement aboutSsn = driver.findElement(By.id("ssn"));
+        aboutSsn.clear();
+        aboutSsn.sendKeys(data7);
+
+        WebElement aboutStreet = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[6]/div[1]/div/input"));
+        aboutStreet.clear();
+        aboutStreet.sendKeys(data6);
+
+        if (data11.equals("myself")) {
+            WebElement aboutWhoApplies = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div/i[1]"));
+            aboutWhoApplies.click();
+        }
+
+        WebElement aboutNextButton = driver.findElement(By.id("next-button"));
+        aboutNextButton.click();
+
+        WebElement financeOwn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[4]/main/div/div/div/div/div/div/div/div/div[2]/div/div/div[1]/div/div[4]/div/div/label[1]/input")));
+        financeOwn.click();
+
+        WebElement financeMortgageRent = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[6]/div/input"));
+        financeMortgageRent.clear();
+        financeMortgageRent.sendKeys(data13);
+
+        WebElement financeIncome = driver.findElement(By.xpath("//*[@id='incomeAmount']"));
+        financeIncome.clear();
+        financeIncome.sendKeys(data14);
+
+        WebElement financeNextButton = driver.findElement(By.id("next-button"));
+        financeNextButton.click();
+
+        try {
+            WebElement congratulations = driver.findElement(By.xpath("//*[contains(text(), 'You are pre-qualified for a loan up to')]"));
+            offerPresent = congratulations.isDisplayed();
+        } catch (Exception e) {
+            offerPresent = false;
+        }
+
+        if (offerPresent) {
+            System.out.println("Congratulations! YOU GOT AN OFFER");
+        } else {
+            System.out.println("APPLICATION DECLINED");
+        }
+    }
+}
+
+//////////////////////////////////////////////
+
+
+
+
+
+
+
 powershell -Command "& {
     $mavenVersion = '3.9.4';
     $downloadUrl = \"https://downloads.apache.org/maven/maven-3/$mavenVersion/binaries/apache-maven-$mavenVersion-bin.zip\";
