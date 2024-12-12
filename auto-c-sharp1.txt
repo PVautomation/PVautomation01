@@ -1,0 +1,2098 @@
+using System;
+using System.Text;
+using System.Threading;
+//using NUnit.Framework;
+using System.Reflection;
+using System.IO;
+using System.Diagnostics;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System.Dynamic;
+using OfficeOpenXml;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections;
+using System.Linq;
+using OpenQA.Selenium.Interactions;
+
+namespace SeleniumTests2
+{
+    [TestClass]
+    public class TestCase1
+    {
+        private IWebDriver driver;
+        //public static String url;
+        static ArrayList al1 = new ArrayList();
+        static ArrayList al2 = new ArrayList();
+        //private StringBuilder verificationMsg;
+        //private bool acceptNextAlert;
+        public string baseURL;
+        // string[] data = { "35071", "$7,000", "Appliances", "YEN", "UUI", "9177	LQIV UZVV	RD NE", "666-26-6876", "10/07/1950", "preethapv01+al9k001@gmail.com", "(111) 111-1111", "myself", "0", "$500", "$20,000", "$19,100" };
+        private bool offerpresent;
+
+        private WebDriverWait wait;
+        //private StringBuilder verificationErrors;
+        private Boolean got_funding_boolean;
+
+
+        //{ "70047", "$5,000", "Appliances", "ELAINE", "AACRWAFWSP", "AUKIA MSUPB	277", "666-14-0503", "02/25/1963", "preethapv01+la15@gmail.com", "(111) 111-1111", "myself", "0", "$500", "$20,000", "$19,100" };
+
+        [TestInitialize]
+        public void SetupTest()
+        {
+
+            //NOTE : Added one more chrome option for CICD (SeleniumMStest project)
+            ChromeOptions option = new ChromeOptions();
+            option.AddArgument("--disable--cookies");
+            // option.AddArgument("--headless");
+            // driver = new OpenQA.Selenium.Chrome.ChromeDriver(option);
+            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), option);
+
+
+            baseURL = "https://www-test.republicfinance.com/apps/prequal";
+             // baseURL = "https://www.google.com/";
+            // verificationMsg = new StringBuilder();
+            //al = new ArrayList();
+
+        }
+
+        //[TestCleanup]
+        //public void TeardownTest()
+        //{
+        //    try
+        //    {
+        //        driver.Quit();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // Ignore errors if unable to close the browser
+        //    }
+        //    //  NUnit.Framework.Assert.AreEqual("", verificationMsg.ToString());
+        //}
+
+
+
+        public static IEnumerable<object[]> GetExcelData()
+        {
+            using (ExcelPackage ep = new ExcelPackage(new FileInfo("Data1.xlsx")))
+            {
+                ExcelWorksheet worksheet = ep.Workbook.Worksheets["C"];
+                int rowcount = worksheet.Dimension.End.Row;
+                for (int i = 2; i <= rowcount; i++)
+                {
+                    yield return new object[]
+                    {
+                        worksheet.Cells[i,1].Value?.ToString().Trim(),
+                        worksheet.Cells[i,2].Value?.ToString().Trim(),
+                        worksheet.Cells[i,3].Value?.ToString().Trim(),
+                        worksheet.Cells[i,4].Value?.ToString().Trim(),
+                        worksheet.Cells[i,5].Value?.ToString().Trim(),
+                        worksheet.Cells[i,6].Value?.ToString().Trim(),
+                        worksheet.Cells[i,7].Value?.ToString().Trim(),
+                        worksheet.Cells[i,8].Value?.ToString().Trim(),
+                        worksheet.Cells[i,9].Value?.ToString().Trim(),
+                        worksheet.Cells[i,10].Value?.ToString().Trim(),
+                        worksheet.Cells[i,11].Value?.ToString().Trim(),
+                        worksheet.Cells[i,12].Value?.ToString().Trim(),
+                        worksheet.Cells[i,13].Value?.ToString().Trim(),
+                        worksheet.Cells[i,14].Value?.ToString().Trim(),
+                        worksheet.Cells[i,15].Value?.ToString().Trim(),
+
+                    };
+                }
+            }
+        }
+
+
+        // [TestMethod()]
+
+        [TestMethod]
+        [Obsolete]
+        [Priority(1)]
+        [DynamicData(nameof(GetExcelData), DynamicDataSourceType.Method)]
+       public void TheCase1Test(string data1, string data2, string data3, string data4, string data5, string data6, string data7, string data8, string data9, string data10, string data11, string data12, string data13, string data14, string data15)
+        {
+
+            //DataDrivenClass1 ddc = new DataDrivenClass1();
+
+            //Using Implicit Wait
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            //Thread.Sleep(2000);
+
+            driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Window.Maximize();
+            //((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 1)");
+
+            //Actions action = new Actions(driver);
+            //action.sendKeys(Keys.PAGE_DOWN).build().perform();
+            //action.SendKeys(Keys.PageDown).Build().Perform();
+
+
+            //Thread.Sleep(8000);
+            //IWebElement welcome_Zipcode = driver.FindElement(By.XPath("//*[@id='zipCode']"));
+            //WebDriverWait wait01 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+            //wait01.Until(ExpectedConditions.ElementToBeClickable(welcome_Zipcode));
+
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", childFrame_checkBox2);
+            //((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", welcome_Zipcode);
+
+            ////IWebElement onetrust = driver.FindElement(By.XPath("//*[@id='next-button']"));
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", driver.FindElement(By.XPath("//*[@id='zipCode']")));
+            //Thread.Sleep(3000);
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", driver.FindElement(By.XPath("//*[@id='zipCode']")));
+            //driver.FindElement(By.XPath("//*[@id='zipCode']")).SendKeys(data1);
+
+            //Thread.Sleep(8000);
+
+            //// CK SECTION
+            //IWebElement ck_button = driver.FindElement(By.XPath("/html/body/form/div[5]/div/div/div/div[2]/section/div/div/div[2]/div/div[2]/a"));
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", ck_button);
+            //Thread.Sleep(3000);
+            //ck_button.Click();
+            //Thread.Sleep(4000);
+
+
+            //HANDLE COOKIE BANNER
+            //html / body / div[2] / div[2] / div / div[2] / button
+            //*[@id = 'onetrust-close-btn-container'] / button
+            //IWebElement onetrust = driver.FindElement(By.XPath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/button[1]"));
+            //IWebElement onetrust = driver.FindElement(By.XPath("//*[@id='onetrust-close-btn-container']"));
+            //IWebElement onetrust = driver.FindElement(By.XPath("//*[contains(text(), 'Online Privacy Policy')]"));
+            //IWebElement onetrust = driver.FindElement(By.CssSelector("#onetrust-policy-text"));
+            IWebElement onetrust = driver.FindElement(By.CssSelector("button[class='onetrust-close-btn-handler onetrust-close-btn-ui banner-close-button ot-close-icon']"));
+           // IWebElement onetrust = driver.FindElement(By.XPath("//a[normalize-space()='About']"));
+             
+
+           // WebDriverWait wait00 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+           // wait00.Until(ExpectedConditions.ElementToBeClickable(onetrust));
+
+           //// ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", onetrust);
+           // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", onetrust);
+            onetrust.Click();
+
+
+
+            //driver.Navigate().Back();
+
+            //if (IsElementPresent(By.XPath("/html/body/div[2]/div[2]/div/div[2]/button")))
+            //{
+            //    driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/div[2]/button")).Click();
+
+            //    //  Thread.Sleep(4000);
+            //}
+
+
+
+            // driver.Manage().Cookies.DeleteAllCookies();
+            // Thread.Sleep(4000);
+
+            // Debug.WriteLine("Deleted cache cookies : Debug");
+            // Trace.WriteLine("Deleted cache cookies : Trace");
+            // Console.WriteLine("Deleted cache cookies : Console");
+
+
+
+            ////HANDLE COOKIE BANNER
+
+            //if (IsElementPresent(By.XPath("//*[@id='onetrust-close-btn-container']/button")))
+            //{
+            //    driver.FindElement(By.XPath("//*[@id='onetrust-close-btn-container']/button")).Click();
+
+            //    //  Thread.Sleep(4000);
+            //}
+
+            //Debug.WriteLine("Deleted cache cookies");
+            //Trace.WriteLine("Deleted cache cookies");
+            //Console.WriteLine("Deleted cache cookies");
+
+
+
+            //IWebElement prequal_button = driver.FindElement(By.XPath("(//a[contains(text(),'Get Pre-Qualified')])[2]"));
+            //prequal_button.Click();
+
+
+
+            ////starting frm main page
+            //IWebElement getstarted = driver.FindElement(By.XPath("//*[@id='js-navigation']/a"));
+            //WebDriverWait wait101 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+            //wait101.Until(ExpectedConditions.ElementToBeClickable(getstarted));
+
+
+            try
+            {
+
+                IWebElement welcome_Zipcode = driver.FindElement(By.XPath("/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div[2]/div/div/form/div/input"));
+                WebDriverWait wait01 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+                wait01.Until(ExpectedConditions.ElementToBeClickable(welcome_Zipcode));
+
+                //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", childFrame_checkBox2);
+                //((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
+                //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", welcome_Zipcode);
+
+                //IWebElement onetrust = driver.FindElement(By.XPath("//*[@id='next-button']"));
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", welcome_Zipcode);
+                Thread.Sleep(3000);
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", welcome_Zipcode);
+                welcome_Zipcode.SendKeys(data1);
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Unable to click zip box");
+                Console.WriteLine("console - Unable to click zip box");
+            }
+
+
+
+
+
+            //Thread.Sleep(5000);
+
+            Debug.WriteLine("Complted zipcode : Debug ");
+            Trace.WriteLine("Complted zipcode : Trace ");
+            Console.WriteLine("Complted zipcode : Console ");
+            Thread.Sleep(8000);
+
+            ////HANDLE COOKIE BANNER
+
+            //IWebElement onetrust1 = driver.FindElement(By.XPath("//*[@id='next-button']"));
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", onetrust1);
+            //Thread.Sleep(2000);
+            //onetrust1.Click();
+
+            //if (IsElementPresent(By.XPath("//*[@id='onetrust-close-btn-container']/button")))
+            //{
+            //    driver.FindElement(By.XPath("//*[@id='onetrust-close-btn-container']/button")).Click();
+
+            //     Thread.Sleep(4000);
+            //}
+
+
+
+            IWebElement welcome_NextButton = driver.FindElement(By.XPath("//*[@id='next-button']"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", welcome_NextButton);
+            //Thread.Sleep(3000);
+            welcome_NextButton.Click();
+
+            Thread.Sleep(4000);
+            IWebElement purpose_HowMuch = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[1]/div/select"));
+
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(purpose_HowMuch));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+
+            purpose_HowMuch.Click();
+            new SelectElement(purpose_HowMuch).SelectByText(data2);
+
+            IWebElement purpose_FundUse = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[3]/div/select"));
+            purpose_FundUse.Click();
+            new SelectElement(purpose_FundUse).SelectByText(data3);
+
+            IWebElement purpose_HowHear = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[4]/div/select"));
+            purpose_HowHear.Click();
+            new SelectElement(purpose_HowHear).SelectByText("Email");
+
+
+            ////HANDLE COOKIE BANNER
+
+            //if (IsElementPresent(By.XPath("//*[@id='onetrust-close-btn-container']/button")))
+            //{
+            //    driver.FindElement(By.XPath("//*[@id='onetrust-close-btn-container']/button")).Click();
+
+            //    //  Thread.Sleep(4000);
+            //}
+
+
+            try
+            {
+                //Thread.Sleep(3000);
+                IWebElement need_NextButton = driver.FindElement(By.Id("next-button"));
+                WebDriverWait wait02 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+                wait02.Until(ExpectedConditions.ElementToBeClickable(need_NextButton));
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", need_NextButton);
+                //Thread.Sleep(3000);
+                need_NextButton.Click();
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("debug - Unable to click nned_nextButton");
+                Console.WriteLine("console - Unable to click nned_nextButton");
+            }
+
+
+            //driver.FindElement(By.Id("next-button")).Click();
+            //Thread.Sleep(5000);
+
+
+            IWebElement about_FirstName = driver.FindElement(By.Id("firstName"));
+            about_FirstName.Click();
+            about_FirstName.Clear();
+            about_FirstName.SendKeys(data4);
+
+            IWebElement about_LastName = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[1]/div[2]/div/input"));
+            about_LastName.Click();
+            about_LastName.Clear();
+            about_LastName.SendKeys(data5);
+            Thread.Sleep(5000);
+
+            IWebElement about_Email = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[2]/div/input"));
+            about_Email.Click();
+            about_Email.Clear();
+            about_Email.SendKeys(data9);
+
+            IWebElement about_Phone = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[3]/div/input"));
+            about_Phone.Click();
+            about_Phone.Clear();
+            about_Phone.SendKeys(data10);
+
+            IWebElement about_Dob = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[4]/div/input"));
+            about_Dob.Click();
+            about_Dob.Clear();
+            about_Dob.SendKeys(data8);
+
+            IWebElement about_Ssn = driver.FindElement(By.Id("ssn"));
+            about_Ssn.Click();
+            about_Ssn.Clear();
+            about_Ssn.SendKeys(data7);
+
+            IWebElement about_Street = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[6]/div[1]/div/input"));
+            about_Street.Click();
+            about_Street.Clear();
+            about_Street.SendKeys(data6);
+
+
+            if (data11.Equals("myself"))
+            {
+                IWebElement about_WhoApplies = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div/i[1]"));
+                about_WhoApplies.Click();
+            }
+            else
+            {
+                // LATER CO-BORROWER CODE
+            }
+
+            IWebElement about_NextButton = driver.FindElement(By.XPath("//*[@id='next-button']"));
+            about_NextButton.Click();
+
+            Thread.Sleep(2000);
+            System.Diagnostics.Debug.WriteLine("INTO CHILD FRAME");
+
+            try
+            {
+
+                IWebElement childFrame_checkBox1 = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div/div/div[2]/div/div/div[1]/label/span"));
+                WebDriverWait wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+                wait2.Until(ExpectedConditions.ElementToBeClickable(childFrame_checkBox1));
+
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", childFrame_checkBox1);
+                //childFrame_checkBox1.Click();
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Unable to click checkbox1 of child frame");
+                Console.WriteLine("Unable to click checkbox1 of child frame");
+                Console.WriteLine("Unable to click chkbox1");
+            }
+
+            try
+            {
+                IWebElement childFrame_checkBox2 = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div/div/div[3]/div/div/div[1]/label/span"));
+                WebDriverWait wait3 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+                wait3.Until(ExpectedConditions.ElementToBeClickable(childFrame_checkBox2));
+
+                // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", childFrame_checkBox2);
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", childFrame_checkBox2);
+                // childFrame_checkBox2.Click();
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Unable to click checkbox2 of child frame");
+                Console.WriteLine("Unable to clickchkbox2");
+            }
+
+
+
+            Screenshot ss11 = ((ITakesScreenshot)driver).GetScreenshot();
+            ss11.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//ChkChildFrame1.png",
+            ScreenshotImageFormat.Png);
+
+
+            try
+            {
+                IWebElement childFrame_NextButton = driver.FindElement(By.XPath("//*[@id='next-button']"));
+                WebDriverWait wait4 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+                wait4.Until(ExpectedConditions.ElementToBeClickable(childFrame_NextButton));
+                childFrame_NextButton.Click();
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Unable to click next-button of child frame");
+                Console.WriteLine("Unable to click next-button of child frame");
+
+            }
+
+            System.Diagnostics.Debug.WriteLine("CHILD FRAME COMPLETE");
+            Console.WriteLine("CHILD FRAME COMPLETE");
+
+
+            Thread.Sleep(6000);
+            System.Diagnostics.Debug.WriteLine("debug-CAME INTO MAIN FRAME");
+            Console.WriteLine("console-CAME INTO MAIN FRAME");
+
+            //if (data12.Equals("0"))
+            //{
+
+            IWebElement finance_Own = driver.FindElement(By.XPath("/html/body/form/div[4]/main/div/div/div/div/div/div/div/div/div[2]/div/div/div[1]/div/div[4]/div/div/label[1]/input"));
+            WebDriverWait wait03 = new WebDriverWait(driver, TimeSpan.FromSeconds(120));
+            wait03.Until(ExpectedConditions.ElementToBeClickable(finance_Own));
+
+            // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", childFrame_checkBox2);
+            // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", finance_Own);
+            // childFrame_checkBox2.Click();
+
+            //IWebElement finance_Own = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[4]/div/div/label[1]/input"));
+            finance_Own.Click();
+            System.Diagnostics.Debug.WriteLine("debug -SELECTED OWN");
+            Console.WriteLine("console -SELECTED OWN");
+            //}
+            //else
+            //{
+            //    IWebElement finance_Own = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[4]/div/div/label[2]/input"));
+            //    finance_Own.Click();
+            //    System.Diagnostics.Debug.WriteLine("SELECTED RENT");
+            //}
+
+
+            Thread.Sleep(3000);
+            IWebElement finance_MortgageRent = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[6]/div/input"));
+            finance_MortgageRent.Clear();
+            finance_MortgageRent.SendKeys(data13);
+
+            IWebElement finance_Dependants = driver.FindElement(By.XPath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[8]/div/select"));
+            finance_Dependants.Click();
+            new SelectElement(finance_Dependants).SelectByText("0");
+
+            IWebElement finance_Income = driver.FindElement(By.XPath("//*[@id='incomeAmount']"));
+            finance_Income.Click();
+            finance_Income.Clear();
+            finance_Income.SendKeys(data14);
+
+            IWebElement finance_VerifiableIncome = driver.FindElement(By.XPath("//*[@id='all']"));
+            finance_VerifiableIncome.Click();
+            //finance_VerifiableIncome.Clear();
+            //finance_VerifiableIncome.SendKeys(data15);
+
+            IWebElement finance_NextButton = driver.FindElement(By.Id("next-button"));
+            finance_NextButton.Click();
+            Thread.Sleep(5000);
+
+
+            System.Diagnostics.Debug.WriteLine("Final screen");
+            IWebElement consent_ChkBox = driver.FindElement(By.XPath("//*[@id='loading']/div/div/div/div/div/div[1]/div[3]/div/div/div[1]/label/span"));
+            consent_ChkBox.Click();
+
+            //driver.FindElement(By.Id("back-button")).Click();
+            IWebElement consent_ChkOfferButton = driver.FindElement(By.XPath("//*[@id='loading']/div/div/div/div/div/div[2]/div/div[3]/button"));
+            consent_ChkOfferButton.Click();
+            System.Diagnostics.Debug.WriteLine("CALCULATING OFFER");
+            Thread.Sleep(10000);
+
+            System.Diagnostics.Debug.WriteLine("CHECKING TITLE");
+            String title = driver.Title.ToLower();
+            System.Diagnostics.Debug.WriteLine(title);
+            //String u = driver.Url;
+
+            //Thread.Sleep(2000);
+
+
+            try
+            {
+                IWebElement congratulations = driver.FindElement(By.XPath("//*[contains(text(), 'You are pre-qualified for a loan up to')]"));
+                offerpresent = congratulations.Displayed;
+            }
+            catch
+            {
+                Console.WriteLine("Catch Element : Offer");
+            }
+
+            if (offerpresent == true)
+            {
+                Console.WriteLine("\n Congratulations! YOU GOT OFFER \n  CLICK ON THE BELOW LINK TO APPLY!!! \n" + driver.Url);
+                System.Diagnostics.Debug.WriteLine("\n Congratulations! YOU GOT OFFER");
+                System.Diagnostics.Debug.WriteLine("CLICK ON THE BELOW LINK TO APPLY!!! \n" + driver.Url);
+                System.Diagnostics.Debug.WriteLine("\n");
+                al1.Add(driver.Url);
+                al2.Add(data9);
+            }
+            if (offerpresent == false)
+            {
+                if (title.Contains("declined"))
+                {
+                    Console.WriteLine("APPLICATION DECLINED");
+                    System.Diagnostics.Debug.WriteLine("APPLICATION DECLINED");
+                }
+                else if (title.Contains("no match"))
+                {
+                    Console.WriteLine("APPLICATION DECLINED - NO MATCH");
+                    System.Diagnostics.Debug.WriteLine("APPLICATION DECLINED - NO MATCH");
+                }
+                else if (title.Contains("downtime-error"))
+                {
+                    Console.WriteLine("APPLICATION DECLINED - Downtime-Error");
+                    System.Diagnostics.Debug.WriteLine("APPLICATION DECLINED - Downtime-Error");
+                }
+                else if (title.Contains("404"))
+                {
+                    Console.WriteLine("GOT 404");
+                    System.Diagnostics.Debug.WriteLine("GOT 404");
+                }
+            }
+
+            System.Diagnostics.Debug.WriteLine("SELENIUM TEST COMPLETED SUCCESSFULLY!!! \n");
+
+            Debug.WriteLine("Complted full test : Debug ");
+            Trace.WriteLine("Complted full test : Trace ");
+            Console.WriteLine("Complted full test : Console ");
+
+
+            Screenshot ss12 = ((ITakesScreenshot)driver).GetScreenshot();
+            ss12.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//FinalScr12.png",
+            ScreenshotImageFormat.Png);
+
+            Thread.Sleep(8000);
+            driver.Close();
+
+            //IWebElement GetAbout_Ssn(IWebElement about_Ssn)
+            //{
+            //    return about_Ssn;
+            //}
+        }
+
+
+        public static IEnumerable<object[]> GetOfferURL()
+        {
+            //temp
+            //int rowcount = 1;
+
+            for (int i = 0; i < al1.Count; i++)
+            {
+                yield return new object[] { al1[i], al2[i] };
+                //yield return new object[] { "https://secure-test.republicfinance.com/apply/login", "PREethapv01+02937@gmail.com" };
+
+            }
+            //Console.WriteLine("Rowcount inside getofferurl method \n" + rowcount);
+            //System.Diagnostics.Debug.WriteLine("Rowcount inside getofferurl method" + rowcount);
+        }
+
+
+        //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //  START : TestCase With DDT
+        //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        //        [DataTestMethod]
+        //        [DynamicData(nameof(GetOfferURL), DynamicDataSourceType.Method)]
+        //        //[DataRow("TestCase1.url")]
+        //        [TestMethod]
+        //        [Priority(2)]
+        //        public void TheCase2Test(String a, String b)
+        //        {
+
+        //            Console.WriteLine("Inside test2 \n" +a);
+        //            Console.WriteLine("Inside test2 \n" +b);
+
+        //            ////// 0000000000000000  2ND TEST START 000000000000000000000
+
+
+        //            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+        //            //Thread.Sleep(2000);
+
+
+
+        //            //if starting from offer page
+        //            driver.Navigate().GoToUrl(a);
+        //            //apply online button
+        //            driver.FindElement(By.XPath("//*[text()='Apply Now Online']")).Click();
+
+        //            //if starting from login page
+        //            //driver.Navigate().GoToUrl("https://secure-test.republicfinance.com/apply/login");
+
+        //            driver.Manage().Window.Maximize();
+        //            driver.Manage().Cookies.DeleteAllCookies();
+        //            //Thread.Sleep(4000);
+
+        //            driver.FindElement(By.Id("okta-signin-username")).Click();
+        //            driver.FindElement(By.Id("okta-signin-username")).Clear();
+        //            driver.FindElement(By.Id("okta-signin-username")).SendKeys(b);
+
+
+        //            //login pwd (if coming frm offer page, pwd fields have this xpath)
+        //            //driver.FindElement(By.XPath("//*[@id='password']")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='password']")).Clear();
+        //            //driver.FindElement(By.XPath("//*[@id='password']")).SendKeys("P@ssword123");
+
+        //            //login pwd (if coming frm login page, pwd fields have this xpath)
+        //            driver.FindElement(By.Id("okta-signin-password")).Click();
+        //            driver.FindElement(By.Id("okta-signin-password")).Clear();
+        //            driver.FindElement(By.Id("okta-signin-password")).SendKeys("P@ssword123");
+
+
+        //            //login submit (if coming from offer pg)
+        //            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/div[1]/button")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/div[1]/button")).Click();
+
+        //            //login submit (if coming frm login pg)
+        //            driver.FindElement(By.Id("okta-signin-submit")).Click();
+        //            //logi pg completed
+
+
+        //            Thread.Sleep(10000);
+
+        //            //            //  6666666666666666  WAIT1  6666666666666666666666666
+        //            //            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //            //#pragma warning disable CS0618 // Type or member is obsolete
+        //            //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.Id("ECOA Consent Option 1 Complete"))));
+        //            //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //            //Thread.Sleep(10000);
+        //            //            //666666666666666666666666666666666666666666666666666666666
+
+
+        //            //            //////////////////////////  REMOVE COMMENT START ///////////////////////////////
+
+        //            //pg2 ecoa 
+        //            //driver.FindElement(By.XPath("//*[@id='ECOA Consent Option 1 Complete' and @type= 'checkbox']")).Click();
+        //            //driver.FindElement(By.Id("ECOA Consent Option 1 Complete")).Click();
+        //            // driver.SwitchTo().Frame(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form")));
+        //            driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[3]/div[2]/input")).Click();
+        //            Thread.Sleep(3000);
+        //            //driver.FindElement(By.Id("consumer-reports")).Click();
+        //            //driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[4]/div[2]/input")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='consumer-reports' and @type='checkbox']")).Click();
+        //            //try xpath axes
+        //            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[4]/div[2]/label//following::input")).Click();
+        //            //try label click 
+
+
+        //            //            //  6666666666666666  WAIT1  6666666666666666666666666
+        //            //            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //            //#pragma warning disable CS0618 // Type or member is obsolete
+        //            //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[contains(text(),'W-2 form and Income Tax')]"))));
+        //            //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //            //Thread.Sleep(10000);
+        //            //            //666666666666666666666666666666666666666666666666666666666
+
+        //            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form")).Click();
+        //            driver.FindElement(By.XPath("//*[contains(text(),'W-2 form and Income Tax')]")).Click();
+        //            Thread.Sleep(3000);
+        //            driver.FindElement(By.XPath("//button[@type='button']")).Click();
+        //            ////*[text()='Next']
+        //            //ecoa completeed
+
+
+        //            //  6666666666666666  WAIT2  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//div[@id='root']/div[2]/div/form/div[2]/div[2]/div[2]/div[2]/p"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+        //            //app overview - bank acct verification 'begin button'
+        //            driver.FindElement(By.XPath("//div[@id='root']/div[2]/div/form/div[2]/div[2]/div[2]/div[2]/p")).Click();
+
+        //            //  6666666666666666  WAIT3  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("(//button[@type='button'])[2]"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+        //            driver.FindElement(By.XPath("(//button[@type='button'])[2]")).Click();
+        //            // ERROR: Caught exception [ERROR: Unsupported command [selectFrame | index=0 | ]]
+
+
+        //            ////            //8888888888888888ISSUE8888888888888888888
+        //            ////            //driver.FindElement(By.XPath("//*[@id='disclaimer-continue']")); 
+        //            ////            //driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[1]/div[2]/div[2]")).Click();
+        //            ////            //driver.FindElement(By.CssSelector("#disclaimer-continue")).Click();
+        //            ////            IWebElement bank_verify = driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[1]/div[2]/div[2]"));
+        //            ////            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+        //            ////#pragma warning disable CS0618 // Type or member is obsolete
+        //            ////            wait.Until(ExpectedConditions.ElementToBeClickable(bank_verify));
+        //            ////#pragma warning restore CS0618 // Type or member is obsolete
+        //            ////            //Thread.Sleep(10000);
+        //            ////            bank_verify.Click();
+        //            ////            //8888888888888888ISSUE8888888888888888888
+
+
+
+
+        //            ////8888888888888888ISSUE8888888888888888888
+        //            ////driver.FindElement(By.XPath("//*[@id='disclaimer-continue']")); 
+        //            ////driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[1]/div[2]/div[2]")).Click();
+        //            ////driver.FindElement(By.CssSelector("#disclaimer-continue")).Click();
+
+
+        //            Thread.Sleep(10000);
+
+        //            // verify your bank acct scrn (1st scrn in cfs)
+        //            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+        //            ss.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image2.png",
+        //            ScreenshotImageFormat.Png);
+
+
+
+        //            //99999999999999999999999
+
+        //            try
+        //            {
+        //                //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(200));
+        //                //// wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Name("cashflow_iframe")));
+        //                //wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div/div/div/div/iframe")));
+        //                // driver.SwitchTo().Frame("cashflow_iframe");
+        //                driver.SwitchTo().Frame(driver.FindElement(By.XPath("//iframe")));
+        //                //driver.SwitchTo().Frame(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div/div/div/div/iframe")));
+        //            }
+        //            catch (Exception)
+        //            {
+        //                Console.WriteLine("In CATCH :Unable to switch to cashflow_iframe");
+        //                Debug.WriteLine("In CATCH :Unable to switch to cashflow_iframe");
+
+
+        //                Screenshot ss4 = ((ITakesScreenshot)driver).GetScreenshot();
+        //                ss4.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image3.png",
+        //                ScreenshotImageFormat.Png);
+
+
+        //            }
+
+        //            //9999999999999999999999999
+
+
+
+        //           // driver.SwitchTo().Frame("cashflow_iframe");
+
+        //            //Screenshot ss1 = ((ITakesScreenshot)driver).GetScreenshot();
+        //            //ss1.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image3.png",
+        //            //ScreenshotImageFormat.Png);
+
+
+        //            //driver.SwitchTo().Frame(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form")));
+        //            /////  HANDLE FRAME IF PRESENT
+        //            //try
+        //            //{
+        //            //    if (driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Displayed)
+        //            //    {
+        //            //        driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Click();
+        //            //    }
+        //            //    else
+        //            //    //else didn't work
+        //            //    {
+        //            //        Console.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+        //            //        Debug.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+        //            //        System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+        //            //    }
+        //            //}
+        //            //catch (Exception)
+        //            //{
+        //            //    Console.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+        //            //    Debug.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+        //            //    System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+        //            //}
+        //            /////  HANDLE FRAME IF PRESENT END
+
+
+
+
+
+        //            //  6666666666666666  WAIT4  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='disclaimer-continue']"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+        //            //Thread.Sleep(5000);
+        //            IWebElement bank_verify = driver.FindElement(By.XPath("//*[@id='disclaimer-continue']"));
+        //            //Thread.Sleep(5000);
+        //            bank_verify.Click();
+        //            //Thread.Sleep(5000);
+        //            ////8888888888888888ISSUE8888888888888888888
+
+
+
+        //            driver.SwitchTo().DefaultContent();
+        //            driver.SwitchTo().Frame(driver.FindElement(By.XPath("//iframe")));
+        //            //driver.SwitchTo().Frame("cashflow_iframe");
+        //            //driver.SwitchTo().Frame(driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[3]")));
+        //            //Thread.Sleep(5000);
+        //            //  6666666666666666  WAIT5  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='bank-1']"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+        //            driver.FindElement(By.XPath("//*[@id='bank-1']")).Click();
+        //            //Thread.Sleep(5000);
+
+
+
+
+        //            //  6666666666666666  WAIT6  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.Id("authenticationButton"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+        //            driver.FindElement(By.Id("username")).Click();
+        //            Thread.Sleep(5000);
+        //            driver.FindElement(By.Id("username")).Clear();
+        //            driver.FindElement(By.Id("username")).SendKeys("pre");
+        //            driver.FindElement(By.Id("password")).Clear();
+        //            driver.FindElement(By.Id("password")).SendKeys("tha1");
+        //            driver.FindElement(By.Id("authenticationButton")).Click();
+        //            Thread.Sleep(6000);
+        //            driver.FindElement(By.Id("account-1")).Click();
+        //            // ERROR: Caught exception [ERROR: Unsupported command [selectFrame | relative=parent | ]]
+
+
+        //            ////////////////////////  REMOVE COMMENT END ///////////////////////////////
+
+
+
+        //            //after CFS
+        //            Thread.Sleep(5000);
+        //            Screenshot a12 = ((ITakesScreenshot)driver).GetScreenshot();
+        //            a12.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//aftercfs1.png",
+        //            ScreenshotImageFormat.Png);
+
+
+        //          //  //  START @@@@@@@@@@@@@  AFTER CFS FELL TO ONE LAST STEP @@@@@@@@@@@@@@@@@@@@@@@@
+
+
+        //          //  // $$$$$$$$$$$$$$  If app fell into MR START0 $$$$$$$$$$$$$$$$$$$$
+        //          //  Thread.Sleep(8000);
+
+        //          //  if ((driver.FindElement(By.XPath("//*[text()='Income Verification']")).Displayed) || (driver.FindElement(By.XPath("//*[contains(text(),'Rental')]")).Displayed))
+
+        //          //  {
+        //          //      Console.WriteLine("Application fell into Manual Review0: console");
+        //          //      Debug.WriteLine("Application fell into Manual Review0: debug");
+        //          //      Thread.Sleep(3000);
+        //          //      driver.Quit();
+        //          //  }
+
+        //          //  // $$$$$$$$$$$$$$  If app fell into MR END0 $$$$$$$$$$$$$$$$$$$$
+
+
+
+
+
+
+        //          //  // in case ---"overview page: submit application"-- - sometimes we don't come here ---we go directly to 'onelast step ck - box'
+
+        //          //  try
+        //          //  {
+        //          //      if (driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Displayed)
+        //          //      {
+        //          //          driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Click();
+        //          //      }
+        //          //      else
+        //          //      //else didn't work
+        //          //      {
+        //          //          Console.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+        //          //          Debug.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+        //          //          System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+        //          //      }
+        //          //  }
+        //          //  catch (Exception)
+        //          //  {
+        //          //      Console.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+        //          //      Debug.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+        //          //      System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+        //          //  }
+
+
+
+        //          //  // $$$$$$$$$$$$$$  If app fell into MR START1 $$$$$$$$$$$$$$$$$$$$
+        //          //  Thread.Sleep(8000);
+
+        //          //  if ((driver.FindElement(By.XPath("//*[text()='Income Verification']")).Displayed) || (driver.FindElement(By.XPath("//*[contains(text(),'Rental')]")).Displayed))
+
+        //          //{
+        //          //      Console.WriteLine("Application fell into Manual Review1: console");
+        //          //      Debug.WriteLine("Application fell into Manual Review1: debug");
+        //          //      Thread.Sleep(3000);
+        //          //      driver.Quit();
+        //          //  }
+
+        //          //  // $$$$$$$$$$$$$$  If app fell into MR END1 $$$$$$$$$$$$$$$$$$$$
+
+
+
+
+        //          //  //            //  6666666666666666  WAIT6  6666666666666666666666666
+        //          //  //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //          //  //#pragma warning disable CS0618 // Type or member is obsolete
+        //          //  //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='submit-agreement' and @type='checkbox']"))));
+        //          //  //#pragma warning restore CS0618 // Type or member is obsolete
+        //          //  //            //Thread.Sleep(10000);
+        //          //  //            //666666666666666666666666666666666666666666666666666666666
+
+
+        //          //  //  end @@@@@@@@@@@@@  AFTER CFS FELL TO ONE LAST STEP @@@@@@@@@@@@@@@@@@@@@@@@
+
+
+        //            Thread.Sleep(8000);
+
+        //            //one last step page
+        //            driver.FindElement(By.XPath("//*[@id='submit-agreement' and @type='checkbox']")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/div[1]/button[2]")).Click();
+
+
+
+
+        //            //// $$$$$$$$$$$$$$  If app fell into MR START2 $$$$$$$$$$$$$$$$$$$$
+        //            //Thread.Sleep(8000);
+
+        //            //if ((driver.FindElement(By.XPath("//*[text()='Income Verification']")).Displayed) || (driver.FindElement(By.XPath("//*[contains(text(),'Rental')]")).Displayed))
+
+        //            //{
+        //            //    Console.WriteLine("Application fell into Manual Review2: console");
+        //            //    Debug.WriteLine("Application fell into Manual Review2: debug");
+        //            //    Thread.Sleep(3000);
+        //            //    driver.Quit();
+        //            //}
+
+        //            //// $$$$$$$$$$$$$$  If app fell into MR END2 $$$$$$$$$$$$$$$$$$$$
+
+
+
+        //            //    8888888888888888888888888 FINAL OFFER STATRT 8888888888888888888888888888
+
+
+
+
+        //            //  6666666666666666  WAIT7  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[3]/button"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+        //            //sign doc - final offer page
+        //            driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[3]/button")).Click();
+
+
+
+        //            //driver.FindElement(By.XPath("(//button[@type='button'])[2]")).Click();
+        //            //driver.FindElement(By.XPath("(//button[@type='button'])[2]")).Click();
+        //            // ERROR: Caught exception [ERROR: Unsupported command [selectFrame | index=0 | ]]
+
+
+
+        //            //long time sign appear
+        //            driver.SwitchTo().Frame("x-hellosign-embedded");
+
+        //            Thread.Sleep(10000);
+
+        //            //  6666666666666666  WAIT7  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div[3]/div[2]/button/span"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+
+
+
+        //            //not legally bound 'ok' button
+        //            driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div[3]/div[2]/button/span")).Click();
+
+
+        //            //i agree chk-box (sometimes not present)
+        //            //*[@id="signer-mobile-application"]/div/div/div/div[1]/div[2]/div[1]/div/label
+
+        //            try
+        //            {
+        //                if (driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div/div[2]/div/div/label/span")).Displayed)
+        //                {
+        //                    driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div/div[2]/div/div/label/span")).Click();
+        //                }
+        //                else
+        //                //else didn't work
+        //                {
+        //                    Console.WriteLine("In ELSE :I agree not available");
+        //                    Debug.WriteLine("In ELSE :I agree not available");
+        //                    System.Diagnostics.Debug.WriteLine("I agree not available");
+        //                }
+        //            }
+        //            catch(Exception)
+        //            {
+        //                Console.WriteLine("In CATCH :I agree not available");
+        //                Debug.WriteLine("In CATCH :I agree not available");
+        //                System.Diagnostics.Debug.WriteLine("I agree not available");
+        //            }
+
+        //                /////////////////// TO DO (ELSE) /////
+
+
+        //                //  6666666666666666  WAIT7  6666666666666666666666666
+        //                wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div/button/span"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+
+        //            //get started button
+        //            driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div/button/span")).Click();
+
+        //            //driver.SwitchTo().Frame("x-hellosign-embedded");
+
+        //            //1st sign
+        //            //IReadOnlyList<IWebElement> signList = driver.FindElements(By.XPath("//*[text()='Click to initial']"));
+        //            //signList.ElementAt(0).Click();
+
+        //            //driver.FindElement(By.XPath("//*[text()='Click to initial']")).Click();
+
+        //            //*[@id="page-0"]/div/div[2]
+        //            if (driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Displayed == true)
+        //            {
+        //                driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Click();
+        //                Console.WriteLine("CLICKED 1ST SIGN 1");
+        //                Thread.Sleep(3000);
+
+        //                Screenshot s012 = ((ITakesScreenshot)driver).GetScreenshot();
+        //                s012.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image012.png",
+        //                ScreenshotImageFormat.Png);
+
+
+
+
+
+        //                if (IsElementPresent(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")))
+        //                {
+        //                    driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+        //                }
+        //                else
+        //                {
+        //                    driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Click();
+        //					Console.WriteLine("CLICKED 1ST SIGN TWICE");
+        //                    Thread.Sleep(3000);
+
+        //					 if (IsElementPresent(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")))
+        //                {
+        //                    driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+        //                }
+        //				 else
+        //                {
+        //                    driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Click();
+        //					Console.WriteLine("CLICKED 1ST SIGN THRICE");
+        //					Thread.Sleep(3000);
+        //					driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+
+        //				}
+
+
+        //                }
+
+        //            }
+
+        //            Thread.Sleep(3000);
+        //            Screenshot ss2 = ((ITakesScreenshot)driver).GetScreenshot();
+        //            ss2.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image014.png",
+        //            ScreenshotImageFormat.Png);
+
+
+
+        //            //driver.SwitchTo().Frame(driver.FindElement(By.XPath("/html/body/div[3]/div[2]/iframe")));
+
+        //            //dot
+        //            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[2]/div[2]/div[2]/div[1]")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+
+
+        //            //Thread.Sleep(5000);
+        //            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']")).Click();
+        //            //this type wrked in debug mode 
+        //           // driver.FindElement(By.XPath("//*[@title='Type it in']")).Click();
+
+        //            //went into if-else
+        //           // driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+
+        //            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+
+
+        //            //  6666666666666666  WAIT7  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[text()='Insert everywhere']"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+        //            //insert everywhere
+        //            driver.FindElement(By.XPath("//*[text()='Insert everywhere']")).Click();
+
+        //            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[3]/div[2]/button/span")).Click();
+        //            //*[@id="signer-mobile-body"]/div[6]/div/div/div/div[3]/div[2]/button[2]/spandriver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[3]/div[2]/button[2]/span")).Click();
+
+        //            //driver.SwitchTo().Frame("x-hellosign-embedded");
+
+        //            Thread.Sleep(5000);
+        //            //next
+        //            driver.FindElement(By.XPath("//button[@type='button' and span='Next']")).Click();
+
+        //            Console.WriteLine("\n CLICKED HS NXT1");
+        //            System.Diagnostics.Debug.WriteLine("\n CLICKED HS NXT");
+
+
+
+        //            //2nd sign
+        //            //driver.FindElement(By.XPath("//*[@id='page-1']/div/div[2]/div/div[1]")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[4]/div/div/div/div[3]/div[2]/button[2]/span")).Click();
+
+
+        //            //3rd sign
+
+
+        //            //  6666666666666666  WAIT7  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//div[text()='Click to sign']"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+        //            //Thread.Sleep(5000);
+
+        //            ////scroll for 3rd sign
+        //            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]")));
+        //            //Thread.Sleep(3000);
+        //            //driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]")).Click();
+
+        //            ////IWebElement sign3 = driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]"));
+        //            //((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
+        //            //driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]")).Click();
+
+
+        //            //
+        //            driver.FindElement(By.XPath("//div[text()='Click to sign']")).Click();
+
+        //            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+        //            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+
+
+        //            //  6666666666666666  WAIT7  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[text()='Insert everywhere']"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+
+        //            //insert everywhere		   
+        //            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[5]/div/div/div/div[3]/div[2]/button[2]/span")).Click();
+        //            driver.FindElement(By.XPath("//*[text()='Insert everywhere']")).Click();
+
+        //            //insert           
+        //            //	   driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[4]/div/div/div/div[3]/div[2]/button[1]/span")).Click(); 
+
+        //            //next
+        //            //driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div[1]/div[2]/button/span/span")).Click();
+
+
+        //            Thread.Sleep(5000);
+        //            //next
+        //            driver.FindElement(By.XPath("//button[@type='button' and span='Next']")).Click();
+        //            Console.WriteLine("CLICKED HS NXT2 \n");
+        //           // System.Diagnostics.Debug.WriteLine("\n CLICKED HS NXT");
+
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[2]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[2]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[2]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[3]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[3]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[3]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[8]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[8]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[8]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[9]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[9]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[9]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            //----4-----
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[10]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[10]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[10]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[11]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[11]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[11]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[16]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[16]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[16]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[17]/div/div[1]/div/textarea")).Click();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[17]/div/div[1]/div/textarea")).Clear();
+        //            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[17]/div/div[1]/div/textarea")).SendKeys("a");
+
+        //            //------------------------------
+
+
+        //            //  6666666666666666  WAIT7  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div[1]/div[2]/button/span"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+
+        //            driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div[1]/div[2]/button/span")).Click();
+
+        //            //  6666666666666666  WAIT7  6666666666666666666666666
+        //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        //#pragma warning disable CS0618 // Type or member is obsolete
+        //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div/div/button/span"))));
+        //#pragma warning restore CS0618 // Type or member is obsolete
+        //            //Thread.Sleep(10000);
+        //            //666666666666666666666666666666666666666666666666666666666
+
+
+        //            driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div/div/button/span")).Click();
+
+
+        //            // 0000000000000000000000000000000000 O/P CHK 0000000000000000000000000000
+        //            Thread.Sleep(2000);
+        //            driver.SwitchTo().DefaultContent();
+        //            Debug.WriteLine("1");
+        //            Debug.Write("2");
+
+        //            String fund = driver.FindElement(By.XPath("//*[text()='Funding Details']")).Text;
+        //            Console.WriteLine("\n FUND1 \n" + fund);
+        //            //System.Diagnostics.Debug.WriteLine("\n FUND2" + fund);
+        //            // 0000000000000000000000000000000000 O/P CHK 0000000000000000000000000000
+
+        //            try
+        //            {
+        //                IWebElement got_funding = driver.FindElement(By.XPath("//*[text()='Funding Details']"));
+        //                got_funding_boolean = got_funding.Displayed;
+        //            }
+        //            catch
+        //            {
+        //                Console.WriteLine("You did not get funding");
+        //            }
+
+        //            if (got_funding_boolean == true)
+        //            {
+        //                Console.WriteLine("*************************************************** \n");
+        //                Console.WriteLine("Congratulations! YOU GOT FUNDING. Check Screenshot! \n");
+        //                Console.WriteLine("*************************************************** \n");
+        //                System.Diagnostics.Debug.WriteLine("\n Congratulations! YOU GOT FUNDING");
+        //                System.Diagnostics.Debug.WriteLine("\n");
+        //            }
+
+        //            Screenshot ss3 = ((ITakesScreenshot)driver).GetScreenshot();
+        //            ss3.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image4.png",
+        //            ScreenshotImageFormat.Png);
+
+        //            //driver.FindElement(By.XPath("//button[@type='button']")).Click();
+
+
+
+        //            /////  0000000000000000 2ND TEST END 0000000000000000000000000
+
+        //            Thread.Sleep(3000);
+        //            driver.Quit();
+
+        //        }
+
+
+        //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //  END : TestCase With DDT
+        //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+        // [DataTestMethod]
+        //[DynamicData(nameof(GetOfferURL), DynamicDataSourceType.Method)]
+        //[DataRow("TestCase1.url")]
+        [TestMethod]
+        //[Priority(2)]
+        public void TheCase2WithoutDDT()
+        {
+
+            String a = "https://secure-test.republicfinance.com/apply/login";
+            String b = "preethapv01+g28@gmail.com";
+
+            Console.WriteLine("Inside test2 \n" + a);
+            Console.WriteLine("Inside test2 \n" + b);
+
+            ////// 0000000000000000  2ND TEST START 000000000000000000000
+
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            //Thread.Sleep(2000);
+
+
+
+            //if starting from offer page
+            driver.Navigate().GoToUrl(a);
+            //apply online button
+           // driver.FindElement(By.XPath("//*[text()='Apply Now Online']")).Click();
+
+            //if starting from login page
+            //driver.Navigate().GoToUrl("https://secure-test.republicfinance.com/apply/login");
+
+            driver.Manage().Window.Maximize();
+            driver.Manage().Cookies.DeleteAllCookies();
+            //Thread.Sleep(4000);
+
+            driver.FindElement(By.Id("okta-signin-username")).Click();
+            driver.FindElement(By.Id("okta-signin-username")).Clear();
+            driver.FindElement(By.Id("okta-signin-username")).SendKeys(b);
+
+
+            //login pwd (if coming frm offer page, pwd fields have this xpath)
+            //driver.FindElement(By.XPath("//*[@id='password']")).Click();
+            //driver.FindElement(By.XPath("//*[@id='password']")).Clear();
+            //driver.FindElement(By.XPath("//*[@id='password']")).SendKeys("P@ssword123");
+
+            //login pwd (if coming frm login page, pwd fields have this xpath)
+            driver.FindElement(By.Id("okta-signin-password")).Click();
+            driver.FindElement(By.Id("okta-signin-password")).Clear();
+            driver.FindElement(By.Id("okta-signin-password")).SendKeys("P@ssword123");
+
+
+            //login submit (if coming from offer pg)
+            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/div[1]/button")).Click();
+            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/div[1]/button")).Click();
+
+            //login submit (if coming frm login pg)
+            driver.FindElement(By.Id("okta-signin-submit")).Click();
+            //logi pg completed
+
+
+            Thread.Sleep(10000);
+
+            //            //  6666666666666666  WAIT1  6666666666666666666666666
+            //            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            //#pragma warning disable CS0618 // Type or member is obsolete
+            //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.Id("ECOA Consent Option 1 Complete"))));
+            //#pragma warning restore CS0618 // Type or member is obsolete
+            //            //Thread.Sleep(10000);
+            //            //666666666666666666666666666666666666666666666666666666666
+
+
+            //            //////////////////////////  REMOVE COMMENT START ///////////////////////////////
+
+            //pg2 ecoa 
+            //driver.FindElement(By.XPath("//*[@id='ECOA Consent Option 1 Complete' and @type= 'checkbox']")).Click();
+            //driver.FindElement(By.Id("ECOA Consent Option 1 Complete")).Click();
+            // driver.SwitchTo().Frame(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form")));
+            driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[3]/div[2]/input")).Click();
+            Thread.Sleep(3000);
+            //driver.FindElement(By.Id("consumer-reports")).Click();
+            //driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/form/div[2]/div[4]/div[2]/input")).Click();
+            //driver.FindElement(By.XPath("//*[@id='consumer-reports' and @type='checkbox']")).Click();
+            //try xpath axes
+            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[4]/div[2]/label//following::input")).Click();
+            //try label click 
+
+
+            //            //  6666666666666666  WAIT1  6666666666666666666666666
+            //            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            //#pragma warning disable CS0618 // Type or member is obsolete
+            //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[contains(text(),'W-2 form and Income Tax')]"))));
+            //#pragma warning restore CS0618 // Type or member is obsolete
+            //            //Thread.Sleep(10000);
+            //            //666666666666666666666666666666666666666666666666666666666
+
+            //driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form")).Click();
+            driver.FindElement(By.XPath("//*[contains(text(),'W-2 form and Income Tax')]")).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath("//button[@type='button']")).Click();
+            ////*[text()='Next']
+            //ecoa completeed
+
+
+            //  6666666666666666  WAIT2  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//div[@id='root']/div[2]/div/form/div[2]/div[2]/div[2]/div[2]/p"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+            //app overview - bank acct verification 'begin button'
+            driver.FindElement(By.XPath("//div[@id='root']/div[2]/div/form/div[2]/div[2]/div[2]/div[2]/p")).Click();
+
+            //  6666666666666666  WAIT3  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("(//button[@type='button'])[2]"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+            driver.FindElement(By.XPath("(//button[@type='button'])[2]")).Click();
+            // ERROR: Caught exception [ERROR: Unsupported command [selectFrame | index=0 | ]]
+
+
+            ////            //8888888888888888ISSUE8888888888888888888
+            ////            //driver.FindElement(By.XPath("//*[@id='disclaimer-continue']")); 
+            ////            //driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[1]/div[2]/div[2]")).Click();
+            ////            //driver.FindElement(By.CssSelector("#disclaimer-continue")).Click();
+            ////            IWebElement bank_verify = driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[1]/div[2]/div[2]"));
+            ////            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            ////#pragma warning disable CS0618 // Type or member is obsolete
+            ////            wait.Until(ExpectedConditions.ElementToBeClickable(bank_verify));
+            ////#pragma warning restore CS0618 // Type or member is obsolete
+            ////            //Thread.Sleep(10000);
+            ////            bank_verify.Click();
+            ////            //8888888888888888ISSUE8888888888888888888
+
+
+
+
+            ////8888888888888888ISSUE8888888888888888888
+            ////driver.FindElement(By.XPath("//*[@id='disclaimer-continue']")); 
+            ////driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[1]/div[2]/div[2]")).Click();
+            ////driver.FindElement(By.CssSelector("#disclaimer-continue")).Click();
+
+
+            Thread.Sleep(10000);
+
+            // verify your bank acct scrn (1st scrn in cfs)
+            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+            ss.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image2.png",
+            ScreenshotImageFormat.Png);
+
+
+
+            //99999999999999999999999
+
+            try
+            {
+                //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(200));
+                //// wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Name("cashflow_iframe")));
+                //wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div/div/div/div/iframe")));
+                // driver.SwitchTo().Frame("cashflow_iframe");
+                driver.SwitchTo().Frame(driver.FindElement(By.XPath("//iframe")));
+                //driver.SwitchTo().Frame(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div/div/div/div/iframe")));
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("In CATCH :Unable to switch to cashflow_iframe");
+                Debug.WriteLine("In CATCH :Unable to switch to cashflow_iframe");
+
+
+                Screenshot ss4 = ((ITakesScreenshot)driver).GetScreenshot();
+                ss4.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image3.png",
+                ScreenshotImageFormat.Png);
+
+
+            }
+
+            //9999999999999999999999999
+
+
+
+            // driver.SwitchTo().Frame("cashflow_iframe");
+
+            //Screenshot ss1 = ((ITakesScreenshot)driver).GetScreenshot();
+            //ss1.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image3.png",
+            //ScreenshotImageFormat.Png);
+
+
+            //driver.SwitchTo().Frame(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form")));
+            /////  HANDLE FRAME IF PRESENT
+            //try
+            //{
+            //    if (driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Displayed)
+            //    {
+            //        driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Click();
+            //    }
+            //    else
+            //    //else didn't work
+            //    {
+            //        Console.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+            //        Debug.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+            //        System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    Console.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+            //    Debug.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+            //    System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+            //}
+            /////  HANDLE FRAME IF PRESENT END
+
+
+
+
+
+            //  6666666666666666  WAIT4  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='disclaimer-continue']"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+            //Thread.Sleep(5000);
+            IWebElement bank_verify = driver.FindElement(By.XPath("//*[@id='disclaimer-continue']"));
+            //Thread.Sleep(5000);
+            bank_verify.Click();
+            //Thread.Sleep(5000);
+            ////8888888888888888ISSUE8888888888888888888
+
+
+
+            driver.SwitchTo().DefaultContent();
+            driver.SwitchTo().Frame(driver.FindElement(By.XPath("//iframe")));
+            //driver.SwitchTo().Frame("cashflow_iframe");
+            //driver.SwitchTo().Frame(driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/div[3]")));
+            //Thread.Sleep(5000);
+            //  6666666666666666  WAIT5  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='bank-1']"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+            driver.FindElement(By.XPath("//*[@id='bank-1']")).Click();
+            //Thread.Sleep(5000);
+
+
+
+
+            //  6666666666666666  WAIT6  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.Id("authenticationButton"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+            driver.FindElement(By.Id("username")).Click();
+            Thread.Sleep(5000);
+            driver.FindElement(By.Id("username")).Clear();
+            driver.FindElement(By.Id("username")).SendKeys("pre");
+            driver.FindElement(By.Id("password")).Clear();
+            driver.FindElement(By.Id("password")).SendKeys("tha1");
+            driver.FindElement(By.Id("authenticationButton")).Click();
+            Thread.Sleep(6000);
+            driver.FindElement(By.Id("account-1")).Click();
+            // ERROR: Caught exception [ERROR: Unsupported command [selectFrame | relative=parent | ]]
+
+
+            ////////////////////////  REMOVE COMMENT END ///////////////////////////////
+
+
+
+            //after CFS
+            Thread.Sleep(5000);
+            Screenshot a12 = ((ITakesScreenshot)driver).GetScreenshot();
+            a12.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//aftercfs1.png",
+            ScreenshotImageFormat.Png);
+
+
+            //  //  START @@@@@@@@@@@@@  AFTER CFS FELL TO ONE LAST STEP @@@@@@@@@@@@@@@@@@@@@@@@
+
+
+            //  // $$$$$$$$$$$$$$  If app fell into MR START0 $$$$$$$$$$$$$$$$$$$$
+            //  Thread.Sleep(8000);
+
+            //  if ((driver.FindElement(By.XPath("//*[text()='Income Verification']")).Displayed) || (driver.FindElement(By.XPath("//*[contains(text(),'Rental')]")).Displayed))
+
+            //  {
+            //      Console.WriteLine("Application fell into Manual Review0: console");
+            //      Debug.WriteLine("Application fell into Manual Review0: debug");
+            //      Thread.Sleep(3000);
+            //      driver.Quit();
+            //  }
+
+            //  // $$$$$$$$$$$$$$  If app fell into MR END0 $$$$$$$$$$$$$$$$$$$$
+
+
+
+
+
+
+            //  // in case ---"overview page: submit application"-- - sometimes we don't come here ---we go directly to 'onelast step ck - box'
+
+            //  try
+            //  {
+            //      if (driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Displayed)
+            //      {
+            //          driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[4]/div[2]")).Click();
+            //      }
+            //      else
+            //      //else didn't work
+            //      {
+            //          Console.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+            //          Debug.WriteLine("In ELSE : OVERVIEW SUBMIT not available");
+            //          System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+            //      }
+            //  }
+            //  catch (Exception)
+            //  {
+            //      Console.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+            //      Debug.WriteLine("In CATCH :OVERVIEW SUBMIT not available");
+            //      System.Diagnostics.Debug.WriteLine("OVERVIEW SUBMIT not available");
+            //  }
+
+
+
+            //  // $$$$$$$$$$$$$$  If app fell into MR START1 $$$$$$$$$$$$$$$$$$$$
+            //  Thread.Sleep(8000);
+
+            //  if ((driver.FindElement(By.XPath("//*[text()='Income Verification']")).Displayed) || (driver.FindElement(By.XPath("//*[contains(text(),'Rental')]")).Displayed))
+
+            //{
+            //      Console.WriteLine("Application fell into Manual Review1: console");
+            //      Debug.WriteLine("Application fell into Manual Review1: debug");
+            //      Thread.Sleep(3000);
+            //      driver.Quit();
+            //  }
+
+            //  // $$$$$$$$$$$$$$  If app fell into MR END1 $$$$$$$$$$$$$$$$$$$$
+
+
+
+
+            //  //            //  6666666666666666  WAIT6  6666666666666666666666666
+            //  //            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            //  //#pragma warning disable CS0618 // Type or member is obsolete
+            //  //            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='submit-agreement' and @type='checkbox']"))));
+            //  //#pragma warning restore CS0618 // Type or member is obsolete
+            //  //            //Thread.Sleep(10000);
+            //  //            //666666666666666666666666666666666666666666666666666666666
+
+
+            //  //  end @@@@@@@@@@@@@  AFTER CFS FELL TO ONE LAST STEP @@@@@@@@@@@@@@@@@@@@@@@@
+
+
+            Thread.Sleep(8000);
+
+            //one last step page
+            driver.FindElement(By.XPath("//*[@id='submit-agreement' and @type='checkbox']")).Click();
+            driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/div[1]/button[2]")).Click();
+
+
+
+
+            //// $$$$$$$$$$$$$$  If app fell into MR START2 $$$$$$$$$$$$$$$$$$$$
+            //Thread.Sleep(8000);
+
+            //if ((driver.FindElement(By.XPath("//*[text()='Income Verification']")).Displayed) || (driver.FindElement(By.XPath("//*[contains(text(),'Rental')]")).Displayed))
+
+            //{
+            //    Console.WriteLine("Application fell into Manual Review2: console");
+            //    Debug.WriteLine("Application fell into Manual Review2: debug");
+            //    Thread.Sleep(3000);
+            //    driver.Quit();
+            //}
+
+            //// $$$$$$$$$$$$$$  If app fell into MR END2 $$$$$$$$$$$$$$$$$$$$
+
+
+
+            //    8888888888888888888888888 FINAL OFFER STATRT 8888888888888888888888888888
+
+
+
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[3]/button"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+            //sign doc - final offer page
+            driver.FindElement(By.XPath("//*[@id='root']/div[2]/div[1]/form/div[2]/div[2]/div[3]/button")).Click();
+
+
+
+            //driver.FindElement(By.XPath("(//button[@type='button'])[2]")).Click();
+            //driver.FindElement(By.XPath("(//button[@type='button'])[2]")).Click();
+            // ERROR: Caught exception [ERROR: Unsupported command [selectFrame | index=0 | ]]
+
+
+
+            //long time sign appear
+            driver.SwitchTo().Frame("x-hellosign-embedded");
+
+            Thread.Sleep(10000);
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div[3]/div[2]/button/span"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+
+
+
+            //not legally bound 'ok' button
+            driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div[3]/div[2]/button/span")).Click();
+
+
+            //i agree chk-box (sometimes not present)
+            //*[@id="signer-mobile-application"]/div/div/div/div[1]/div[2]/div[1]/div/label
+
+            try
+            {
+                if (driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div/div[2]/div/div/label/span")).Displayed)
+                {
+                    driver.FindElement(By.XPath("//div[@id='signer-mobile-application']/div/div/div/div/div[2]/div/div/label/span")).Click();
+                }
+                else
+                //else didn't work
+                {
+                    Console.WriteLine("In ELSE :I agree not available");
+                    Debug.WriteLine("In ELSE :I agree not available");
+                    System.Diagnostics.Debug.WriteLine("I agree not available");
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("In CATCH :I agree not available");
+                Debug.WriteLine("In CATCH :I agree not available");
+                System.Diagnostics.Debug.WriteLine("I agree not available");
+            }
+
+            /////////////////// TO DO (ELSE) /////
+
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div/button/span"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+
+            //get started button
+            driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div/button/span")).Click();
+
+            //driver.SwitchTo().Frame("x-hellosign-embedded");
+
+            //1st sign
+            //IReadOnlyList<IWebElement> signList = driver.FindElements(By.XPath("//*[text()='Click to initial']"));
+            //signList.ElementAt(0).Click();
+
+            //driver.FindElement(By.XPath("//*[text()='Click to initial']")).Click();
+
+            //*[@id="page-0"]/div/div[2]
+            if (driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Displayed == true)
+            {
+                driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Click();
+                Console.WriteLine("CLICKED 1ST SIGN 1");
+                Thread.Sleep(3000);
+
+                Screenshot s012 = ((ITakesScreenshot)driver).GetScreenshot();
+                s012.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image012.png",
+                ScreenshotImageFormat.Png);
+
+
+
+
+
+                if (IsElementPresent(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")))
+                {
+                    driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+                }
+                else
+                {
+                    driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Click();
+                    Console.WriteLine("CLICKED 1ST SIGN TWICE");
+                    Thread.Sleep(3000);
+
+                    if (IsElementPresent(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")))
+                    {
+                        driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+                    }
+                    else
+                    {
+                        driver.FindElement(By.XPath("//*[@id='page-0']/div/div[2]")).Click();
+                        Console.WriteLine("CLICKED 1ST SIGN THRICE");
+                        Thread.Sleep(3000);
+                        driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+
+                    }
+
+
+                }
+
+            }
+
+            Thread.Sleep(3000);
+            Screenshot ss2 = ((ITakesScreenshot)driver).GetScreenshot();
+            ss2.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image014.png",
+            ScreenshotImageFormat.Png);
+
+
+
+            //driver.SwitchTo().Frame(driver.FindElement(By.XPath("/html/body/div[3]/div[2]/iframe")));
+
+            //dot
+            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[2]/div[2]/div[2]/div[1]")).Click();
+            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+
+
+            //Thread.Sleep(5000);
+            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']")).Click();
+            //this type wrked in debug mode 
+            // driver.FindElement(By.XPath("//*[@title='Type it in']")).Click();
+
+            //went into if-else
+            // driver.FindElement(By.XPath("/html/body/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+
+            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[2]/div[1]/ol/li[2]")).Click();
+
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[text()='Insert everywhere']"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+            //insert everywhere
+            driver.FindElement(By.XPath("//*[text()='Insert everywhere']")).Click();
+
+            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[3]/div[2]/button/span")).Click();
+            //*[@id="signer-mobile-body"]/div[6]/div/div/div/div[3]/div[2]/button[2]/spandriver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[3]/div/div/div/div[3]/div[2]/button[2]/span")).Click();
+
+            //driver.SwitchTo().Frame("x-hellosign-embedded");
+
+            Thread.Sleep(5000);
+            //next
+            driver.FindElement(By.XPath("//button[@type='button' and span='Next']")).Click();
+
+            Console.WriteLine("\n CLICKED HS NXT1");
+            System.Diagnostics.Debug.WriteLine("\n CLICKED HS NXT");
+
+
+
+            //2nd sign
+            //driver.FindElement(By.XPath("//*[@id='page-1']/div/div[2]/div/div[1]")).Click();
+            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[4]/div/div/div/div[3]/div[2]/button[2]/span")).Click();
+
+
+            //3rd sign
+
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//div[text()='Click to sign']"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+            //Thread.Sleep(5000);
+
+            ////scroll for 3rd sign
+            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]")));
+            //Thread.Sleep(3000);
+            //driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]")).Click();
+
+            ////IWebElement sign3 = driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]"));
+            //((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
+            //driver.FindElement(By.XPath("//*[@id='page-1']/div/div[3]")).Click();
+
+
+            //
+            driver.FindElement(By.XPath("//div[text()='Click to sign']")).Click();
+
+            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+            //driver.FindElement(By.XPath("//*[@id='signature-modal-draw__canvas']")).Click();
+
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[text()='Insert everywhere']"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+
+            //insert everywhere		   
+            //driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[5]/div/div/div/div[3]/div[2]/button[2]/span")).Click();
+            driver.FindElement(By.XPath("//*[text()='Insert everywhere']")).Click();
+
+            //insert           
+            //	   driver.FindElement(By.XPath("//*[@id='signer-mobile-body']/div[4]/div/div/div/div[3]/div[2]/button[1]/span")).Click(); 
+
+            //next
+            //driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div[1]/div[2]/button/span/span")).Click();
+
+
+            Thread.Sleep(5000);
+            //next
+            driver.FindElement(By.XPath("//button[@type='button' and span='Next']")).Click();
+            Console.WriteLine("CLICKED HS NXT2 \n");
+            // System.Diagnostics.Debug.WriteLine("\n CLICKED HS NXT");
+
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[2]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[2]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[2]/div/div[1]/div/textarea")).SendKeys("a");
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[3]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[3]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[3]/div/div[1]/div/textarea")).SendKeys("a");
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[8]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[8]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[8]/div/div[1]/div/textarea")).SendKeys("a");
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[9]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[9]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[9]/div/div[1]/div/textarea")).SendKeys("a");
+
+            //----4-----
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[10]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[10]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[10]/div/div[1]/div/textarea")).SendKeys("a");
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[11]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[11]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[11]/div/div[1]/div/textarea")).SendKeys("a");
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[16]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[16]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[16]/div/div[1]/div/textarea")).SendKeys("a");
+
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[17]/div/div[1]/div/textarea")).Click();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[17]/div/div[1]/div/textarea")).Clear();
+            driver.FindElement(By.XPath("//*[@id='page-6']/div/div[17]/div/div[1]/div/textarea")).SendKeys("a");
+
+            //------------------------------
+
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div[1]/div[2]/button/span"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+
+            driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div[2]/div[1]/div[2]/button/span")).Click();
+
+            //  6666666666666666  WAIT7  6666666666666666666666666
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+#pragma warning disable CS0618 // Type or member is obsolete
+            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div/div/button/span"))));
+#pragma warning restore CS0618 // Type or member is obsolete
+            //Thread.Sleep(10000);
+            //666666666666666666666666666666666666666666666666666666666
+
+
+            driver.FindElement(By.XPath("//*[@id='signer-mobile-application']/div/div/div/div[1]/div/div/button/span")).Click();
+
+
+            // 0000000000000000000000000000000000 O/P CHK 0000000000000000000000000000
+            Thread.Sleep(2000);
+            driver.SwitchTo().DefaultContent();
+            Debug.WriteLine("1");
+            Debug.Write("2");
+
+            String fund = driver.FindElement(By.XPath("//*[text()='Funding Details']")).Text;
+            Console.WriteLine("\n FUND1 \n" + fund);
+            //System.Diagnostics.Debug.WriteLine("\n FUND2" + fund);
+            // 0000000000000000000000000000000000 O/P CHK 0000000000000000000000000000
+
+            try
+            {
+                IWebElement got_funding = driver.FindElement(By.XPath("//*[text()='Funding Details']"));
+                got_funding_boolean = got_funding.Displayed;
+            }
+            catch
+            {
+                Console.WriteLine("You did not get funding");
+            }
+
+            if (got_funding_boolean == true)
+            {
+                Console.WriteLine("*************************************************** \n");
+                Console.WriteLine("Congratulations! YOU GOT FUNDING. Check Screenshot! \n");
+                Console.WriteLine("*************************************************** \n");
+                System.Diagnostics.Debug.WriteLine("\n Congratulations! YOU GOT FUNDING");
+                System.Diagnostics.Debug.WriteLine("\n");
+            }
+
+            Screenshot ss3 = ((ITakesScreenshot)driver).GetScreenshot();
+            ss3.SaveAsFile("C://Users//pvenkatarajan//source//repos//SeleniumTests2//SeleniumTests2//Image4.png",
+            ScreenshotImageFormat.Png);
+
+            //driver.FindElement(By.XPath("//button[@type='button']")).Click();
+
+
+
+            /////  0000000000000000 2ND TEST END 0000000000000000000000000
+
+            Thread.Sleep(3000);
+            driver.Quit();
+
+        }
+
+
+        private bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+    }
+
+  
+}
+
