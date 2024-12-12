@@ -1,3 +1,43 @@
+2024-12-12T18:30:33.6033015Z ##[section]Starting: PowerShell Script - CI/CD Test Results
+2024-12-12T18:30:33.6039501Z ==============================================================================
+2024-12-12T18:30:33.6039866Z Task         : PowerShell
+2024-12-12T18:30:33.6040006Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2024-12-12T18:30:33.6040191Z Version      : 2.247.1
+2024-12-12T18:30:33.6040290Z Author       : Microsoft Corporation
+2024-12-12T18:30:33.6040463Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2024-12-12T18:30:33.6040644Z ==============================================================================
+2024-12-12T18:30:34.6111804Z Generating script.
+2024-12-12T18:30:34.6517107Z ========================== Starting Command Output ===========================
+2024-12-12T18:30:34.6789823Z ##[command]"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command ". 'D:\a\_temp\2dc20600-e0ad-429e-ba01-08c0656b9222.ps1'"
+2024-12-12T18:30:35.0061745Z At D:\a\_temp\2dc20600-e0ad-429e-ba01-08c0656b9222.ps1:26 char:7
+2024-12-12T18:30:35.0063088Z +     },
+2024-12-12T18:30:35.0064081Z +       ~
+2024-12-12T18:30:35.0064737Z Missing expression after ','.
+2024-12-12T18:30:35.0065649Z At D:\a\_temp\2dc20600-e0ad-429e-ba01-08c0656b9222.ps1:32 char:82
+2024-12-12T18:30:35.0066339Z + ... Base64String([System.Text.Encoding]::ASCII.GetBytes("$apiKey:$apiSecr ...
+2024-12-12T18:30:35.0067304Z +                                                          ~~~~~~~~
+2024-12-12T18:30:35.0069117Z Variable reference is not valid. ':' was not followed by a valid variable name character. Consider using ${} to 
+2024-12-12T18:30:35.0069678Z delimit the name.
+2024-12-12T18:30:35.0070404Z At D:\a\_temp\2dc20600-e0ad-429e-ba01-08c0656b9222.ps1:44 char:3
+2024-12-12T18:30:35.0072808Z + }
+2024-12-12T18:30:35.0073645Z +   ~
+2024-12-12T18:30:35.0074304Z Missing closing ')' in subexpression.
+2024-12-12T18:30:35.0078428Z At D:\a\_temp\2dc20600-e0ad-429e-ba01-08c0656b9222.ps1:44 char:2
+2024-12-12T18:30:35.0079256Z + }
+2024-12-12T18:30:35.0079829Z +  ~
+2024-12-12T18:30:35.0080334Z The hash literal was incomplete.
+2024-12-12T18:30:35.0080890Z     + CategoryInfo          : ParserError: (:) [], ParseException
+2024-12-12T18:30:35.0081434Z     + FullyQualifiedErrorId : MissingExpressionAfterToken
+2024-12-12T18:30:35.0081948Z  
+2024-12-12T18:30:35.0826367Z ##[error]PowerShell exited with code '1'.
+2024-12-12T18:30:35.1299449Z ##[section]Finishing: PowerShell Script - CI/CD Test Results
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;
 $apiKey = "$(MAILJET_API_KEY)"
 $apiSecret = "$(MAILJET_API_SECRET)"
 
