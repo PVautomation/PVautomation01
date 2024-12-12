@@ -1,3 +1,28 @@
+2024-12-12T17:01:21.2095569Z ##[section]Starting: PowerShell Script - CI/CD Test Results
+2024-12-12T17:01:21.2102847Z ==============================================================================
+2024-12-12T17:01:21.2103187Z Task         : PowerShell
+2024-12-12T17:01:21.2103331Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2024-12-12T17:01:21.2103523Z Version      : 2.247.1
+2024-12-12T17:01:21.2103617Z Author       : Microsoft Corporation
+2024-12-12T17:01:21.2103792Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2024-12-12T17:01:21.2103963Z ==============================================================================
+2024-12-12T17:01:22.2208441Z Generating script.
+2024-12-12T17:01:22.2651540Z ========================== Starting Command Output ===========================
+2024-12-12T17:01:22.2948634Z ##[command]"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command ". 'D:\a\_temp\848f9140-0763-4b99-9dce-53ccae036386.ps1'"
+2024-12-12T17:01:36.6837514Z Send-MailMessage : The SMTP server requires a secure connection or the client was not authenticated. The server 
+2024-12-12T17:01:36.6838633Z response was: 5.7.57 Client not authenticated to send mail. Error: 535 5.7.139 Authentication unsuccessful, the 
+2024-12-12T17:01:36.6839144Z request did not meet the criteria to be authenticated successfully. Contact your administrator. 
+2024-12-12T17:01:36.6839909Z [DM6PR01CA0015.prod.exchangelabs.com 2024-12-12T17:01:33.542Z 08DD19DC0E315108]
+2024-12-12T17:01:36.6841552Z At D:\a\_temp\848f9140-0763-4b99-9dce-53ccae036386.ps1:15 char:1
+2024-12-12T17:01:36.6842258Z + Send-MailMessage -From $from -To $to -Subject $subject -Body $body -S ...
+2024-12-12T17:01:36.6842895Z + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2024-12-12T17:01:36.6843937Z     + CategoryInfo          : InvalidOperation: (System.Net.Mail.SmtpClient:SmtpClient) [Send-MailMessage], SmtpExcept 
+2024-12-12T17:01:36.6844539Z    ion
+2024-12-12T17:01:36.6845073Z     + FullyQualifiedErrorId : SmtpException,Microsoft.PowerShell.Commands.SendMailMessage
+2024-12-12T17:01:36.6845611Z  
+2024-12-12T17:01:36.7659280Z ##[error]PowerShell exited with code '1'.
+2024-12-12T17:01:36.8092497Z ##[section]Finishing: PowerShell Script - CI/CD Test Results
+]]]]]]]]]]]
 2024-12-12T16:41:40.5511063Z ##[section]Starting: PowerShell Script - CI/CD Test Results
 2024-12-12T16:41:40.5564178Z ==============================================================================
 2024-12-12T16:41:40.5564827Z Task         : PowerShell
