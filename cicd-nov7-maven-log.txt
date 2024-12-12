@@ -1,3 +1,54 @@
+$apiKey = "$(MAILJET_API_KEY)"
+$apiSecret = "$(MAILJET_API_SECRET)"
+
+# Mailjet endpoint for sending emails
+$mailjetUrl = "https://api.mailjet.com/v3.1/send"
+
+# Prepare the request body as JSON
+$body = @{
+    Messages = @(
+        @{
+            From = @{
+                Email = "sender@example.com" # Make sure this is a verified sender
+                Name = "CI/CD Pipeline"
+            }
+To = @(
+    @{
+        Email = "recipient1@example.com"
+        Name = "Recipient One"
+    },
+    @{
+        Email = "recipient2@example.com"
+        Name = "Recipient Two"
+    },
+
+)
+} | ConvertTo-Json
+
+# Create headers for Basic Auth (API Key & Secret)
+$auth = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("$apiKey:$apiSecret"))
+$headers = @{
+    "Authorization" = "Basic $auth"
+    "Content-Type"  = "application/json"
+}
+
+Invoke-RestMethod -Uri $mailjetUrl -Method POST -Headers $headers -Body $body
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
 2024-12-12T17:01:21.2095569Z ##[section]Starting: PowerShell Script - CI/CD Test Results
 2024-12-12T17:01:21.2102847Z ==============================================================================
 2024-12-12T17:01:21.2103187Z Task         : PowerShell
