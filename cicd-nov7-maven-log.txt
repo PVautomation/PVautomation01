@@ -1,3 +1,26 @@
+2024-12-12T16:41:40.5511063Z ##[section]Starting: PowerShell Script - CI/CD Test Results
+2024-12-12T16:41:40.5564178Z ==============================================================================
+2024-12-12T16:41:40.5564827Z Task         : PowerShell
+2024-12-12T16:41:40.5565080Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2024-12-12T16:41:40.5565331Z Version      : 2.247.1
+2024-12-12T16:41:40.5565570Z Author       : Microsoft Corporation
+2024-12-12T16:41:40.5565882Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2024-12-12T16:41:40.5566155Z ==============================================================================
+2024-12-12T16:41:41.6778291Z Generating script.
+2024-12-12T16:41:41.6779235Z ========================== Starting Command Output ===========================
+2024-12-12T16:41:41.6779856Z ##[command]"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command ". 'D:\a\_temp\53545248-4445-4658-8fa0-eecbfeffd517.ps1'"
+2024-12-12T16:41:42.3880906Z Build.Status : The term 'Build.Status' is not recognized as the name of a cmdlet, function, script file, or operable 
+2024-12-12T16:41:42.3883330Z program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+2024-12-12T16:41:42.3883980Z At D:\a\_temp\53545248-4445-4658-8fa0-eecbfeffd517.ps1:10 char:56
+2024-12-12T16:41:42.3884891Z + $body = "Build completed. Test results: 20241212.1 - $(Build.Status)"
+2024-12-12T16:41:42.3885419Z +                                                        ~~~~~~~~~~~~
+2024-12-12T16:41:42.3885928Z     + CategoryInfo          : ObjectNotFound: (Build.Status:String) [], ParentContainsErrorRecordException
+2024-12-12T16:41:42.3886473Z     + FullyQualifiedErrorId : CommandNotFoundException
+2024-12-12T16:41:42.3886957Z  
+2024-12-12T16:41:42.5007228Z ##[error]PowerShell exited with code '1'.
+2024-12-12T16:41:42.5599124Z ##[section]Finishing: PowerShell Script - CI/CD Test Results
+
+
 ]]]]]]]]]]]]]]]]]]
 $smtpServer = "$(SMTP_SERVER)"
 $smtpUsername = "$(SMTP_USERNAME)"
