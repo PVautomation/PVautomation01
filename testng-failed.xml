@@ -1,16 +1,290 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite1]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test1(failed)">
-    <classes>
-      <class name="loanCalculatorPackage.LoanCalculatorTestClass1">
-        <methods>
-          <include name="OfferTest"/>
-          <include name="testLc1"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- loanCalculatorPackage.LoanCalculatorTestClass1 -->
-    </classes>
-  </test> <!-- Test1(failed) -->
-</suite> <!-- Failed suite [Suite1] -->
+package loanCalculatorPackage;
+
+
+import java.util.regex.Pattern;
+
+import java.util.concurrent.TimeUnit;
+
+import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.Reporter;
+import org.testng.annotations.*;
+import static org.testng.Assert.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+//import java.io.File;
+import java.time.Duration;
+//import com.microsoft.*;
+
+//import org.apache.commons.io.FileUtils;
+
+////////////////////
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+
+
+
+
+//@TestOwner("pvenkatarajan@republicfinance.com")
+public class LoanCalculatorTestClass1 {
+  private WebDriver driver;
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+  private JavascriptExecutor js;
+  //////////
+
+  private String baseURL;
+  private boolean offerPresent;
+  
+
+  @BeforeClass(alwaysRun = true)
+  public void setUp() throws Exception {
+	  
+		ChromeOptions ops = new ChromeOptions();
+		ops.addArguments("--disable-notifications");
+		/*
+		ops.addArguments("--headless"); // headless mode
+		ops.addArguments("--disable-gpu"); // Disable GPU acceleration for headless mode
+		ops.addArguments("--no-sandbox"); // for headless mode in CI/CD environments
+		ops.addArguments("--window-size=1920x1080");
+		ops.addArguments("--disable-dev-shm-usage");
+		// System.setProperty("webdriver.chrome.driver", "./lib/chromedriver");
+		*/
+		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\pvenkatarajan\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
+		
+		driver = new ChromeDriver(ops);
+        ITestContext context = Reporter.getCurrentTestResult().getTestContext();
+        context.setAttribute("driver", driver);
+		//context.setAttribute("driver", driver);
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+	driver.manage().window().maximize();
+	driver.manage().deleteAllCookies();
+    js = (JavascriptExecutor) driver;
+
+  }
+
+  @Test
+  @Parameters("ownerName")
+  public void testLc1() throws Exception {
+    driver.get("https://www-test.republicfinance.com/monthly-payment-calculator");
+    Thread.sleep(15000);
+	 js.executeScript("document.body.style.zoom='30%'");
+	 js.executeScript("window.scroll(0,0);"); 
+    driver.findElement(By.id("field-5")).click();
+    Thread.sleep(15000);
+    driver.findElement(By.id("field-5")).clear();
+    Thread.sleep(15000);
+    driver.findElement(By.id("field-5")).sendKeys("78748");
+    Thread.sleep(15000);
+    driver.findElement(By.xpath("//select[@id='field-5']")).click();
+    Thread.sleep(5000);
+    new Select(driver.findElement(By.xpath("//select[@id='field-5']"))).selectByVisibleText("$2001-$3000");
+    Thread.sleep(15000);
+    driver.findElement(By.xpath("//div[@id='root']/div/div/div/div/div/div/div/form/div/div/div[3]/div/select")).click();
+    Thread.sleep(5000);
+    new Select(driver.findElement(By.xpath("//div[@id='root']/div/div/div/div/div/div/div/form/div/div/div[3]/div/select"))).selectByVisibleText("24 months");
+    Thread.sleep(15000);
+    driver.findElement(By.xpath("//div[@id='root']/div/div/div/div/div/div/div/form/div/div/div[4]/div/select")).click();
+    Thread.sleep(5000);
+    new Select(driver.findElement(By.xpath("//div[@id='root']/div/div/div/div/div/div/div/form/div/div/div[4]/div/select"))).selectByVisibleText("500-599 (Fair)");
+    Thread.sleep(15000);
+    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    Thread.sleep(15000);
+    driver.findElement(By.xpath("//div[@id='root']/div/div/div/div/div/div[2]/div/div/p[3]")).click();
+    //Warning: assertTextPresent may require manual changes
+    Thread.sleep(15000);
+    //assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*xpath=//div\\[@id='root'\\]/div/div/div/div/div/div\\[2\\]/div/div/p\\[3\\][\\s\\S]*$"));
+    Thread.sleep(5000);
+    System.out.println("complete1");
+    //Assert.assertEquals(true, true, "Assertion Success: Expected value matched the actual value.");
+    Reporter.log("LOAN CALCULATOR TEST GOT EXECUTED SUCCESSFULLY !!!");
+  }
+  
+  
+ // ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+		  
+
+      @DataProvider(name = "excelData")
+      public Object[][] getExcelData() throws IOException {
+          List<Object[]> data = new ArrayList<Object[]>();
+          FileInputStream fis = new FileInputStream(new File("Data1.xlsx"));
+          // Assuming the use of Apache POI for Excel reading
+          // Add code to read the data from the Excel file and populate the list
+          // Example:
+          // data.add(new Object[] {"value1", "value2", ...});
+          fis.close();
+          return data.toArray(new Object[0][]);
+      }
+
+      
+      @Test(dataProvider = "excelData")
+      @Parameters("ownerName")
+      public void OfferTest(String data1, String data2, String data3, String data4, String data5, String data6, String data7, String data8, String data9, String data10, String data11, String data12, String data13, String data14, String data15) 
+    		  throws Exception {
+      
+  driver.get(baseURL);
+          driver.manage().window().maximize();
+
+          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+          WebElement welcomeZipcode = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div[2]/div/div/form/div/input")));
+          welcomeZipcode.click();
+          welcomeZipcode.sendKeys(data1);
+
+          WebElement welcomeNextButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("next-button")));
+          welcomeNextButton.click();
+
+          WebElement purposeHowMuch = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[1]/div/select")));
+          new Select(purposeHowMuch).selectByVisibleText(data2);
+
+          WebElement purposeFundUse = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[3]/div/select"));
+          new Select(purposeFundUse).selectByVisibleText(data3);
+
+          WebElement purposeHowHear = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div[2]/div/div[4]/div/select"));
+          new Select(purposeHowHear).selectByVisibleText("Email");
+
+          WebElement needNextButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("next-button")));
+          needNextButton.click();
+
+          WebElement aboutFirstName = driver.findElement(By.id("firstName"));
+          aboutFirstName.clear();
+          aboutFirstName.sendKeys(data4);
+
+          WebElement aboutLastName = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[1]/div[2]/div/input"));
+          aboutLastName.clear();
+          aboutLastName.sendKeys(data5);
+
+          WebElement aboutEmail = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[2]/div/input"));
+          aboutEmail.clear();
+          aboutEmail.sendKeys(data9);
+
+          WebElement aboutPhone = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[3]/div/input"));
+          aboutPhone.clear();
+          aboutPhone.sendKeys(data10);
+
+          WebElement aboutDob = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[4]/div/input"));
+          aboutDob.clear();
+          aboutDob.sendKeys(data8);
+
+          WebElement aboutSsn = driver.findElement(By.id("ssn"));
+          aboutSsn.clear();
+          aboutSsn.sendKeys(data7);
+
+          WebElement aboutStreet = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[2]/div[6]/div[1]/div/input"));
+          aboutStreet.clear();
+          aboutStreet.sendKeys(data6);
+
+          if (data11.equals("myself")) {
+              WebElement aboutWhoApplies = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div/i[1]"));
+              aboutWhoApplies.click();
+          }
+
+          WebElement aboutNextButton = driver.findElement(By.id("next-button"));
+          aboutNextButton.click();
+
+          WebElement financeOwn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[4]/main/div/div/div/div/div/div/div/div/div[2]/div/div/div[1]/div/div[4]/div/div/label[1]/input")));
+          financeOwn.click();
+
+          WebElement financeMortgageRent = driver.findElement(By.xpath("//*[@id='wizardProfile']/div[2]/div/div/div[1]/div/div[6]/div/input"));
+          financeMortgageRent.clear();
+          financeMortgageRent.sendKeys(data13);
+
+          WebElement financeIncome = driver.findElement(By.xpath("//*[@id='incomeAmount']"));
+          financeIncome.clear();
+          financeIncome.sendKeys(data14);
+
+          WebElement financeNextButton = driver.findElement(By.id("next-button"));
+          financeNextButton.click();
+
+          try {
+              WebElement congratulations = driver.findElement(By.xpath("//*[contains(text(), 'You are pre-qualified for a loan up to')]"));
+              offerPresent = congratulations.isDisplayed();
+          } catch (Exception e) {
+              offerPresent = false;
+          }
+
+          if (offerPresent) {
+              System.out.println("Congratulations! YOU GOT AN OFFER");
+          } else {
+              System.out.println("APPLICATION DECLINED");
+          }
+      }
+  
+  
+  
+ // ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+  
+  
+  
+  
+  
+
+  @AfterClass(alwaysRun = true)
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+/*
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+  */
+}
+
