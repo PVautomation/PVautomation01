@@ -1,4 +1,19 @@
 ]]]]]]]]]]]]]]]]]]
+$smtpServer = "$(SMTP_SERVER)"
+$smtpUsername = "$(SMTP_USERNAME)"
+$smtpPassword = "$(SMTP_PASSWORD)"
+$from = "$(SMTP_FROM)"
+$to = "recipient@example.com"
+$subject = "CI/CD Test Results"
+$body = "Build completed. Test results: $(Build.BuildNumber) - $(Build.Status)"
+
+$securePassword = ConvertTo-SecureString $smtpPassword -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential($smtpUsername, $securePassword)
+
+Send-MailMessage -From $from -To $to -Subject $subject -Body $body -SmtpServer $smtpServer -UseSSL -Credential $cred -Port 587
+
+============
+
 - task: PowerShell@2
   displayName: 'Send Email via Outlook SMTP'
   inputs:
