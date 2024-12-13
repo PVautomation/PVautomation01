@@ -1,4 +1,38 @@
+@Test
+    public void verifyTextOnPage() {
+        // Navigate to the webpage
+        driver.get(); 
 
+        // Text to verify
+        String expectedText = "Welcome to Example Domain"; 
+
+        // Use WebDriverWait to ensure the page is fully loaded
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement bodyElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
+
+        // Verify if the text is present in the body element
+        boolean isTextPresent = bodyElement.getText().contains(expectedText);
+
+        // Assert that the text is found
+        Assert.assertTrue(isTextPresent, "Expected text was not found on the page.");
+
+        // Log result
+        if (isTextPresent) {
+            System.out.println("Test Passed: The expected text is present on the page.");
+        }
+    }
+======================
+WebElement bodyElement = driver.findElement(By.tagName("body"));
+String bodyText = bodyElement.getText();
+if (bodyText.contains("Welcome to Chase")) {
+    System.out.println("Text found: Test Passed!");
+} else {
+    System.out.println("Text not found: Test Failed!");
+}
+==============
+
+
+========================
 master [rejected - non-fast-forward]
 ====
 import org.testng.ITestListener;
