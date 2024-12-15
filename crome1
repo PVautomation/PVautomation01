@@ -1,4 +1,40 @@
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: 'pv-loan-calculator-test/test-output/junitreports/TEST-loanCalculatorPackage.LoanCalculatorTestClass1.xml'
+    testRunTitle: 'Loan Calculator Test Results'
+    mergeTestResults: false # Set to true if combining results from multiple files
+=========
+testResultsFiles: 'pv-loan-calculator-test/test-output/junitreports/TEST-*.xml'
+---
+$(Build.SourcesDirectory)/**/test-output/junitreports/TEST-*.xml
+----
+**/test-output/junitreports/TEST-*.xml
+===================
+del /s /q pv-loan-calculator-test\test-output\junitreports\*
+cmd line - Clean up old test result files
+=================
+@Test(description = "Owner: John Doe")
+public void testLoanCalculator() {}
+======
+$filePath = "pv-loan-calculator-test/test-output/junitreports/TEST-loanCalculatorPackage.LoanCalculatorTestClass1.xml"
 
+# Read the file content
+$xmlContent = Get-Content -Path $filePath
+
+# Replace <testcase> with <testcase owner="John Doe">
+$updatedContent = $xmlContent -replace '<testcase ', '<testcase owner="NAME" '
+
+# Write the updated content back to the file
+Set-Content -Path $filePath -Value $updatedContent
+============
+Clean up old test results (Command Line/Bash task).
+Run Tests (e.g., Maven/Gradle task).
+name add
+Publish Test Results (PublishTestResults@2 task).
+
+
+
+]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 =======
 <build>
   <plugins>
