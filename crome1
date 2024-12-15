@@ -31,7 +31,11 @@ Clean up old test results (Command Line/Bash task).
 Run Tests (e.g., Maven/Gradle task).
 name add
 Publish Test Results (PublishTestResults@2 task).
-
+----
+OfferTestClass
+ABSimportTestClass
+LoanCalculatorTestClass
+CRMtestClass
 
 
 ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
