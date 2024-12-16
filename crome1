@@ -1,3 +1,23 @@
+
+2024-12-16T00:34:45.2127887Z ##[section]Starting: Command Line Script - clean up old test results files
+2024-12-16T00:34:45.2134627Z ==============================================================================
+2024-12-16T00:34:45.2135059Z Task         : Command line
+2024-12-16T00:34:45.2135220Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2024-12-16T00:34:45.2135453Z Version      : 2.246.1
+2024-12-16T00:34:45.2135582Z Author       : Microsoft Corporation
+2024-12-16T00:34:45.2135780Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2024-12-16T00:34:45.2135982Z ==============================================================================
+2024-12-16T00:34:46.3063553Z Generating script.
+2024-12-16T00:34:46.3183338Z Script contents: shell
+2024-12-16T00:34:46.3193330Z del /s /q pv-loan-calculator-test\test-output\junitreports\*
+2024-12-16T00:34:46.3571478Z ========================== Starting Command Output ===========================
+2024-12-16T00:34:46.3958605Z ##[command]"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\d7a76f1b-939e-447b-b7cf-27fadd98f259.cmd""
+2024-12-16T00:34:46.4112889Z The system cannot find the path specified.
+2024-12-16T00:34:46.5102742Z ##[error]Cmd.exe exited with code '1'.
+2024-12-16T00:34:46.5621381Z ##[section]Finishing: Command Line Script - clean up old test results files
+
+
+]]]]]]]]]]]]]]]
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: 'pv-loan-calculator-test/test-output/junitreports/TEST-loanCalculatorPackage.LoanCalculatorTestClass1.xml'
