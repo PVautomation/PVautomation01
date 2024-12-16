@@ -1,4 +1,12 @@
 
+echo Cleaning up old test results
+echo Current Directory: %cd%
+if exist "pv-loan-calculator-test\test-output\junitreports\*" (
+    del /s /q "pv-loan-calculator-test\test-output\junitreports\*"
+) else (
+    echo Directory not found: pv-loan-calculator-test\test-output\junitreports\
+)
+-----
 2024-12-16T00:34:45.2127887Z ##[section]Starting: Command Line Script - clean up old test results files
 2024-12-16T00:34:45.2134627Z ==============================================================================
 2024-12-16T00:34:45.2135059Z Task         : Command line
