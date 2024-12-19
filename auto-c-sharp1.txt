@@ -1,102 +1,77 @@
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+package JavaMavenTestNG.JavaMavenTestNG;
 
-import java.io.File;
-import java.time.Duration;
+import JavaMavenTestNG.JavaMavenTestNG.ScreenshotUtility;
+import org.testng.ITestContext;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 
-public class ParentClass1 {
-    WebDriverWait wait;
-    JavascriptExecutor js;
+import java.io.IOException;
 
-    @BeforeClass
-    public void setup() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-        js = (JavascriptExecutor) driver;
-    }
+public class ScreenshotListener extends ParentClass implements ITestListener {
 
-    protected void waitAndClick(By locator) {
-        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-    }
+    private WebDriver driver;
 
-    protected void waitAndClick(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        scrollToElement(element);
-        js.executeScript("arguments[0].click();", element);
-    }
+    @Override
+    public void onTestFailure(ITestResult result) {
+        driver = (WebDriver) result.getTestContext().getAttribute("driver");
 
-    protected void scrollToElement(WebElement element) {
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
-    }
-
-    protected void waitForPageToLoad(WebDriver driver) {
-        new WebDriverWait(driver, Duration.ofSeconds(120)).until(
-                webDriver -> js.executeScript("return document.readyState").equals("complete"));
-    }
-
-    // Utility method to capture a screenshot
-    protected void captureScreenshot(String fileName) {
         try {
-            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String path = System.getenv("Build.ArtifactStagingDirectory") + "/" + fileName + ".png";
-            FileUtils.copyFile(screenshot, new File(path));
-            System.out.println("Screenshot captured: " + fileName);
-        } catch (Exception e) {
-            System.out.println("Error capturing screenshot: " + e.getMessage());
+            // Update test name dynamically with identifier
+            Object[] parameters = result.getParameters();
+            String identifier = parameters.length > 0 ? parameters[0].toString() : "unknown";
+            String newTestName = result.getMethod().getMethodName() + " [" + identifier + "]";
+            result.getTestContext().getCurrentXmlTest().setName(newTestName);
+            System.out.println("Updated test name: " + newTestName);
+
+            // Capture and log screenshot
+            String screenshotPath = ScreenshotUtility.captureScreenshot(driver, newTestName + "_FAILURE");
+            Reporter.log("<a href='" + screenshotPath + "' target='_blank'>Screenshot</a>");
+            Reporter.log("Screenshot saved for failed test: " + newTestName + " -> " + screenshotPath);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    // Utility method to verify text is not present
-    protected void verifyTextNotPresent(String text) {
-        if (driver.getPageSource().contains(text)) {
-            throw new AssertionError("Text '" + text + "' was unexpectedly found on the page.");
+    @Override
+    public void onTestSuccess(ITestResult result) {
+        driver = (WebDriver) result.getTestContext().getAttribute("driver");
+
+        try {
+            // Update test name dynamically with identifier
+            Object[] parameters = result.getParameters();
+            String identifier = parameters.length > 0 ? parameters[0].toString() : "unknown";
+            String newTestName = result.getMethod().getMethodName() + " [" + identifier + "]";
+            result.getTestContext().getCurrentXmlTest().setName(newTestName);
+            System.out.println("Updated test name: " + newTestName);
+
+            // Capture and log screenshot
+            String screenshotPath = ScreenshotUtility.captureScreenshot(driver, newTestName + "_SUCCESS");
+            Reporter.log("<a href='" + screenshotPath + "' target='_blank'>Screenshot</a>");
+            Reporter.log("Screenshot saved for successful test: " + newTestName + " -> " + screenshotPath);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    // Utility method to find an element with multiple XPaths as fallback
-    protected WebElement findElementWithFallback(String... xPaths) {
-        for (String xpath : xPaths) {
-            try {
-                return driver.findElement(By.xpath(xpath));
-            } catch (NoSuchElementException ignored) {
-            }
-        }
-        throw new NoSuchElementException("Element not found with any of the provided XPaths.");
-    }
-	
-	
-	
-	    // Helper Methods
-    protected void performFieldEntry(String... inputs) throws InterruptedException {
-        for (String input : inputs) {
-            actions.sendKeys(Keys.TAB).perform();
-            Thread.sleep(500);
-            actions.sendKeys(input).perform();
-            Thread.sleep(500);
-        }
+    @Override
+    public void onTestSkipped(ITestResult result) {
+        // Optionally handle skipped tests if needed
     }
 
-    protected void checkAndLogMessage(String xpath, String message) {
-        if (driver.findElement(By.xpath(xpath)).isDisplayed()) {
-            System.out.println(message);
-        }
+    @Override
+    public void onStart(ITestContext context) {
+        // Optionally handle test start if needed
     }
 
-    protected void performButtonClick(String xpath) throws InterruptedException {
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-        scrollToElement(button);
-        waitAndClick(button);
-        Thread.sleep(5000);
+    @Override
+    public void onFinish(ITestContext context) {
+        // Optionally handle test finish if needed
     }
 
-    protected void performKeyActions(Keys key, int count) throws InterruptedException {
-        for (int i = 0; i < count; i++) {
-            actions.sendKeys(key).perform();
-            Thread.sleep(500);
-        }
+    @Override
+    public void onTestStart(ITestResult result) {
+        // Optionally handle test start if needed
     }
-	
-	
 }
