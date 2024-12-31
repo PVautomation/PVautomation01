@@ -1,0 +1,37 @@
+=================
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 3.1.426'
+  inputs:
+    version: 3.1.426
+    includePreviewVersions: true
+
+=================
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'SeleniumMStest Execution'
+  inputs:
+    command: custom
+    projects: '**/SeleniumMStest.dll'
+    custom: vstest
+    arguments: '--logger:trx;logfilename=TEST.xml'
+    verbosityRestore: Detailed
+    verbosityPack: Detailed
+  continueOnError: true
+  timeoutInMinutes: 8
+
+======================
+
+steps:
+- task: PublishTestResults@2
+  displayName: 'Publish SeleniumMStest Results'
+  inputs:
+    testResultsFormat: VSTest
+    testResultsFiles: '**/TEST.xml'
+    mergeTestResults: true
+    testRunTitle: 'SeleniumMStest Run'
+  condition: always()
+
+=======================

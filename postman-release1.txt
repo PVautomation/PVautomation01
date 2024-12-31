@@ -1,0 +1,27 @@
+=============
+
+steps:
+- script: 'npm install -g newman'
+  workingDirectory: '$(System.DefaultWorkingDirectory)'
+  displayName: 'install newman'
+
+====================
+
+steps:
+- script: |
+   C:\npm\prefix\newman run PostmanAzure1_NEW1-removed-wsTst-fr-cicd.postman_collection.json --reporters cli,junit --reporter-junit-export results\postmanReport.xml
+   
+  workingDirectory: '$(System.DefaultWorkingDirectory)/_PostmanAPItest_Build/drop'
+  displayName: 'run newman postman'
+  continueOnError: true
+
+=====================
+
+steps:
+- task: PublishTestResults@2
+  displayName: 'Publish Postman Results'
+  inputs:
+    testResultsFiles: postmanReport.xml
+    searchFolder: '$(System.DefaultWorkingDirectory)\_PostmanAPItest_Build\drop\results'
+
+=====================

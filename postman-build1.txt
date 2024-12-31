@@ -1,0 +1,19 @@
+==================
+
+pool:
+  name: Azure Pipelines
+steps:
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: project
+
+======================
+
+steps:
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: project
+
+========================

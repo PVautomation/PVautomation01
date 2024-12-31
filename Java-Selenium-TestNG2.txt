@@ -1,0 +1,347 @@
+================
+pool:
+  name: Azure Pipelines
+  demands: maven
+
+#Your build pipeline references an undefined variable named ‘$apiKey’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘$apiSecret’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+variables:
+  MAILJET_API_KEY: 'b5d5f415665c452f8317fc3ce5581e0e'
+  MAILJET_API_SECRET: '330f7a459b22e612e9a4ac82c2eed97a'
+
+steps:
+- powershell: |
+   # Set JAVA_HOME
+   $env:JAVA_HOME = "C:\Program Files\Java\jdk-11"
+   Write-Host "JAVA_HOME set to $env:JAVA_HOME"
+   
+   # Add JAVA_HOME to PATH
+   $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
+   Write-Host "PATH updated to include JAVA_HOME\bin"
+   
+  displayName: 'PowerShell Script - Set JAVA_HOME and update PATH'
+  condition: succeededOrFailed()
+
+- script: |
+   start chrome --version
+   
+  displayName: 'Command Line Script - check Chrome version'
+  condition: succeededOrFailed()
+
+- script: |
+   chromedriver --version
+   
+  displayName: 'Command Line Script - check ChromeDriver version'
+  condition: succeededOrFailed()
+
+- task: JavaToolInstaller@1
+  displayName: 'Use Java 11'
+  inputs:
+    versionSpec: 11
+    jdkArchitectureOption: x64
+    jdkSourceOption: PreInstalled
+  condition: succeededOrFailed()
+
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'clean install -DskipTests'
+    options: '-Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\chromedriver.exe'
+    testResultsFiles: '$(Build.SourcesDirectory)/**/test-output/junitreports/TEST-*.xml'
+    jdkVersionOption: 1.11
+  condition: succeededOrFailed()
+
+- script: |
+   echo Cleaning up old test results
+   echo Current Directory: %cd%
+   if exist "JavaMavenTestNG\test-output\junitreports\*" (
+       del /s /q "JavaMavenTestNG\test-output\junitreports\*"
+   ) else (
+       echo Directory not found: JavaMavenTestNG\test-output\junitreports\
+   )
+   
+  displayName: 'Command Line Script - clean up old test results files'
+
+- task: Maven@4
+  displayName: 'Run TestNG Tests'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'test -DsuiteXmlFile=testng.xml'
+    options: '-Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\chromedriver.exe'
+    testResultsFiles: '$(Build.SourcesDirectory)/**/test-output/junitreports/TEST-*.xml'
+    jdkVersionOption: 1.11
+  condition: succeededOrFailed()
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFiles: '$(Build.SourcesDirectory)/**/test-output/junitreports/TEST-*.xml'
+    mergeTestResults: true
+    testRunTitle: 'Selenium Test Results'
+  condition: succeededOrFailed()
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '*.*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  condition: succeededOrFailed()
+
+- powershell: |
+   $filePath = "JavaMavenTestNG/test-output/junitreports/TEST-*.xml"
+   
+   # Read the file content
+   $xmlContent = Get-Content -Path $filePath
+   
+   # Replace <testcase> with <testcase owner="pv_test">
+   $updatedContent = $xmlContent -replace '<testcase ', '<testcase owner="pv_test" '
+   
+   # Write the updated content back to the file
+   Set-Content -Path $filePath -Value $updatedContent
+  displayName: 'PowerShell Script'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: JavaMavenTestNG
+  condition: succeededOrFailed()
+
+- powershell: |
+   $apiKey = "$(MAILJET_API_KEY)"
+   $apiSecret = "$(MAILJET_API_SECRET)"
+   
+   # Encode API key and secret for Basic Auth
+   $auth = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("$($apiKey):$($apiSecret)"))
+   
+   $headers = @{
+       "Authorization" = "Basic $auth"
+       "Content-Type"  = "application/json"
+   }
+   
+   $fromEmail = "preethapv01@gmail.com"  # Verified sender in Mailjet
+   $subject = "CI/CD RESULTS"
+   $bodyText = "Build $(Build.BuildNumber) completed successfully."
+   
+   # Two recipients
+   $toRecipients = @(
+       @{
+           "Email" = "preethapv01@gmail.com"
+           "Name"  = "Recipient One"
+       },
+       @{
+           "Email" = "pvenkatarajan@republicfinance.com"
+           "Name"  = "Recipient Two"
+       }
+   )
+   
+   $body = @{
+       "Messages" = @(
+           @{
+               "From" = @{
+                   "Email" = $fromEmail
+                   "Name"  = "CI/CD Pipeline"
+               }
+               "To" = $toRecipients
+               "Subject" = $subject
+               "TextPart" = $bodyText
+           }
+       )
+   } | ConvertTo-Json -Depth 5
+   
+   $mailjetUrl = "https://api.mailjet.com/v3.1/send"
+   
+   Invoke-RestMethod -Uri $mailjetUrl -Method POST -Headers $headers -Body $body
+  displayName: 'PowerShell Script - CI/CD Test Results'
+
+=============================
+
+steps:
+- powershell: |
+   # Set JAVA_HOME
+   $env:JAVA_HOME = "C:\Program Files\Java\jdk-11"
+   Write-Host "JAVA_HOME set to $env:JAVA_HOME"
+   
+   # Add JAVA_HOME to PATH
+   $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
+   Write-Host "PATH updated to include JAVA_HOME\bin"
+   
+  displayName: 'PowerShell Script - Set JAVA_HOME and update PATH'
+  condition: succeededOrFailed()
+
+==============================
+
+steps:
+- script: |
+   start chrome --version
+   
+  displayName: 'Command Line Script - check Chrome version'
+  condition: succeededOrFailed()
+
+===============================
+
+steps:
+- script: |
+   chromedriver --version
+   
+  displayName: 'Command Line Script - check ChromeDriver version'
+  condition: succeededOrFailed()
+
+=============================
+
+steps:
+- task: JavaToolInstaller@1
+  displayName: 'Use Java 11'
+  inputs:
+    versionSpec: 11
+    jdkArchitectureOption: x64
+    jdkSourceOption: PreInstalled
+  condition: succeededOrFailed()
+
+===========================
+
+steps:
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'clean install -DskipTests'
+    options: '-Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\chromedriver.exe'
+    testResultsFiles: '$(Build.SourcesDirectory)/**/test-output/junitreports/TEST-*.xml'
+    jdkVersionOption: 1.11
+  condition: succeededOrFailed()
+
+===========================
+
+steps:
+- script: |
+   echo Cleaning up old test results
+   echo Current Directory: %cd%
+   if exist "JavaMavenTestNG\test-output\junitreports\*" (
+       del /s /q "JavaMavenTestNG\test-output\junitreports\*"
+   ) else (
+       echo Directory not found: JavaMavenTestNG\test-output\junitreports\
+   )
+   
+  displayName: 'Command Line Script - clean up old test results files'
+
+==============================
+
+steps:
+- task: Maven@4
+  displayName: 'Run TestNG Tests'
+  inputs:
+    mavenPomFile: JavaMavenTestNG/pom.xml
+    goals: 'test -DsuiteXmlFile=testng.xml'
+    options: '-Dwebdriver.chrome.driver=$(Build.SourcesDirectory)\src\chromedriver.exe'
+    testResultsFiles: '$(Build.SourcesDirectory)/**/test-output/junitreports/TEST-*.xml'
+    jdkVersionOption: 1.11
+  condition: succeededOrFailed()
+
+============================
+
+steps:
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFiles: '$(Build.SourcesDirectory)/**/test-output/junitreports/TEST-*.xml'
+    mergeTestResults: true
+    testRunTitle: 'Selenium Test Results'
+  condition: succeededOrFailed()
+
+===========================
+
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '*.*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  condition: succeededOrFailed()
+
+===========================
+
+steps:
+- powershell: |
+   $filePath = "JavaMavenTestNG/test-output/junitreports/TEST-*.xml"
+   
+   # Read the file content
+   $xmlContent = Get-Content -Path $filePath
+   
+   # Replace <testcase> with <testcase owner="pv_test">
+   $updatedContent = $xmlContent -replace '<testcase ', '<testcase owner="pv_test" '
+   
+   # Write the updated content back to the file
+   Set-Content -Path $filePath -Value $updatedContent
+  displayName: 'PowerShell Script'
+
+=========================
+
+steps:
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: JavaMavenTestNG
+  condition: succeededOrFailed()
+
+======================
+
+#Your build pipeline references an undefined variable named ‘MAILJET_API_KEY’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘MAILJET_API_SECRET’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘$apiKey’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘$apiSecret’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+steps:
+- powershell: |
+   $apiKey = "$(MAILJET_API_KEY)"
+   $apiSecret = "$(MAILJET_API_SECRET)"
+   
+   # Encode API key and secret for Basic Auth
+   $auth = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("$($apiKey):$($apiSecret)"))
+   
+   $headers = @{
+       "Authorization" = "Basic $auth"
+       "Content-Type"  = "application/json"
+   }
+   
+   $fromEmail = "preethapv01@gmail.com"  # Verified sender in Mailjet
+   $subject = "CI/CD RESULTS"
+   $bodyText = "Build $(Build.BuildNumber) completed successfully."
+   
+   # Two recipients
+   $toRecipients = @(
+       @{
+           "Email" = "preethapv01@gmail.com"
+           "Name"  = "Recipient One"
+       },
+       @{
+           "Email" = "pvenkatarajan@republicfinance.com"
+           "Name"  = "Recipient Two"
+       }
+   )
+   
+   $body = @{
+       "Messages" = @(
+           @{
+               "From" = @{
+                   "Email" = $fromEmail
+                   "Name"  = "CI/CD Pipeline"
+               }
+               "To" = $toRecipients
+               "Subject" = $subject
+               "TextPart" = $bodyText
+           }
+       )
+   } | ConvertTo-Json -Depth 5
+   
+   $mailjetUrl = "https://api.mailjet.com/v3.1/send"
+   
+   Invoke-RestMethod -Uri $mailjetUrl -Method POST -Headers $headers -Body $body
+  displayName: 'PowerShell Script - CI/CD Test Results'
+
+=========================
+
+
+
