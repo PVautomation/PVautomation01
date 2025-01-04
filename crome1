@@ -1,4 +1,75 @@
+===========
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class BranchUpdateApiResponseTest {
+
+    @Test
+    public void branchUpdateVerifyApiResponseTest() {
+        System.out.println("Executing Branch Update API Response Verification...");
+
+        try {
+            driver.get("URL");
+            ACTION
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+
+            String script = """
+                (function() {
+                    let open = XMLHttpRequest.prototype.open;
+                    XMLHttpRequest.prototype.open = function() {
+                        this.addEventListener('load', function() {
+                            if (this.responseURL.includes('ENDPOINT')) {
+                                console.log('API Matched: ', this.responseURL);
+                                console.log('Response:', this.responseText);
+                                window.apiResponse = this.responseText;
+                                
+                                if (this.responseText.includes('"branch number" : "104"')) {
+                                    window.stringFound = true;
+                                } else {
+                                    window.stringFound = false;
+                                }
+                            }
+                        });
+                        open.apply(this, arguments);
+                    };
+                })();
+            """;
+
+            js.executeScript(script);
+            Thread.sleep(5000); // Allow time for the API call
+
+            // Retrieve global variables
+            String apiResponse = (String) js.executeScript("return window.apiResponse;");
+            Boolean stringFound = (Boolean) js.executeScript("return window.stringFound;");
+
+            // Print results
+            if (apiResponse != null) {
+                System.out.println("Captured API Response: " + apiResponse);
+            } else {
+                System.out.println("API Response not captured. Ensure the endpoint is called.");
+            }
+
+            if (Boolean.TRUE.equals(stringFound)) {
+                System.out.println("The string \"branch number\" : \"104\" was found in the API response!");
+            } else {
+                System.out.println("The string \"branch number\" : \"104\" was NOT found in the API response.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            driver.quit();
+        }
+    }
+}
+
+
+
+==============================
 
 finally {
         
