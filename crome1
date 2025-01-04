@@ -1,5 +1,51 @@
 ===========
 
+String script = "(function(apiEndpoint) {\n"
+        + "    // Intercept XMLHttpRequest\n"
+        + "    let open = XMLHttpRequest.prototype.open;\n"
+        + "    XMLHttpRequest.prototype.open = function() {\n"
+        + "        this.addEventListener('load', function() {\n"
+        + "            console.log('📡 API Request (XHR): ', this.responseURL);\n"
+        + "            if (this.responseURL.includes(apiEndpoint)) {\n"
+        + "                console.log(' API Matched (XHR): ', this.responseURL);\n"
+        + "                console.log(' Response (XHR):', this.responseText);\n"
+        + "                window.apiResponse = this.responseText;\n"
+        + "                if (this.responseText.includes('\"branch number\" : \"104\"')) {\n"
+        + "                    window.stringFound = true;\n"
+        + "                } else {\n"
+        + "                    window.stringFound = false;\n"
+        + "                }\n"
+        + "            }\n"
+        + "        });\n"
+        + "        open.apply(this, arguments);\n"
+        + "    };\n"
+        + "\n"
+        + "    // Intercept fetch()\n"
+        + "    let originalFetch = window.fetch;\n"
+        + "    window.fetch = function() {\n"
+        + "        return originalFetch.apply(this, arguments).then(response => {\n"
+        + "            let clonedResponse = response.clone();\n"
+        + "            clonedResponse.text().then(text => {\n"
+        + "                console.log('📡 API Request (fetch): ', response.url);\n"
+        + "                if (response.url.includes(apiEndpoint)) {\n"
+        + "                    console.log('API Matched (fetch): ', response.url);\n"
+        + "                    console.log(' Response (fetch):', text);\n"
+        + "                    window.apiResponse = text;\n"
+        + "                    if (text.includes('\"branch number\" : \"104\"')) {\n"
+        + "                        window.stringFound = true;\n"
+        + "                    } else {\n"
+        + "                        window.stringFound = false;\n"
+        + "                    }\n"
+        + "                }\n"
+        + "            });\n"
+        + "            return response;\n"
+        + "        });\n"
+        + "    };\n"
+        + "})(arguments[0]);";
+
+
+
+==========================
    @Test(dataProvider = "excelData1", description = "Owner: pv_test")
     public void branchUpdateVerifyApiResponseTest(String data1) throws Exception {
 
