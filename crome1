@@ -22,32 +22,30 @@
             // JavaScript Snippet with Dynamic Data Injection
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
-            String script = """
-                (function(apiEndpoint) {
-                    let open = XMLHttpRequest.prototype.open;
-                    XMLHttpRequest.prototype.open = function() {
-                        this.addEventListener('load', function() {
-                            if (this.responseURL.includes(apiEndpoint)) {
-                                console.log('API Matched: ', this.responseURL);
-                                console.log('Response:', this.responseText);
-                                window.apiResponse = this.responseText;
-                                if (this.responseText.includes('"branch number" : "104"')) {
-                                    window.stringFound = true;
-                                } else {
-                                    window.stringFound = false;
-                                }
-                            }
-                        });
-                        open.apply(this, arguments);
-                    };
-                })(arguments[0]);
-            """;
+            String script = "(function(apiEndpoint) {\n"
+                    + "    let open = XMLHttpRequest.prototype.open;\n"
+                    + "    XMLHttpRequest.prototype.open = function() {\n"
+                    + "        this.addEventListener('load', function() {\n"
+                    + "            if (this.responseURL.includes(apiEndpoint)) {\n"
+                    + "                console.log('API Matched: ', this.responseURL);\n"
+                    + "                console.log('Response:', this.responseText);\n"
+                    + "                window.apiResponse = this.responseText;\n"
+                    + "                if (this.responseText.includes('\"branch number\" : \"104\"')) {\n"
+                    + "                    window.stringFound = true;\n"
+                    + "                } else {\n"
+                    + "                    window.stringFound = false;\n"
+                    + "                }\n"
+                    + "            }\n"
+                    + "        });\n"
+                    + "        open.apply(this, arguments);\n"
+                    + "    };\n"
+                    + "})(arguments[0]);";
 
             // Pass `data1` dynamically to the JavaScript
             String apiEndpoint = "https://www-test.republicfinance.com/qualify/api/branch/zipcode/" + data1;
             js.executeScript(script, apiEndpoint);
 
-            Thread.sleep(5000); 
+            Thread.sleep(5000); // Allow time for the API call to complete
 
             // Retrieve results from JavaScript global variables
             String apiResponse = (String) js.executeScript("return window.apiResponse;");
