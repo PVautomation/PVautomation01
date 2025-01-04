@@ -1,4 +1,68 @@
 ===========
+
+
+public class BranchUpdateApiResponseTestCDT {
+
+    @Test(dataProvider = "excelData1", description = "Owner: pv_test")
+    public void branchUpdateVerifyApiResponseTestCDT (String data1) throws Exception {
+        System.out.println(" Executing Branch Update API Response Verification...");
+
+        ChromeOptions options = new ChromeOptions();
+        ChromeDriver driver = new ChromeDriver(options);
+
+        DevTools devTools = driver.getDevTools();
+        devTools.createSession();
+
+        try {
+            // Enable Network Monitoring
+            devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+
+            devTools.addListener(Network.responseReceived(), response -> {
+                String responseUrl = response.getResponse().getUrl();
+                String endpointUrl = "https://www-test.republicfinance.com/qualify/api/branch/zipcode/" + data1;
+
+                if (responseUrl.contains(endpointUrl)) {
+                    System.out.println("API Matched: " + responseUrl);
+                    System.out.println("Status Code: " + response.getResponse().getStatus());
+                    System.out.println("Response Headers: " + response.getResponse().getHeaders().toString());
+
+                    // Get response body
+                    devTools.send(Network.getResponseBody(response.getRequestId()))
+                            .ifPresent(body -> {
+                                System.out.println("Response Body: " + body.getBody());
+                                if (body.getBody().contains("\"branch number\" : \"104\"")) {
+                                    System.out.println("The string \"branch number\" : \"104\" was found in the API response!");
+                                } else {
+                                    System.out.println("The string \"branch number\" : \"104\" was NOT found in the API response.");
+                                }
+                            });
+                }
+            });
+
+            driver.get("https://www-test.republicfinance.com/apps/prequal");
+            driver.manage().window().maximize();
+            Thread.sleep(5000);
+
+            // Input Zip Code
+            driver.findElementByXPath("/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div[2]/div/div/form/div/input")
+                  .sendKeys(data1);
+
+            Thread.sleep(10000); 
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++
+
 <project>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
