@@ -1,5 +1,26 @@
 ===========
 
+String script = "(function() {\n"
+        + "    let open = XMLHttpRequest.prototype.open;\n"
+        + "    XMLHttpRequest.prototype.open = function() {\n"
+        + "        this.addEventListener('load', function() {\n"
+        + "            if (this.responseURL.includes('ENDPOINT')) {\n"
+        + "                console.log('API Matched: ', this.responseURL);\n"
+        + "                console.log('Response:', this.responseText);\n"
+        + "                window.apiResponse = this.responseText;\n"
+        + "                if (this.responseText.includes('\"branch number\" : \"104\"')) {\n"
+        + "                    window.stringFound = true;\n"
+        + "                } else {\n"
+        + "                    window.stringFound = false;\n"
+        + "                }\n"
+        + "            }\n"
+        + "        });\n"
+        + "        open.apply(this, arguments);\n"
+        + "    };\n"
+        + "})();";
+
+------------------
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
