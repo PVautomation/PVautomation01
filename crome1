@@ -14,6 +14,7 @@ public class BranchUpdateApiResponseTest {
         try {
             driver.get("URL");
             ACTION
+            Thread.sleep(8000);
 
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -40,7 +41,7 @@ public class BranchUpdateApiResponseTest {
             """;
 
             js.executeScript(script);
-            Thread.sleep(5000); // Allow time for the API call
+            Thread.sleep(5000); 
 
             // Retrieve global variables
             String apiResponse = (String) js.executeScript("return window.apiResponse;");
@@ -66,7 +67,6 @@ public class BranchUpdateApiResponseTest {
         }
     }
 }
-
 
 
 ==============================
