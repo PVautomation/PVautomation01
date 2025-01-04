@@ -1,5 +1,11 @@
 ===========
-
+<project>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+</project>
+===========
 String script = "(function(apiEndpoint) {\n"
         + "    // Intercept XMLHttpRequest\n"
         + "    let open = XMLHttpRequest.prototype.open;\n"
