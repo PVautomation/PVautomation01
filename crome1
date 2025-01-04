@@ -1,5 +1,74 @@
 ===========
 
+@Test(dataProvider = "excelData1", description = "Owner: pv_test")
+    public void branchUpdateVerifyApiResponseTest(String data1)  throws Exception {
+    	
+        System.out.println("Executing Branch Update API Response Verification...");
+
+        try {
+
+        	driver.get("https://www-test.republicfinance.com/apps/prequal");
+  	        driver.manage().window().maximize();
+     	 	Thread.sleep(5000);
+  	 	
+  	      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+  	     
+  	          WebElement zipCodeField = wait.until(ExpectedConditions.elementToBeClickable(
+  	                  By.xpath("/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div[2]/div/div/form/div/input")));
+  	          zipCodeField.sendKeys(data1);
+        	
+        	
+            Thread.sleep(8000);
+
+            //JavascriptExecutor js = (JavascriptExecutor) driver;
+
+            String script = "(function() {\n"
+                    + "    let open = XMLHttpRequest.prototype.open;\n"
+                    + "    XMLHttpRequest.prototype.open = function() {\n"
+                    + "        this.addEventListener('load', function() {\n"
+                    + "            if (this.responseURL.includes('https://www-test.republicfinance.com/qualify/api/branch/zipcode/' +data1)) {\n"
+                    + "                console.log('API Matched: ', this.responseURL);\n"
+                    + "                console.log('Response:', this.responseText);\n"
+                    + "                window.apiResponse = this.responseText;\n"
+                    + "                if (this.responseText.includes('\"branch number\" : \"104\"')) {\n"
+                    + "                    window.stringFound = true;\n"
+                    + "                } else {\n"
+                    + "                    window.stringFound = false;\n"
+                    + "                }\n"
+                    + "            }\n"
+                    + "        });\n"
+                    + "        open.apply(this, arguments);\n"
+                    + "    };\n"
+                    + "})();";
+
+            js.executeScript(script);
+            Thread.sleep(5000); 
+
+            // Retrieve global variables
+            String apiResponse = (String) js.executeScript("return window.apiResponse;");
+            Boolean stringFound = (Boolean) js.executeScript("return window.stringFound;");
+
+            // Print results
+            if (apiResponse != null) {
+                System.out.println("Captured API Response: " + apiResponse);
+            } else {
+                System.out.println("API Response not captured. Ensure the endpoint is called.");
+            }
+
+            if (Boolean.TRUE.equals(stringFound)) {
+                System.out.println("The string \"branch number\" : \"104\" was found in the API response!");
+            } else {
+                System.out.println("The string \"branch number\" : \"104\" was NOT found in the API response.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+==================
 String script = "(function() {\n"
         + "    let open = XMLHttpRequest.prototype.open;\n"
         + "    XMLHttpRequest.prototype.open = function() {\n"
