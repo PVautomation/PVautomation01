@@ -1,10 +1,19 @@
 ===========
 
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v85.network.Network;
+import org.openqa.selenium.devtools.v85.network.model.ResponseReceived;
+import org.openqa.selenium.devtools.v85.network.model.RequestId;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.Test;
+
+import java.util.Optional;
 
 public class BranchUpdateApiResponseTestCDT {
 
     @Test(dataProvider = "excelData1", description = "Owner: pv_test")
-    public void branchUpdateVerifyApiResponseTestCDT (String data1) throws Exception {
+    public void branchUpdateVerifyApiResponseTestCDT(String data1) throws Exception {
         System.out.println(" Executing Branch Update API Response Verification...");
 
         ChromeOptions options = new ChromeOptions();
@@ -23,19 +32,24 @@ public class BranchUpdateApiResponseTestCDT {
 
                 if (responseUrl.contains(endpointUrl)) {
                     System.out.println("API Matched: " + responseUrl);
-                    System.out.println("Status Code: " + response.getResponse().getStatus());
-                    System.out.println("Response Headers: " + response.getResponse().getHeaders().toString());
+                    System.out.println(" Status Code: " + response.getResponse().getStatus());
+                    System.out.println(" Response Headers: " + response.getResponse().getHeaders().toString());
 
-                    // Get response body
-                    devTools.send(Network.getResponseBody(response.getRequestId()))
-                            .ifPresent(body -> {
-                                System.out.println("Response Body: " + body.getBody());
-                                if (body.getBody().contains("\"branch number\" : \"104\"")) {
-                                    System.out.println("The string \"branch number\" : \"104\" was found in the API response!");
-                                } else {
-                                    System.out.println("The string \"branch number\" : \"104\" was NOT found in the API response.");
-                                }
-                            });
+                    try {
+                        RequestId requestId = response.getRequestId();
+                        Network.GetResponseBodyResponse responseBody = devTools.send(Network.getResponseBody(requestId));
+                        
+                        String body = responseBody.getBody();
+                        System.out.println(" Response Body: " + body);
+
+                        if (body.contains("\"branch number\" : \"104\"")) {
+                            System.out.println("The string \"branch number\" : \"104\" was found in the API response!");
+                        } else {
+                            System.out.println(" The string \"branch number\" : \"104\" was NOT found in the API response.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(" Failed to get response body: " + e.getMessage());
+                    }
                 }
             });
 
@@ -47,13 +61,13 @@ public class BranchUpdateApiResponseTestCDT {
             driver.findElementByXPath("/html/body/form/div[4]/main/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div[2]/div/div/form/div/input")
                   .sendKeys(data1);
 
-            Thread.sleep(10000); 
+            Thread.sleep(10000);
 
         } catch (Exception e) {
             e.printStackTrace();
         } 
     }
-
+}
 
 
 
