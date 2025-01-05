@@ -1,0 +1,101 @@
+[RemoteTestNG] detected TestNG version 7.4.0
+Jan 04, 2025 6:18:16 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 129; Please update to a Selenium version that supports CDP version 131
+ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
+ Executing Branch Update API Response Verification...
+Jan 04, 2025 6:18:20 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 129; Please update to a Selenium version that supports CDP version 131
+Jan 04, 2025 6:18:35 PM org.openqa.selenium.devtools.Connection$Listener lambda$onText$0
+WARNING: Unable to process: {"method":"Network.responseReceived","params":{"requestId":"ADFF6602EF58703B3A05855CE02A77FB","loaderId":"","timestamp":119287.692301,"type":"Preflight","response":{"url":"https://dc.services.visualstudio.com/v2/track","status":204,"statusText":"","headers":{"access-control-allow-headers":"Origin,X-Requested-With,Content-Name,Content-Type,Accept,Cache-Control,Sdk-Context,X-Set-Cross-Origin-Resource-Policy","access-control-allow-methods":"POST","access-control-allow-origin":"*","access-control-max-age":"3600","date":"Sun, 05 Jan 2025 00:18:32 GMT","server":"Microsoft-HTTPAPI/2.0","strict-transport-security":"max-age=31536000"},"mimeType":"","charset":"","connectionReused":false,"connectionId":812,"remoteIPAddress":"52.188.247.149","remotePort":443,"fromDiskCache":false,"fromServiceWorker":false,"fromPrefetchCache":false,"encodedDataLength":231,"timing":{"requestTime":119287.321733,"proxyStart":-1,"proxyEnd":-1,"dnsStart":0.134,"dnsEnd":28.837,"connectStart":29.07,"connectEnd":244.418,"sslStart":86.454,"sslEnd":244.407,"workerStart":-1,"workerReady":-1,"workerFetchStart":-1,"workerRespondWithSettled":-1,"sendStart":244.965,"sendEnd":245.098,"pushStart":0,"pushEnd":0,"receiveHeadersStart":368.599,"receiveHeadersEnd":368.835},"responseTime":1.736036315265961e+12,"protocol":"h2","alternateProtocolUsage":"unspecifiedReason","securityState":"secure","securityDetails":{"protocol":"TLS 1.3","keyExchange":"","keyExchangeGroup":"P-384","cipher":"AES_256_GCM","certificateId":0,"subjectName":"prod.ai.ingestion.msftcloudes.com","sanList":["*.prod.ai.ingestion.msftcloudes.com","in.applicationinsights.azure.com","*.in.applicationinsights.azure.com","dc.applicationinsights.microsoft.com","dc.applicationinsights.azure.com","dc.services.visualstudio.com","prod.ai.ingestion.msftcloudes.com"],"issuer":"Microsoft Azure RSA TLS Issuing CA 03","validFrom":1733086426,"validTo":1748638426,"signedCertificateTimestampList":[{"status":"Verified","origin":"Embedded in certificate","logDescription":"Google 'Xenon2025h1' log","logId":"CF1156EED52E7CAFF3875BD9692E9BE91A71674AB017ECAC01D25B77CECC3B08","timestamp":1733087029413,"hashAlgorithm":"SHA-256","signatureAlgorithm":"ECDSA","signatureData":"3046022100EF108E3B017501659BB3D0216CF9CBAAD18AA0BFA8D81B123206ABFC56E10C61022100E96721959B0FE2F38F5CA7BBF093BD9D53A46D97AE299584698E24617B6C0C7D"},{"status":"Verified","origin":"Embedded in certificate","logDescription":"DigiCert Yeti2025 Log","logId":"7D591E12E1782A7B1C61677C5EFDF8D0875C14A04E959EB9032FD90E8C2E79B8","timestamp":1733087029327,"hashAlgorithm":"SHA-256","signatureAlgorithm":"ECDSA","signatureData":"30440220657735C28CE0264C0F3B28ECF73C78103CFA47F7184D930E8B86E79D9202339C022073130F9CAD35D63E6C98F5EC404B70AF9C722C57D3D428DA515A16B9640E4976"},{"status":"Verified","origin":"Embedded in certificate","logDescription":"Sectigo 'Sabre2025h1'","logId":"E092B3FC0C1DC8E768361FDE61B9964D0A5278198A72D672C4B04DA56D6F5404","timestamp":1733087029562,"hashAlgorithm":"SHA-256","signatureAlgorithm":"ECDSA","signatureData":"3045022040DCF89C4DC096739293F9F18414D5A56F1C4C893DA96959D297FD382B0F9B1E0221008B7A6E170ECF4598F09BB7286FEF6BCFAA311D3389EB986E8B6042EDF2DA8618"}],"certificateTransparencyCompliance":"compliant","serverSignatureAlgorithm":2052,"encryptedClientHello":false}},"hasExtraInfo":true},"sessionId":"96A043BBFD5B9CB7AB779EE2DC1F1C73"}
+org.openqa.selenium.json.JsonException: Unable to create instance of class org.openqa.selenium.devtools.v85.network.model.ResponseReceived
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.0.2'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.json.StaticInitializerCoercer.lambda$apply$0(StaticInitializerCoercer.java:61)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$buildCoercer$6(JsonTypeCoercer.java:171)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:146)
+	at org.openqa.selenium.json.JsonInput.read(JsonInput.java:423)
+	at org.openqa.selenium.devtools.v85.network.Network.lambda$responseReceived$42(Network.java:477)
+	at org.openqa.selenium.devtools.Connection.lambda$handle$5(Connection.java:323)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+	at java.base/java.util.stream.ReferencePipeline$11$1.accept(ReferencePipeline.java:442)
+	at java.base/java.util.HashMap$EntrySpliterator.forEachRemaining(HashMap.java:1746)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497)
+	at org.openqa.selenium.devtools.Connection.handle(Connection.java:311)
+	at org.openqa.selenium.devtools.Connection$Listener.lambda$onText$0(Connection.java:239)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.json.StaticInitializerCoercer.lambda$apply$0(StaticInitializerCoercer.java:59)
+	... 20 more
+Caused by: org.openqa.selenium.json.JsonException: Unable to find matching enum value for Preflight in class org.openqa.selenium.devtools.v85.network.model.ResourceType
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.0.2'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.json.EnumCoercer.lambda$apply$0(EnumCoercer.java:50)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$buildCoercer$6(JsonTypeCoercer.java:171)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:146)
+	at org.openqa.selenium.json.JsonInput.read(JsonInput.java:423)
+	at org.openqa.selenium.devtools.v85.network.model.ResponseReceived.fromJson(ResponseReceived.java:94)
+	... 24 more
+
+Exception in thread "CDP Connection" org.openqa.selenium.devtools.DevToolsException: Unable to create instance of class org.openqa.selenium.devtools.v85.network.model.ResponseReceived
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.0.2'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.devtools.Connection$Listener.lambda$onText$0(Connection.java:242)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.openqa.selenium.json.JsonException: Unable to create instance of class org.openqa.selenium.devtools.v85.network.model.ResponseReceived
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.0.2'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.json.StaticInitializerCoercer.lambda$apply$0(StaticInitializerCoercer.java:61)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$buildCoercer$6(JsonTypeCoercer.java:171)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:146)
+	at org.openqa.selenium.json.JsonInput.read(JsonInput.java:423)
+	at org.openqa.selenium.devtools.v85.network.Network.lambda$responseReceived$42(Network.java:477)
+	at org.openqa.selenium.devtools.Connection.lambda$handle$5(Connection.java:323)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+	at java.base/java.util.stream.ReferencePipeline$11$1.accept(ReferencePipeline.java:442)
+	at java.base/java.util.HashMap$EntrySpliterator.forEachRemaining(HashMap.java:1746)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497)
+	at org.openqa.selenium.devtools.Connection.handle(Connection.java:311)
+	at org.openqa.selenium.devtools.Connection$Listener.lambda$onText$0(Connection.java:239)
+	... 3 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.json.StaticInitializerCoercer.lambda$apply$0(StaticInitializerCoercer.java:59)
+	... 20 more
+Caused by: org.openqa.selenium.json.JsonException: Unable to find matching enum value for Preflight in class org.openqa.selenium.devtools.v85.network.model.ResourceType
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.0.2'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.json.EnumCoercer.lambda$apply$0(EnumCoercer.java:50)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$buildCoercer$6(JsonTypeCoercer.java:171)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:146)
+	at org.openqa.selenium.json.JsonInput.read(JsonInput.java:423)
+	at org.openqa.selenium.devtools.v85.network.model.ResponseReceived.fromJson(ResponseReceived.java:94)
+	... 24 more
+ Executing Branch Update API Response Verification...
+Jan 04, 2025 6:18:51 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 129; Please update to a Selenium version that supports CDP version 131
