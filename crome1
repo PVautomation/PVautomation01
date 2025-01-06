@@ -4,6 +4,8 @@ netsh advfirewall set allprofiles state on
 ----
 netstat -an | findstr 1433
 ----
+Database Testing using Automation -> I am currently working on constructing Java-Selenium code to test the database. - However, I am facing an issue while trying to connect to the database using the provided connection string. - I have executed the following commands (netstat, ping, telnet) and attached the output. - I request the Database Administrator (DBA) for assistance in resolving the issue.
+----
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
