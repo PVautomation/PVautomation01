@@ -2,6 +2,8 @@
 netsh advfirewall set allprofiles state off
 netsh advfirewall set allprofiles state on
 ----
+netstat -an | findstr 1433
+----
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
