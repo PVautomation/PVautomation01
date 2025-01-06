@@ -1,5 +1,29 @@
 ===========
-
+SELECT 
+    SERVERPROPERTY('MachineName') AS HostName,
+    SERVERPROPERTY('ServerName') AS ServerName,
+    SERVERPROPERTY('IsClustered') AS IsClustered;
+------
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+-----
+EXEC xp_cmdshell 'ipconfig';
+-------
+EXEC sp_configure 'xp_cmdshell', 0;
+RECONFIGURE;
+-----
+EXEC xp_readerrorlog 0, 1, N'Server is listening on';
+------
+=================
+ipconfig
+----
+netstat -ano | findstr :1433
+-----
+sqlcmd -S <REMOTE_SERVER_IP>,1433 -U <USERNAME> -P <PASSWORD>
+----
+///////////////
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.network.Network;
 import org.openqa.selenium.devtools.v85.network.model.ResponseReceived;
