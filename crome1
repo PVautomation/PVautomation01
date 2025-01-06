@@ -1,4 +1,16 @@
 ===========
+<dependency>
+    <groupId>com.microsoft.sqlserver</groupId>
+    <artifactId>mssql-jdbc</artifactId>
+    <version>12.2.0.jre11</version> <!-- version compatible with Java 11 -->
+</dependency>
+================
+String connectionUrl = "jdbc:sqlserver://<REMOTE_SERVER_IP>:<PORT>;"
+        + "databaseName=<DATABASE_NAME>;"
+        + "user=<USERNAME>;"
+        + "password=<PASSWORD>;"
+        + "encrypt=true;trustServerCertificate=true;";
+//////////////////
 SELECT 
     SERVERPROPERTY('MachineName') AS HostName,
     SERVERPROPERTY('ServerName') AS ServerName,
