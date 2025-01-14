@@ -1,3 +1,15 @@
+======
+Failed to parse selected text as SQL query
+
+Syntax error near 'db'
+
+db.collection('los_v2_applications').deleteMany({"variables.borrower_first_name": "KTOEJT"}) (on line 1, character 0)
+
+Stacktrace: 
+|_/ t3.utils.a.a: Syntax error near 'db'
+|_... 
+|_... db.collection('los_v2_applications').deleteMany({"variables.borrower_first_name": "KTOEJT"}) (on line 1, character 0)
+|____/ org.antlr.v4.runtime.InputMismatchException
 ===========
 netsh advfirewall set allprofiles state off
 netsh advfirewall set allprofiles state on
